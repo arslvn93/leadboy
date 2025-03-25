@@ -25,14 +25,12 @@ const HeroSection = () => {
             90s MODE ACTIVE
           </div>
 
-          {/* Main heading with Kid Cosmo chrome style */}
+          {/* Simple white text headline on two lines only */}
           <h1 className="mb-6 relative">
-            <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black leading-tight">
-              <div className="mb-4 kid-cosmo-text">IT'S NOT THE 90'S ANYMORE...</div>
-              <div className="flex items-center kid-cosmo-text">STOP FOLLOWING UP LIKE IT <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+            <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <div>IT'S NOT THE 90'S ANYMORE...</div>
+              <div className="flex items-center mt-2">STOP FOLLOWING UP LIKE IT <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
-            {/* Angled line through headline - like the Kid Cosmo image */}
-            <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-60%]"></div>
           </h1>
 
           {/* Description card - More compact for above-the-fold visibility */}
