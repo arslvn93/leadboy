@@ -37,7 +37,7 @@ const HowItWorksSection = () => {
           <Step
             number={3}
             title="DEFEAT THE FINAL BOSS"
-            description="OK, maybe your leads aren't exactly "the final boss" (we're being dramatic) – but copy these scripts into your CRM and watch cold prospects transform into clients faster than you can say "FINISH HIM!""
+            description="OK, maybe your leads aren't exactly 'the final boss' (we're being dramatic) – but copy these scripts into your CRM and watch cold prospects transform into clients faster than you can say 'FINISH HIM!'"
             position="left"
           />
         </div>
