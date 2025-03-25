@@ -24,13 +24,13 @@ const FeatureCard = ({ icon, title, description, color, patternType, index }: Fe
 
   return (
     <div className={`transform ${rotate} transition-transform hover:scale-105`}>
-      <div className="relative bg-white border-4 border-black p-8 shadow-[6px_6px_0_#000]">
+      <div className="relative bg-white border-4 border-black p-8 shadow-[6px_6px_0_#000] h-full flex flex-col min-h-[280px]">
         <div 
           className="absolute inset-0 opacity-20 z-0" 
           style={{ backgroundImage: patterns[patternType], backgroundSize: '20px 20px' }}
         ></div>
 
-        <div className="relative z-10">
+        <div className="relative z-10 flex-1">
           <div className="w-16 h-16 mb-6 rounded-full border-4 border-black flex items-center justify-center"
                style={{ backgroundColor: color }}>
             {icon}
