@@ -1,33 +1,143 @@
-import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { Star, Play, Zap } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="hero bg-[#051736] min-h-screen relative overflow-hidden">
-      <div className="hero-container flex flex-col justify-center h-screen">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col">
-            <div className="logo-container mb-8">
-              <div className="pixel-border inline-block p-2 bg-[#051736] border-4 border-[#00ffff]">
-                <span className="font-press-start text-2xl text-[#00ffff]">LEAD<span className="text-[#5affbc]">BOY</span></span>
-                <p className="text-xs text-white mt-1 text-right">by salesgenius</p>
+    <section id="hero" className="pt-16 pb-24 px-4 relative overflow-hidden bg-retro-dark">
+      {/* Background grid effect */}
+      <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
+
+      {/* Diagonal neon lines */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-retro-purple shadow-neon-purple"></div>
+      <div className="absolute -top-20 right-40 w-[800px] h-[2px] bg-retro-neon-blue transform rotate-45 shadow-neon-blue opacity-50"></div>
+      <div className="absolute bottom-0 -right-20 w-[400px] h-[2px] bg-retro-neon-pink transform -rotate-45 shadow-neon-pink opacity-60"></div>
+
+      {/* VHS distortion lines - horizontal scan lines */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="w-full h-[2px] bg-retro-neon-blue opacity-5 animate-scan-line"></div>
+      </div>
+
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+        {/* Left Column - Headline and CTA */}
+        <div className="md:w-5/12 mb-16 md:mb-0">
+          {/* 90s Mode Badge as eyebrow copy */}
+          <div className="inline-block px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs mb-4">
+            FOR MODERN DAY REALTORS
+          </div>
+
+          {/* Main heading with Kid Cosmo chrome style */}
+          <h1 className="mb-10 relative">
+            <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black leading-tight">
+              <div className="mb-4">It's not the 90's anymore...</div>
+              <div className="flex items-center">Stop following up like it <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+            </div>
+          </h1>
+
+          {/* Description card */}
+          <div className="rounded-xl border border-retro-bright p-6 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-10">
+            <p className="text-white text-lg">
+              Get a completely personalized 15-day follow-up system built specifically for YOUR business — our AI analyzes your responses to deliver custom scripts, emails, and texts proven to boost response rates by up to <span className="text-retro-neon-pink font-bold neon-text-sm">247%</span>.
+            </p>
+          </div>
+
+          {/* Call to action buttons */}
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <Button 
+              className="bg-retro-gradient-pink text-white px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg"
+              onClick={() => window.location.href = '#signup'}
+            >
+              <Star className="mr-2 h-6 w-6" /> CLICK HERE TO BUILD YOUR FREE SEQUENCE
+            </Button>
+          </div>
+
+          {/* Social proof */}
+          <div className="flex items-center">
+            <div className="flex -space-x-3">
+              <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-purple"></div>
+              <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-pink"></div>
+              <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-blue"></div>
+            </div>
+            <div className="ml-4 font-bold text-white px-4 py-2 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm">
+              Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> real estate agents
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column - Gameboy Terminal */}
+        <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
+          {/* Gameboy Console */}
+          <div className="gameboy-container">
+            {/* Outer glow */}
+            <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
+
+            <div className="gameboy-body transform rotate-2 glow-container">
+              <div className="gameboy-screen-area">
+                <div className="gameboy-power-led"></div>
+                <div className="gameboy-screen crt-screen">
+                  {/* Terminal Content */}
+                  <div className="font-retro text-xl h-full flex flex-col">
+                    <div className="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                      <span className="neon-text-primary">LEAD SYSTEM v1.0</span>
+                      <span className="text-yellow-300 animate-blink">ONLINE</span>
+                    </div>
+
+                    <div className="flex-1">
+                      <div className="mb-3 flex justify-between">
+                        <span className="text-green-400">NEW LEADS:</span>
+                        <span className="text-yellow-300">12</span>
+                      </div>
+                      <div className="mb-3 flex justify-between">
+                        <span className="text-green-400">FOLLOW-UPS:</span>
+                        <span className="text-yellow-300">24</span>
+                      </div>
+                      <div className="mb-3 flex justify-between">
+                        <span className="text-green-400">CONVERSIONS:</span>
+                        <span className="text-yellow-300">8</span>
+                      </div>
+                      <div className="my-3 h-[1px] w-full bg-gray-700 opacity-30"></div>
+                      <div className="flex items-center text-green-300">
+                        <span className="animate-blink mr-2">▶</span>
+                        <span>Ready for next command...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="gameboy-controls">
+                <div className="gameboy-dpad">
+                  <div className="dpad-up"></div>
+                  <div className="dpad-right"></div>
+                  <div className="dpad-down"></div>
+                  <div className="dpad-left"></div>
+                  <div className="dpad-center"></div>
+                </div>
+                <div className="gameboy-buttons">
+                  <div className="btn-a">A</div>
+                  <div className="btn-b">B</div>
+                </div>
+              </div>
+
+              <div className="gameboy-options">
+                <div className="btn-select">SELECT</div>
+                <div className="btn-start">START</div>
+              </div>
+
+              <div className="gameboy-speaker">
+                <div className="speaker-line"></div>
+                <div className="speaker-line"></div>
+                <div className="speaker-line"></div>
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-press-start text-white leading-tight">
-              It's not the 90s anymore...<br/>
-              stop following up like it
-            </h1>
-
-            <div className="mt-10">
-              <Button
-                className="bg-retro-gradient-pink text-white px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg"
-                onClick={() => window.location.href = '#signup'}
-              >
-                <Star className="mr-2 h-6 w-6" /> CLICK HERE TO BUILD YOUR FREE SEQUENCE
-              </Button>
-            </div>
+            {/* Diagonal neon light beams */}
+            <div className="absolute -bottom-8 -right-8 w-40 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
+            <div className="absolute -top-8 -left-8 w-40 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
           </div>
+
+          {/* Additional floating elements */}
+          <div className="absolute -bottom-20 left-20 text-4xl text-retro-neon-yellow animate-float">★</div>
+          <div className="absolute top-0 right-10 w-16 h-16 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
         </div>
       </div>
     </section>
