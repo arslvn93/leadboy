@@ -25,11 +25,13 @@ const HeroSection = () => {
             90s MODE ACTIVE
           </div>
 
-          {/* Simple white text headline on exactly two lines only */}
+          {/* Simple white text headline with line breaks exactly as specified */}
           <h1 className="mb-6 relative">
             <div className="text-4xl md:text-5xl lg:text-7xl font-bold text-white">
-              <div className="mb-2">IT'S NOT THE 90'S ANYMORE...</div>
-              <div className="flex items-center">STOP FOLLOWING UP LIKE IT <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+              <div>It's not the</div>
+              <div className="mb-2">90's anymore...</div>
+              <div>Stop following</div>
+              <div className="flex items-center">up like it... <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
           </h1>
 
