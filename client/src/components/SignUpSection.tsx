@@ -77,12 +77,12 @@ const SignUpSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-block bg-[#FF00FF] border-4 border-black px-8 py-3 transform -rotate-2 shadow-[6px_6px_0_#000] mb-6">
-              <h2 className="font-pixel text-2xl md:text-3xl text-white drop-shadow-[2px_2px_0_#000]">JOIN THE ADVENTURE!</h2>
+              <h2 className="font-pixel text-2xl md:text-3xl text-white drop-shadow-[2px_2px_0_#000]">POWER UP YOUR LEAD GAME!</h2>
             </div>
             
             <div className="max-w-2xl mx-auto bg-white border-4 border-black p-4 transform rotate-1 shadow-[6px_6px_0_#000]">
               <p className="text-black font-bold">
-                Fill out this form to start your radical lead generation journey! Your business will be <span className="text-[#FF00FF] font-extrabold">totally transformed</span>!
+                Get your custom lead sequence now! Transform your lead generation into a <span className="text-[#FF00FF] font-extrabold">high-score machine</span>!
               </p>
             </div>
           </div>
