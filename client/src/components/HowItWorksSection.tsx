@@ -5,8 +5,8 @@ const HowItWorksSection = () => {
     <section id="how-it-works" className="py-16 md:py-24 px-4 relative overflow-hidden">
       {/* Pattern background */}
       <div className="absolute inset-0 opacity-15" style={{ 
-        backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff00ff' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-        backgroundSize: '52px 26px'
+        backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 50 Q90 40, 100 50 T120 50' stroke='%23ff00ff' stroke-width='3' fill='none' stroke-opacity='0.4' /%3E%3C/svg%3E\")",
+        backgroundSize: '100px 100px'
       }}></div>
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16">
