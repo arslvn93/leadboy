@@ -19,17 +19,19 @@ const HeroSection = () => {
       
       <div className="container mx-auto flex flex-col md:flex-row items-center relative z-10">
         <div className="md:w-1/2 mb-16 md:mb-0">
-          {/* Main heading with retro 80s chrome style */}
+          {/* Main heading with Kid Cosmo chrome style */}
           <h1 className="mb-10 leading-tight">
-            <div className="text-white text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-2">
+            <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black mb-2 kid-cosmo-text transform -rotate-1">
               AUTOMATE
             </div>
-            <div className="text-retro-neon-pink text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-2 neon-text">
+            <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black mb-2 kid-cosmo-text transform -rotate-1">
               REAL ESTATE
             </div>
-            <div className="text-retro-neon-blue text-6xl md:text-7xl lg:text-8xl font-display font-bold neon-text flex items-center">
-              LEADS <span className="ml-3 text-5xl animate-pulse">★</span>
+            <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black kid-cosmo-text transform -rotate-1 flex items-center">
+              LEADS <span className="ml-3 text-5xl text-retro-neon-blue neon-text animate-pulse">★</span>
             </div>
+            {/* Angled line through headline - like the Kid Cosmo image */}
+            <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-130px]"></div>
           </h1>
           
           {/* Description card */}
