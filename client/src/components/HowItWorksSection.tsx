@@ -1,73 +1,77 @@
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+
+import { ArrowDown } from 'lucide-react';
+
+const HowItWorksSection = () => {
+  return (
+    <section id="how-it-works" className="py-12 md:py-24 px-4 bg-gameboy-gray-dark">
+      <div className="container mx-auto max-w-5xl">
+        <div className="text-center mb-16">
+          <h2 className="font-pixel text-2xl md:text-3xl text-gameboy-green mb-4">
+            BEAT THE LEAD CONVERSION GAME IN 3 EASY STEPS:
+          </h2>
+        </div>
+        
+        <div className="space-y-8">
+          <Step
+            number={1}
+            title="PRESS START"
+            description="Take 3 minutes to tell us about your business. Like customizing your character before the game begins, this personalizes your entire follow-up strategy."
+            position="left"
+          />
+          
+          <div className="flex justify-center">
+            <ArrowDown className="text-gameboy-green h-8 w-8" />
+          </div>
+          
+          <Step
+            number={2}
+            title="COLLECT YOUR POWER TOKENS"
+            description="Our AI instantly builds your custom 15-day sequence. It's like grabbing all the hidden tokens in one quick sweep – no hunting through levels or wasting time."
+            position="right"
+          />
+          
+          <div className="flex justify-center">
+            <ArrowDown className="text-gameboy-green h-8 w-8" />
+          </div>
+          
+          <Step
+            number={3}
+            title="DEFEAT THE FINAL BOSS"
+            description="OK, maybe your leads aren't exactly "the final boss" (we're being dramatic) – but copy these scripts into your CRM and watch cold prospects transform into clients faster than you can say "FINISH HIM!""
+            position="left"
+          />
+        </div>
+        
+        <div className="mt-16 text-center">
+          <button className="pixel-button bg-purple-primary text-white px-8 py-4 text-xl border-b-4 border-purple-dark hover:border-b-2 hover:translate-y-[2px] transition-all">
+            LEVEL UP YOUR LEAD GAME
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 interface StepProps {
   number: number;
   title: string;
   description: string;
-  isLast?: boolean;
+  position: 'left' | 'right';
 }
 
-const Step = ({ number, title, description, isLast = false }: StepProps) => {
+const Step = ({ number, title, description, position }: StepProps) => {
   return (
-    <div className="flex flex-col items-center">
-      <div className="pixel-border bg-gameboy-green-light p-3 h-16 w-16 flex items-center justify-center mb-6">
-        <span className="font-pixel text-2xl text-gameboy-gray-dark">{number}</span>
-      </div>
-      <h3 className="font-pixel text-base text-gameboy-gray-dark mb-2 text-center">{title}</h3>
-      <p className="text-gameboy-gray text-center">{description}</p>
-      {!isLast && (
-        <div className="mt-4 h-8 flex items-center justify-center">
-          <ArrowRight className="h-8 w-8 text-gameboy-green hidden md:block" />
-          <ArrowRight className="h-8 w-8 text-gameboy-green block md:hidden transform rotate-90" />
+    <div className="bg-white border-4 border-black p-6 shadow-[6px_6px_0_#000] relative">
+      <div className={`flex items-center gap-8 ${position === 'right' ? 'flex-row-reverse' : 'flex-row'}`}>
+        <div className="pixel-border bg-gameboy-green w-20 h-20 flex-shrink-0 flex items-center justify-center">
+          <span className="font-pixel text-3xl text-white">{number}</span>
         </div>
-      )}
+        <div>
+          <h3 className="font-pixel text-lg mb-2 text-gameboy-gray-dark">{title}</h3>
+          <p className="text-gameboy-gray-dark">{description}</p>
+        </div>
+      </div>
     </div>
-  );
-};
-
-const HowItWorksSection = () => {
-  return (
-    <section id="how-it-works" className="py-12 md:py-24 px-4 bg-gameboy-bg">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-pixel text-xl md:text-2xl lg:text-3xl text-gameboy-gray-dark mb-4">GAME WALKTHROUGH</h2>
-          <p className="text-gameboy-gray-dark max-w-2xl mx-auto">
-            Follow these simple steps to automate your real estate lead follow-up process.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <Step
-            number={1}
-            title="CONNECT"
-            description="Link your lead sources and CRM systems to LeadQuest"
-          />
-          
-          <Step
-            number={2}
-            title="CREATE"
-            description="Design custom follow-up sequences for different lead types"
-          />
-          
-          <Step
-            number={3}
-            title="AUTOMATE"
-            description="Activate your sequences and monitor performance in real-time"
-            isLast
-          />
-        </div>
-        
-        <div className="mt-16 text-center">
-          <Button 
-            className="pixel-button bg-purple-primary text-white px-6 py-3 border-b-4 border-r-4 border-purple-dark hover:border-b-2 hover:border-r-2 transition-all font-bold rounded-none"
-            onClick={() => window.location.href = '#signup'}
-          >
-            Begin Your Adventure
-          </Button>
-        </div>
-      </div>
-    </section>
   );
 };
 
