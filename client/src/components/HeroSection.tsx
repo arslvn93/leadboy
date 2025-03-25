@@ -77,32 +77,32 @@ const HeroSection = () => {
             {/* Outer glow */}
             <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
 
-            <div className="gameboy-body transform rotate-2">
+            <div className="gameboy-body transform rotate-2 glow-container">
               <div className="gameboy-screen-area">
                 <div className="gameboy-power-led"></div>
-                <div className="gameboy-screen">
+                <div className="gameboy-screen crt-screen">
                   {/* Terminal Content */}
                   <div className="font-retro text-xl h-full flex flex-col">
-                    <div className="flex justify-between items-center mb-4 border-b border-retro-bright pb-2">
-                      <span className="text-retro-neon-green">LEAD SYSTEM v1.0</span>
-                      <span className="text-retro-neon-yellow animate-blink">ONLINE</span>
+                    <div className="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                      <span className="neon-text-primary">LEAD SYSTEM v1.0</span>
+                      <span className="text-yellow-300 animate-blink">ONLINE</span>
                     </div>
                     
                     <div className="flex-1">
                       <div className="mb-3 flex justify-between">
-                        <span className="text-retro-neon-green">NEW LEADS:</span>
-                        <span className="text-retro-neon-yellow">12</span>
+                        <span className="text-green-400">NEW LEADS:</span>
+                        <span className="text-yellow-300">12</span>
                       </div>
                       <div className="mb-3 flex justify-between">
-                        <span className="text-retro-neon-green">FOLLOW-UPS:</span>
-                        <span className="text-retro-neon-yellow">24</span>
+                        <span className="text-green-400">FOLLOW-UPS:</span>
+                        <span className="text-yellow-300">24</span>
                       </div>
                       <div className="mb-3 flex justify-between">
-                        <span className="text-retro-neon-green">CONVERSIONS:</span>
-                        <span className="text-retro-neon-yellow">8</span>
+                        <span className="text-green-400">CONVERSIONS:</span>
+                        <span className="text-yellow-300">8</span>
                       </div>
-                      <div className="my-3 h-[1px] w-full bg-retro-bright opacity-30"></div>
-                      <div className="flex items-center text-retro-teal">
+                      <div className="my-3 h-[1px] w-full bg-gray-700 opacity-30"></div>
+                      <div className="flex items-center text-green-300">
                         <span className="animate-blink mr-2">▶</span>
                         <span>Ready for next command...</span>
                       </div>
