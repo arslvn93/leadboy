@@ -27,11 +27,9 @@ const HeroSection = () => {
 
           {/* Main heading with Kid Cosmo chrome style */}
           <h1 className="mb-10 relative">
-            <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black mb-6 leading-tight">
-              It's not the 90's anymore...
-            </div>
-            <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black flex items-center">
-              Stop following up like it <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span>
+            <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black leading-tight">
+              <div className="mb-4">It's not the 90's anymore...</div>
+              <div className="flex items-center">Stop following up like it <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
           </h1>
 
