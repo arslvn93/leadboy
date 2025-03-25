@@ -22,21 +22,23 @@ const HeroSection = () => {
         <div className="md:w-5/12 mb-16 md:mb-0">
           {/* 90s Mode Badge as eyebrow copy */}
           <div className="inline-block px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs mb-4">
-            FOR MODERN DAY REALTORS
+            90s MODE ACTIVE
           </div>
 
           {/* Main heading with Kid Cosmo chrome style */}
-          <h1 className="mb-10 relative">
+          <h1 className="mb-6 relative">
             <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black leading-tight">
-              <div className="mb-4">It's not the 90's anymore...</div>
-              <div className="flex items-center">Stop following up like it <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+              <div className="mb-4 kid-cosmo-text">IT'S NOT THE 90'S ANYMORE...</div>
+              <div className="flex items-center kid-cosmo-text">STOP FOLLOWING UP LIKE IT <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
+            {/* Angled line through headline - like the Kid Cosmo image */}
+            <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-60%]"></div>
           </h1>
 
-          {/* Description card */}
-          <div className="rounded-xl border border-retro-bright p-6 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-10">
+          {/* Description card - More compact for above-the-fold visibility */}
+          <div className="rounded-xl border border-retro-bright p-4 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-6">
             <p className="text-white text-lg">
-              Get a completely personalized 15-day follow-up system built specifically for YOUR business — our AI analyzes your responses to deliver custom scripts, emails, and texts proven to boost response rates by up to <span className="text-retro-neon-pink font-bold neon-text-sm">247%</span>.
+              Get a personalized 15-day follow-up system that delivers custom scripts, emails, and texts proven to boost response rates by up to <span className="text-retro-neon-pink font-bold neon-text-sm">247%</span>.
             </p>
           </div>
 
@@ -46,7 +48,7 @@ const HeroSection = () => {
               className="bg-retro-gradient-pink text-white px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg"
               onClick={() => window.location.href = '#signup'}
             >
-              <Star className="mr-2 h-6 w-6" /> CLICK HERE TO BUILD YOUR FREE SEQUENCE
+              <Star className="mr-2 h-6 w-6" /> GET YOUR FREE SEQUENCE
             </Button>
           </div>
 
