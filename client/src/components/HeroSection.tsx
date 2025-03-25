@@ -72,65 +72,73 @@ const HeroSection = () => {
         
         {/* Right Column - Gameboy Terminal */}
         <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
-          {/* Game console with exact design from screenshot */}
-          <div className="relative max-w-md mx-auto transform rotate-2">
+          {/* Gameboy Console */}
+          <div className="gameboy-container">
             {/* Outer glow */}
             <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
-            
-            {/* Console body */}
-            <div className="relative rounded-2xl bg-retro-dark border-2 border-retro-neon-blue shadow-neon-blue overflow-hidden">
-              {/* Header bar */}
-              <div className="bg-retro-gradient-purple p-3 flex justify-between items-center">
-                <div className="font-retro text-white uppercase tracking-wide">
-                  LEADQUEST.EXE
-                </div>
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-retro-neon-blue"></div>
-                  <div className="w-3 h-3 rounded-full bg-retro-neon-blue"></div>
+
+            <div className="gameboy-body transform rotate-2">
+              <div className="gameboy-screen-area">
+                <div className="gameboy-power-led"></div>
+                <div className="gameboy-screen">
+                  {/* Terminal Content */}
+                  <div className="font-retro text-xl h-full flex flex-col">
+                    <div className="flex justify-between items-center mb-4 border-b border-retro-bright pb-2">
+                      <span className="text-retro-neon-green">LEAD SYSTEM v1.0</span>
+                      <span className="text-retro-neon-yellow animate-blink">ONLINE</span>
+                    </div>
+                    
+                    <div className="flex-1">
+                      <div className="mb-3 flex justify-between">
+                        <span className="text-retro-neon-green">NEW LEADS:</span>
+                        <span className="text-retro-neon-yellow">12</span>
+                      </div>
+                      <div className="mb-3 flex justify-between">
+                        <span className="text-retro-neon-green">FOLLOW-UPS:</span>
+                        <span className="text-retro-neon-yellow">24</span>
+                      </div>
+                      <div className="mb-3 flex justify-between">
+                        <span className="text-retro-neon-green">CONVERSIONS:</span>
+                        <span className="text-retro-neon-yellow">8</span>
+                      </div>
+                      <div className="my-3 h-[1px] w-full bg-retro-bright opacity-30"></div>
+                      <div className="flex items-center text-retro-teal">
+                        <span className="animate-blink mr-2">▶</span>
+                        <span>Ready for next command...</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              {/* Game screen - based exactly on screenshot */}
-              <div className="p-6">
-                <div className="bg-retro-dark-blue border border-retro-bright p-6 rounded-lg">
-                  {/* Screen elements */}
-                  <div className="flex justify-between items-center mb-6 border-b border-retro-bright pb-3">
-                    <span className="font-retro text-retro-neon-green text-lg">LEAD SYSTEM v1.0</span>
-                    <span className="font-retro text-retro-neon-yellow text-lg animate-blink">ONLINE</span>
-                  </div>
-                  
-                  <div className="font-retro text-xl">
-                    <div className="mb-4 flex justify-between">
-                      <span className="text-retro-neon-green">NEW LEADS:</span>
-                      <span className="text-retro-neon-yellow">12</span>
-                    </div>
-                    <div className="mb-4 flex justify-between">
-                      <span className="text-retro-neon-green">FOLLOW-UPS:</span>
-                      <span className="text-retro-neon-yellow">24</span>
-                    </div>
-                    <div className="mb-4 flex justify-between">
-                      <span className="text-retro-neon-green">CONVERSIONS:</span>
-                      <span className="text-retro-neon-yellow">8</span>
-                    </div>
-                    <div className="h-[1px] w-full bg-retro-bright opacity-30 my-4"></div>
-                    <div className="flex items-center text-retro-teal">
-                      <span className="animate-blink mr-2">▶</span>
-                      <span>Ready for next command...</span>
-                    </div>
-                  </div>
+              <div className="gameboy-controls">
+                <div className="gameboy-dpad">
+                  <div className="dpad-up"></div>
+                  <div className="dpad-right"></div>
+                  <div className="dpad-down"></div>
+                  <div className="dpad-left"></div>
+                  <div className="dpad-center"></div>
                 </div>
-                
-                {/* Control panel with buttons */}
-                <div className="flex items-center justify-between mt-4">
-                  <div className="px-4 py-3 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-sm">
-                    90s MODE ACTIVE
-                  </div>
-                  
-                  <div className="flex space-x-3">
-                    <button className="w-10 h-10 rounded-full bg-[#8A2BE2] border-2 border-white flex items-center justify-center text-white font-bold shadow-neon-purple">A</button>
-                    <button className="w-10 h-10 rounded-full bg-[#FF1493] border-2 border-white flex items-center justify-center text-white font-bold shadow-neon-pink">B</button>
-                  </div>
+                <div className="gameboy-buttons">
+                  <div className="btn-a">A</div>
+                  <div className="btn-b">B</div>
                 </div>
+              </div>
+              
+              <div className="gameboy-options">
+                <div className="btn-select">SELECT</div>
+                <div className="btn-start">START</div>
+              </div>
+              
+              <div className="gameboy-speaker">
+                <div className="speaker-line"></div>
+                <div className="speaker-line"></div>
+                <div className="speaker-line"></div>
+              </div>
+              
+              {/* 90s Mode Badge */}
+              <div className="absolute top-[350px] left-5 px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs z-10">
+                90s MODE ACTIVE
               </div>
             </div>
             
