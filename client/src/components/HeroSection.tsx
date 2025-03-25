@@ -26,21 +26,14 @@ const HeroSection = () => {
           </div>
           
           {/* Main heading with Kid Cosmo chrome style */}
-          <h1 className="mb-10 relative">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black mb-4 kid-cosmo-text">
-              IT'S NOT THE
+          <h1 className="mb-10">
+            <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black mb-6 leading-tight">
+              <div className="kid-cosmo-text mb-2">IT'S NOT THE 90'S</div>
+              <div className="kid-cosmo-text">ANYMORE... STOP</div>
+              <div className="kid-cosmo-text flex items-center">
+                FOLLOWING UP LIKE IT <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span>
+              </div>
             </div>
-            <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black mb-4 kid-cosmo-text">
-              90'S ANYMORE...
-            </div>
-            <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black mb-4 kid-cosmo-text">
-              STOP FOLLOWING UP
-            </div>
-            <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black kid-cosmo-text flex items-center">
-              LIKE IT <span className="ml-3 text-4xl text-retro-neon-blue neon-text animate-pulse">★</span>
-            </div>
-            {/* Angled line through headline - like the Kid Cosmo image */}
-            <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-60%]"></div>
           </h1>
           
           {/* Description card */}
