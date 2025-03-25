@@ -20,9 +20,9 @@ const HeroSection = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-16 md:mb-0">
-          {/* 90s Mode Badge as eyebrow copy */}
+          {/* Eyebrow copy badge */}
           <div className="inline-block px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs mb-4">
-            90s MODE ACTIVE
+            FOR MODERN AGENTS
           </div>
 
           {/* Clean heading that matches the screenshot exactly */}
