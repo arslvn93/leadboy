@@ -8,23 +8,31 @@
   }
 
   body {
-    @apply font-sans antialiased bg-gameboy-bg text-foreground;
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238bac0f' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    @apply font-sans antialiased bg-white text-black;
   }
 
   html {
     @apply scroll-smooth;
   }
+  
+  /* Import pixel font from Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+  /* Override font-pixel class */
+  .font-pixel {
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 1px;
+  }
 }
 
 @layer components {
   .pixel-border {
-    @apply relative border-4 border-gameboy-gray-dark shadow-[8px_8px_0_rgba(0,0,0,0.2)];
+    @apply relative border-4 border-black shadow-[8px_8px_0_rgba(0,0,0,0.2)];
   }
   
   .pixel-border::after {
     content: '';
-    @apply absolute -top-1 -left-1 -right-1 -bottom-1 border-2 border-gameboy-gray-600 pointer-events-none;
+    @apply absolute -top-1 -left-1 -right-1 -bottom-1 border-2 border-black pointer-events-none;
   }
   
   .pixel-button {
@@ -32,33 +40,60 @@
   }
   
   .pixel-button:active {
-    @apply translate-x-0.5 translate-y-0.5 shadow-[2px_2px_0_rgba(0,0,0,0.2)];
+    @apply translate-x-1 translate-y-1 shadow-[2px_2px_0_rgba(0,0,0,0.2)];
   }
   
   .gameboy-screen {
-    @apply border-8 border-gameboy-gray rounded-lg rounded-br-[40px] bg-gameboy-green-light relative;
-  }
-  
-  .gameboy-screen::before {
-    content: 'LEVEL UP';
-    @apply absolute -top-5 left-0 font-pixel text-xs text-gameboy-gray-dark;
+    @apply border-8 border-black rounded-lg bg-[#00FFFF] relative;
   }
   
   .gameboy-console {
-    @apply bg-gameboy-gray-light rounded-xl p-5 md:p-8 shadow-[inset_-8px_0_0_#8B8B8B,inset_0_-8px_0_#8B8B8B];
+    @apply bg-white rounded-xl p-5 md:p-8 shadow-[16px_16px_0_rgba(0,0,0,0.15)] border-4 border-black;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
   
-  .d-pad {
-    @apply relative w-[60px] h-[60px];
+  @keyframes pulse-strong {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
   }
   
-  .d-pad::before {
-    content: '';
-    @apply absolute w-5 h-[60px] bg-gameboy-gray-dark left-5 rounded;
+  @keyframes wiggle {
+    0%, 100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
   }
   
-  .d-pad::after {
-    content: '';
-    @apply absolute h-5 w-[60px] bg-gameboy-gray-dark top-5 rounded;
+  .animate-blink {
+    animation: blink 1s steps(5, start) infinite;
+  }
+  
+  .animate-pulse-strong {
+    animation: pulse-strong 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
   }
 }
