@@ -46,7 +46,7 @@ const HeroSection = () => {
               className="bg-retro-gradient-pink text-white px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg"
               onClick={() => window.location.href = '#signup'}
             >
-              <Star className="mr-2 h-6 w-6" /> PRESS START TO BUILD YOUR FREE SEQUENCE
+              <Star className="mr-2 h-6 w-6" /> CLICK HERE TO BUILD YOUR FREE SEQUENCE
             </Button>
           </div>
 
