@@ -32,18 +32,38 @@
 }
 
 @layer components {
-  /* Neon glow effect */
+  /* Neon glow effect - enhanced for Kid Cosmo style */
   .neon-text {
-    text-shadow: 0 0 5px rgba(255,255,255,0.5), 
-                 0 0 10px currentColor, 
-                 0 0 20px currentColor,
-                 0 0 30px currentColor;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8), 
+                 0 0 10px rgba(255,255,255,0.5),
+                 0 0 15px currentColor, 
+                 0 0 25px currentColor, 
+                 0 0 40px currentColor,
+                 0 0 60px currentColor;
+    animation: pulsate 2s infinite alternate;
   }
   
   .neon-text-sm {
-    text-shadow: 0 0 2px rgba(255,255,255,0.5), 
-                 0 0 5px currentColor, 
-                 0 0 10px currentColor;
+    text-shadow: 0 0 3px rgba(255,255,255,0.8), 
+                 0 0 7px currentColor, 
+                 0 0 12px currentColor,
+                 0 0 18px currentColor;
+  }
+  
+  /* Kid Cosmo chrome/gold text effect */
+  .kid-cosmo-text {
+    background: linear-gradient(to bottom, 
+                #fff8b5 0%, 
+                #ffd93c 35%, 
+                #f39530 50%,
+                #df721c 65%,
+                #ffd93c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-stroke: 2px rgba(0,0,0,0.7);
+    -webkit-text-stroke: 2px rgba(0,0,0,0.7);
+    filter: drop-shadow(0 3px 2px rgba(0,0,0,0.8));
   }
   
   .neon-border {
@@ -153,6 +173,21 @@
   @keyframes scan-line {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100%); }
+  }
+  
+  @keyframes pulsate {
+    0% { filter: brightness(1); text-shadow: 0 0 5px rgba(255,255,255,0.8), 
+                 0 0 10px rgba(255,255,255,0.5),
+                 0 0 15px currentColor, 
+                 0 0 25px currentColor, 
+                 0 0 40px currentColor,
+                 0 0 60px currentColor; }
+    100% { filter: brightness(1.5); text-shadow: 0 0 5px rgba(255,255,255,1), 
+                   0 0 20px rgba(255,255,255,0.8),
+                   0 0 30px currentColor, 
+                   0 0 40px currentColor, 
+                   0 0 70px currentColor,
+                   0 0 80px currentColor; }
   }
   
   .animate-blink {

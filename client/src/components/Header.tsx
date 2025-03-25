@@ -25,12 +25,14 @@ const Header = () => {
             <div className="font-retro text-white text-xs tracking-wider">90s</div>
           </div>
           <div className="relative">
-            <div className="text-white font-display tracking-wider text-lg md:text-2xl">
-              LEAD<span className="text-retro-neon-pink neon-text-sm">QUEST</span>
+            {/* Chrome/gold logo similar to Kid Cosmo */}
+            <div className="relative font-display font-black tracking-wider text-xl md:text-3xl transform -rotate-3">
+              <span className="kid-cosmo-text">LEAD</span>
+              <span className="kid-cosmo-text">QUEST</span>
+              
+              {/* Angled line through text - like the Kid Cosmo image */}
+              <div className="absolute top-1/2 left-0 w-full h-[3px] bg-retro-purple shadow-neon-purple transform -rotate-6 translate-y-[-2px]"></div>
             </div>
-            
-            {/* Retro glow effect */}
-            <div className="absolute -bottom-1 left-0 w-full h-[1px] bg-retro-bright opacity-70"></div>
           </div>
         </div>
         
