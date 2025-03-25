@@ -3,6 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --retro-black: #0a0a0a;
+    --retro-purple: #9013FE;
+    --retro-blue: #00ffff;
+    --retro-pink: #FF3366;
+    --retro-yellow: #FFCC00;
+    --retro-green: #5affbc;
+    --retro-dark-blue: #051736;
+    --retro-gray: #8B8B8B;
+  }
+
   * {
     @apply border-border;
   }
