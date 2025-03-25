@@ -4,6 +4,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import SignUpSection from "@/components/SignUpSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <FeaturesSection />
       <HowItWorksSection />
       <TestimonialsSection />
+      <FAQSection />
       <SignUpSection />
       <Footer />
     </div>

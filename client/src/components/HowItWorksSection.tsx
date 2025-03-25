@@ -7,7 +7,7 @@ const HowItWorksSection = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16">
           <h2 className="font-pixel text-2xl md:text-3xl text-gameboy-green mb-4">
-            EAT THE LEAD CONVERSION GAME IN 3 EASY STEPS:
+            BEAT THE LEAD CONVERSION GAME IN 3 EASY STEPS:
           </h2>
         </div>
         
