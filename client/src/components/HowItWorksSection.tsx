@@ -1,9 +1,9 @@
 
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown } from "lucide-react";
 
 const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="py-12 md:py-24 px-4 bg-gameboy-gray-dark">
+    <section id="how-it-works" className="py-12 md:py-24 px-4">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16">
           <h2 className="font-pixel text-2xl md:text-3xl text-gameboy-green mb-4">
@@ -55,14 +55,14 @@ interface StepProps {
 
 const Step = ({ number, title, description, position }: StepProps) => {
   return (
-    <div className="bg-white border-4 border-black p-6 shadow-[6px_6px_0_#000] relative">
+    <div className="bg-white border-4 border-[#8B8B8B] p-6 shadow-[6px_6px_0_#000] relative">
       <div className={`flex items-center gap-8 ${position === 'right' ? 'flex-row-reverse' : 'flex-row'}`}>
-        <div className="pixel-border bg-gameboy-green w-20 h-20 flex-shrink-0 flex items-center justify-center">
+        <div className="bg-[#8BAC0F] w-20 h-20 flex-shrink-0 flex items-center justify-center border-4 border-black">
           <span className="font-pixel text-3xl text-white">{number}</span>
         </div>
         <div>
-          <h3 className="font-pixel text-lg mb-2 text-gameboy-gray-dark">{title}</h3>
-          <p className="text-gameboy-gray-dark">{description}</p>
+          <h3 className="font-pixel text-xl mb-2 text-[#333333]">{title}</h3>
+          <p className="text-[#444444] text-lg">{description}</p>
         </div>
       </div>
     </div>
