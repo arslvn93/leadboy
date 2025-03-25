@@ -61,52 +61,91 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // GameBoy theme colors
-        'gameboy-bg': '#F0F0F0',
-        'gameboy-green': {
-          DEFAULT: '#8BAC0F',
-          'light': '#9BBC0F',
-          'dark': '#306230',
+        // Retro 90s theme colors
+        'retro-dark': '#121212',
+        'retro-dark-blue': '#0D1B2A',
+        'retro-purple': {
+          DEFAULT: '#8A2BE2',
+          'dark': '#4A148C',
+          'light': '#9370DB',
         },
-        'gameboy-gray': {
-          DEFAULT: '#8B8B8B',
-          'light': '#E0E0E0',
-          'dark': '#333333',
-          '600': '#4A4A4A',
+        'retro-pink': {
+          DEFAULT: '#FF1493',
+          'dark': '#C71585',
+          'light': '#FF69B4',
         },
-        'purple-primary': '#9933FF',
-        'purple-dark': '#7722CC',
+        'retro-blue': {
+          DEFAULT: '#00BFFF',
+          'dark': '#0080FF',
+          'light': '#87CEFA',
+        },
+        'retro-teal': {
+          DEFAULT: '#00CED1',
+          'dark': '#008B8B',
+          'light': '#AFEEEE',
+        },
+        'retro-neon': {
+          'green': '#39FF14',
+          'pink': '#FF10F0',
+          'blue': '#00FFFF',
+          'yellow': '#FFFF00',
+        },
+        'retro-bright': '#3DFAFF',
+        'retro-card': '#1E1E30',
+        'retro-grid': '#8A2BE2',
       },
       fontFamily: {
-        'pixel': ['"Press Start 2P"', 'cursive'],
+        'retro': ['VT323', 'monospace'],
+        'display': ['Space Grotesk', 'sans-serif'],
         'sans': ['Inter', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         "blink": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "scan-line": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
+        },
+        "holographic-shift": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "blink": "blink 1s step-end infinite",
+        "float": "float 3s ease-in-out infinite",
+        "scan-line": "scan-line 2s linear infinite",
+        "holographic-shift": "holographic-shift 10s ease infinite",
+      },
+      backgroundImage: {
+        'retro-grid': 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+        'retro-gradient-purple': 'linear-gradient(135deg, #9933FF 0%, #3333FF 100%)',
+        'retro-gradient-pink': 'linear-gradient(135deg, #FF33CC 0%, #FF3366 100%)',
+        'retro-gradient-blue': 'linear-gradient(135deg, #00CCFF 0%, #0066FF 100%)',
+        'retro-gradient-teal': 'linear-gradient(135deg, #00FFCC 0%, #00CCFF 100%)',
+      },
+      boxShadow: {
+        'neon-purple': '0 0 5px rgba(255,255,255,0.5), 0 0 10px #8A2BE2, 0 0 20px #8A2BE2',
+        'neon-blue': '0 0 5px rgba(255,255,255,0.5), 0 0 10px #00BFFF, 0 0 20px #00BFFF',
+        'neon-pink': '0 0 5px rgba(255,255,255,0.5), 0 0 10px #FF1493, 0 0 20px #FF1493',
+        'neon-teal': '0 0 5px rgba(255,255,255,0.5), 0 0 10px #00CED1, 0 0 20px #00CED1',
       },
     },
   },
