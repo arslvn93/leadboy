@@ -17,25 +17,26 @@ const HeroSection = () => {
         <div className="w-full h-[2px] bg-retro-neon-blue opacity-5 animate-scan-line"></div>
       </div>
       
-      <div className="container mx-auto flex flex-col md:flex-row items-center relative z-10">
-        <div className="md:w-1/2 mb-16 md:mb-0">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+        {/* Left Column - Headline and CTA */}
+        <div className="md:w-5/12 mb-16 md:mb-0">
           {/* Main heading with Kid Cosmo chrome style */}
-          <h1 className="mb-10 leading-tight">
-            <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black mb-2 kid-cosmo-text transform -rotate-1">
+          <h1 className="mb-10 relative">
+            <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black mb-2 kid-cosmo-text">
               AUTOMATE
             </div>
-            <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black mb-2 kid-cosmo-text transform -rotate-1">
+            <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black mb-2 kid-cosmo-text">
               REAL ESTATE
             </div>
-            <div className="text-6xl md:text-7xl lg:text-8xl font-display font-black kid-cosmo-text transform -rotate-1 flex items-center">
+            <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black kid-cosmo-text flex items-center">
               LEADS <span className="ml-3 text-5xl text-retro-neon-blue neon-text animate-pulse">★</span>
             </div>
             {/* Angled line through headline - like the Kid Cosmo image */}
-            <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-130px]"></div>
+            <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-60%]"></div>
           </h1>
           
           {/* Description card */}
-          <div className="rounded-xl border border-retro-bright p-6 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-10 max-w-xl">
+          <div className="rounded-xl border border-retro-bright p-6 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-10">
             <p className="text-white text-lg">
               Stop chasing leads manually! LeadQuest helps real estate professionals set up <span className="text-retro-neon-pink font-bold neon-text-sm">totally radical</span> follow-up sequences that convert more prospects into clients.
             </p>
@@ -69,11 +70,12 @@ const HeroSection = () => {
           </div>
         </div>
         
-        <div className="md:w-1/2 relative">
+        {/* Right Column - Gameboy Terminal */}
+        <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
           {/* Game console with exact design from screenshot */}
           <div className="relative max-w-md mx-auto transform rotate-2">
             {/* Outer glow */}
-            <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-20 blur-xl"></div>
+            <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
             
             {/* Console body */}
             <div className="relative rounded-2xl bg-retro-dark border-2 border-retro-neon-blue shadow-neon-blue overflow-hidden">
