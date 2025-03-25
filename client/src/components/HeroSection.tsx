@@ -28,13 +28,16 @@ const HeroSection = () => {
           {/* Main heading with Kid Cosmo chrome style */}
           <h1 className="mb-10 relative">
             <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black mb-2 kid-cosmo-text">
-              AUTOMATE
+              IT'S NOT THE
             </div>
             <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black mb-2 kid-cosmo-text">
-              REAL ESTATE
+              90'S ANYMORE...
             </div>
             <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black kid-cosmo-text flex items-center">
-              LEADS <span className="ml-3 text-5xl text-retro-neon-blue neon-text animate-pulse">★</span>
+              STOP FOLLOWING UP <span className="ml-3 text-5xl text-retro-neon-blue neon-text animate-pulse">★</span>
+            </div>
+            <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black kid-cosmo-text flex items-center">
+              LIKE IT
             </div>
             {/* Angled line through headline - like the Kid Cosmo image */}
             <div className="absolute left-0 w-full h-[4px] bg-retro-neon-pink shadow-neon-pink transform -rotate-6 translate-y-[-60%]"></div>
@@ -43,7 +46,7 @@ const HeroSection = () => {
           {/* Description card */}
           <div className="rounded-xl border border-retro-bright p-6 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-10">
             <p className="text-white text-lg">
-              Stop chasing leads manually! LeadQuest helps real estate professionals set up <span className="text-retro-neon-pink font-bold neon-text-sm">totally radical</span> follow-up sequences that convert more prospects into clients.
+              Get a completely personalized 15-day follow-up system built specifically for YOUR business — our AI analyzes your responses to deliver custom scripts, emails, and texts proven to boost response rates by up to <span className="text-retro-neon-pink font-bold neon-text-sm">247%</span>.
             </p>
           </div>
           

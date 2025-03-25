@@ -21,14 +21,11 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center relative z-10">
         {/* Logo area */}
         <div className="flex items-center">
-          <div className="bg-retro-gradient-purple rounded p-1 mr-2 shadow-neon-purple">
-            <div className="font-retro text-white text-xs tracking-wider">90s</div>
-          </div>
           <div className="relative">
             {/* Chrome/gold logo similar to Kid Cosmo */}
             <div className="relative font-display font-black tracking-wider text-xl md:text-3xl transform -rotate-3">
-              <span className="kid-cosmo-text">LEAD</span>
-              <span className="kid-cosmo-text">QUEST</span>
+              <span className="kid-cosmo-text">LEADBOY</span>
+              <span className="text-sm block mt-1 text-retro-gray">By SalesGenius</span>
               
               {/* Angled line through text - like the Kid Cosmo image */}
               <div className="absolute top-1/2 left-0 w-full h-[3px] bg-retro-purple shadow-neon-purple transform -rotate-6 translate-y-[-2px]"></div>
