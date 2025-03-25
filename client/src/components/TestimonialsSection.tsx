@@ -19,18 +19,21 @@ const Testimonial = ({ name, role, rating, content }: TestimonialProps) => {
   };
 
   return (
-    <div className="pixel-border bg-gameboy-green-light p-6">
-      <div className="flex items-start mb-4">
-        <div className="w-12 h-12 rounded-full bg-gameboy-gray mr-4"></div>
-        <div>
-          <h3 className="font-pixel text-sm text-gameboy-gray-dark">{name}</h3>
-          <p className="text-xs text-gameboy-gray-dark">{role}</p>
+    <div className="relative bg-[#8BAC0F] p-6 border-4 border-black shadow-[4px_4px_0_#000]">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-20"></div>
+      <div className="relative z-10">
+        <div className="flex items-start mb-4">
+          <div className="w-12 h-12 bg-black border-2 border-white mr-4 pixel-corners"></div>
+          <div>
+            <h3 className="font-pixel text-sm text-black">{name}</h3>
+            <p className="text-xs text-black opacity-75">{role}</p>
+          </div>
         </div>
+        <div className="font-pixel text-lg text-black mb-2">
+          {renderStars(rating)}
+        </div>
+        <p className="text-black text-sm font-pixel leading-relaxed">{content}</p>
       </div>
-      <div className="font-pixel text-xs text-gameboy-gray-dark mb-2">
-        {renderStars(rating)}
-      </div>
-      <p className="text-gameboy-gray-dark text-sm">{content}</p>
     </div>
   );
 };
