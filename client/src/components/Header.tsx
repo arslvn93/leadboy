@@ -24,8 +24,8 @@ const Header = () => {
           <div className="relative">
             {/* Chrome/gold logo similar to Kid Cosmo */}
             <div className="relative font-display font-black tracking-wider text-xl md:text-3xl transform -rotate-3">
-              <span className="kid-cosmo-text">LEADBOY</span>
-              <span className="text-sm block mt-1 text-retro-gray">By SalesGenius</span>
+              <span className="kid-cosmo-text text-2xl md:text-4xl font-black tracking-wider">LEADBOY</span>
+              <span className="text-sm md:text-base block mt-1 text-retro-gray">By SalesGenius</span>
               
               {/* Angled line through text - like the Kid Cosmo image */}
               <div className="absolute top-1/2 left-0 w-full h-[3px] bg-retro-purple shadow-neon-purple transform -rotate-6 translate-y-[-2px]"></div>
