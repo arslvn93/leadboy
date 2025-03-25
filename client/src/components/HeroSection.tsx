@@ -27,12 +27,12 @@ const HeroSection = () => {
 
           {/* Clean heading that matches the screenshot exactly */}
           <h1 className="mb-6 relative">
-            <div className="flex flex-col text-6xl md:text-7xl lg:text-[5rem] font-bold text-white leading-[1.05] tracking-wider">
+            <div className="flex flex-col text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-wider">
               <div>IT'S NOT THE</div>
               <div>90'S</div>
               <div>ANYMORE...</div>
               <div>STOP FOLLOWING</div>
-              <div className="flex items-center">UP LIKE IT... <span className="ml-4 text-5xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+              <div className="flex items-center">UP LIKE IT... <span className="ml-4 text-3xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
           </h1>
 
