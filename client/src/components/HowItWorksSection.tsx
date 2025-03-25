@@ -1,74 +1,121 @@
-import { ArrowDown } from "lucide-react";
+import { Gamepad, Zap, Trophy, ArrowDown } from "lucide-react";
 
 const HowItWorksSection = () => {
   return (
     <section id="how-it-works" className="py-16 md:py-24 px-4 relative overflow-hidden">
-      {/* Pattern background */}
-      <div className="absolute inset-0 opacity-15" style={{ 
-        backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 50 Q90 40, 100 50 T120 50' stroke='%23ff00ff' stroke-width='3' fill='none' stroke-opacity='0.4' /%3E%3C/svg%3E\")",
-        backgroundSize: '100px 100px'
-      }}></div>
-      <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-16">
-          <h2 className="font-pixel text-2xl md:text-3xl text-gameboy-green mb-4">
-            BEAT THE LEAD CONVERSION GAME IN 3 EASY STEPS:
-          </h2>
-        </div>
-
-        <div className="space-y-8">
-          <Step
+      {/* Background with neon grid */}
+      <div className="absolute inset-0 bg-retro-dark opacity-80"></div>
+      <div className="absolute inset-0 retro-grid opacity-30"></div>
+      
+      {/* Diagonal neon lines */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-retro-purple shadow-neon-purple"></div>
+      <div className="absolute top-40 right-0 w-[600px] h-[2px] bg-retro-neon-blue transform -rotate-45 shadow-neon-blue opacity-40"></div>
+      <div className="absolute bottom-20 left-0 w-[400px] h-[2px] bg-retro-neon-pink transform rotate-45 shadow-neon-pink opacity-30"></div>
+      
+      <div className="container mx-auto max-w-5xl relative z-10">
+        <h2 className="text-center text-4xl mb-16 text-retro-blue neon-text font-display uppercase tracking-wider">
+          Beat The Lead Conversion Game in 3 Easy Steps:
+        </h2>
+        
+        <div className="max-w-5xl mx-auto space-y-12">
+          {/* Step 1 */}
+          <GameLevelCard 
             number={1}
             title="PRESS START"
             description="Take 3 minutes to tell us about your business. Like customizing your character before the game begins, this personalizes your entire follow-up strategy."
-            position="left"
+            icon={<Gamepad className="w-12 h-12 text-retro-green" />}
+            gradient="from-indigo-600 to-blue-700"
           />
-
+          
+          {/* Connection line with animation */}
           <div className="flex justify-center">
-            <ArrowDown className="text-gameboy-green h-8 w-8" />
+            <div className="connection-line relative h-16 w-2">
+              <div className="absolute inset-0 bg-retro-blue opacity-30"></div>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-6">
+                <ArrowDown className="text-retro-blue h-6 w-6 animate-bounce" />
+              </div>
+            </div>
           </div>
-
-          <Step
+          
+          {/* Step 2 */}
+          <GameLevelCard 
             number={2}
             title="COLLECT YOUR POWER TOKENS"
             description="Our AI instantly builds your custom 15-day sequence. It's like grabbing all the hidden tokens in one quick sweep – no hunting through levels or wasting time."
-            position="right"
+            icon={<Zap className="w-12 h-12 text-retro-yellow" />}
+            gradient="from-pink-600 to-purple-700"
           />
-
+          
+          {/* Connection line with animation */}
           <div className="flex justify-center">
-            <ArrowDown className="text-gameboy-green h-8 w-8" />
+            <div className="connection-line relative h-16 w-2">
+              <div className="absolute inset-0 bg-retro-pink opacity-30"></div>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-6">
+                <ArrowDown className="text-retro-pink h-6 w-6 animate-bounce" />
+              </div>
+            </div>
           </div>
-
-          <Step
+          
+          {/* Step 3 */}
+          <GameLevelCard 
             number={3}
             title="DEFEAT THE FINAL BOSS"
             description="OK, maybe your leads aren't exactly 'the final boss' (we're being dramatic) – but copy these scripts into your CRM and watch cold prospects transform into clients faster than you can say 'FINISH HIM!'"
-            position="left"
+            icon={<Trophy className="w-12 h-12 text-retro-yellow" />}
+            gradient="from-green-600 to-teal-700"
           />
         </div>
       </div>
+      
+      {/* Decorative elements */}
+      <div className="absolute -bottom-10 -right-10 text-4xl text-retro-pink animate-float opacity-30">★</div>
+      <div className="absolute top-20 left-10 w-12 h-12 rounded-full border-2 border-retro-neon-blue opacity-30 animate-pulse-strong"></div>
     </section>
   );
 };
 
-interface StepProps {
+interface GameLevelCardProps {
   number: number;
   title: string;
   description: string;
-  position: 'left' | 'right';
+  icon: React.ReactNode;
+  gradient: string;
 }
 
-const Step = ({ number, title, description, position }: StepProps) => {
+const GameLevelCard = ({ number, title, description, icon, gradient }: GameLevelCardProps) => {
   return (
-    <div className="bg-white border-4 border-[#8B8B8B] p-6 shadow-[6px_6px_0_#000] relative">
-      <div className={`flex items-center gap-8 ${position === 'right' ? 'flex-row-reverse' : 'flex-row'}`}>
-        <div className="bg-[#8BAC0F] w-20 h-20 flex-shrink-0 flex items-center justify-center border-4 border-black">
-          <span className="font-pixel text-3xl text-white">{number}</span>
+    <div className="game-level-card group relative border border-gray-700 rounded-lg bg-retro-dark-blue bg-opacity-80 backdrop-blur-lg transition-all duration-300 hover:transform hover:scale-[1.02] overflow-hidden">
+      {/* Glow effect on hover */}
+      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+      
+      {/* Top border glow */}
+      <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${gradient} shadow-lg`}></div>
+      
+      <div className="flex flex-col md:flex-row gap-6 items-center p-6">
+        {/* Level number container */}
+        <div className="level-number-container flex-shrink-0 w-20 h-20 rounded-full border-2 border-gray-700 bg-retro-dark flex items-center justify-center relative overflow-hidden">
+          {/* Background glow */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-50`}></div>
+          <div className="level-number relative z-10 font-display text-3xl font-bold text-white">{number}</div>
         </div>
-        <div>
-          <h3 className="font-pixel text-xl mb-2 text-[#333333]">{title}</h3>
-          <p className="text-[#444444] text-lg">{description}</p>
+        
+        <div className="flex-1 text-center md:text-left">
+          <h3 className="font-display text-xl mb-3 text-white tracking-wide">{title}</h3>
+          <p className="text-gray-300 text-lg">{description}</p>
+        </div>
+        
+        <div className="hidden md:flex items-center justify-center w-20 h-20">
+          <div className="controller-icon relative">
+            {/* Icon glow */}
+            <div className="absolute inset-0 opacity-50 blur-xl bg-white rounded-full"></div>
+            {/* Icon */}
+            {icon}
+          </div>
         </div>
       </div>
+      
+      {/* Side accent */}
+      <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"></div>
     </div>
   );
 };
