@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
 interface TestimonialProps {
   name: string;
@@ -12,27 +12,27 @@ const Testimonial = ({ name, role, rating, content }: TestimonialProps) => {
     return Array(5)
       .fill(0)
       .map((_, i) => (
-        <span key={i} className={i < count ? "" : "opacity-50"}>
-          ★
-        </span>
+        <span key={i} className={`text-xl ${i < count ? "text-yellow-400" : "text-gray-400"}`}>★</span>
       ));
   };
 
   return (
-    <div className="relative bg-[#8BAC0F] p-6 border-4 border-black shadow-[4px_4px_0_#000]">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-20"></div>
-      <div className="relative z-10">
-        <div className="flex items-start mb-4">
-          <div className="w-12 h-12 bg-black border-2 border-white mr-4 pixel-corners"></div>
-          <div>
-            <h3 className="font-pixel text-sm text-black">{name}</h3>
-            <p className="text-xs text-black opacity-75">{role}</p>
+    <div className="transform hover:scale-[1.02] transition-transform">
+      <div className="relative bg-[#8BAC0F] p-6 border-4 border-black shadow-[8px_8px_0_#000] min-h-[240px]">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-20"></div>
+        <div className="relative z-10">
+          <div className="flex items-start mb-4">
+            <div className="w-12 h-12 bg-black border-2 border-white mr-4 pixel-corners"></div>
+            <div>
+              <h3 className="font-pixel text-sm text-black">{name}</h3>
+              <p className="text-xs text-black opacity-75">{role}</p>
+            </div>
           </div>
+          <div className="font-pixel text-lg text-black mb-4">
+            {renderStars(rating)}
+          </div>
+          <p className="text-black text-sm font-pixel leading-relaxed">{content}</p>
         </div>
-        <div className="font-pixel text-lg text-black mb-2">
-          {renderStars(rating)}
-        </div>
-        <p className="text-black text-sm font-pixel leading-relaxed">{content}</p>
       </div>
     </div>
   );
@@ -61,16 +61,15 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-12 md:py-24 px-4 bg-white">
-      <div className="container mx-auto">
+    <section className="py-24 px-4 bg-[#F0F0F0] relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30"></div>
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-pixel text-xl md:text-2xl lg:text-3xl text-gameboy-gray-dark mb-4">HIGH SCORES</h2>
-          <p className="text-gameboy-gray-dark max-w-2xl mx-auto">
-            See what other real estate professionals are saying about their experience with LeadQuest.
-          </p>
+          <h2 className="font-pixel text-4xl text-black mb-4">HIGH SCORES</h2>
+          <div className="w-24 h-1 bg-[#8BAC0F] mx-auto mb-8"></div>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Testimonial
               key={index}
@@ -80,18 +79,6 @@ const TestimonialsSection = () => {
               content={testimonial.content}
             />
           ))}
-        </div>
-        
-        <div className="mt-16 text-center">
-          <p className="text-gameboy-gray-dark mb-4">
-            Join over 2,500 real estate professionals already leveling up their lead nurturing game
-          </p>
-          <Button 
-            className="pixel-button bg-purple-primary text-white px-6 py-3 border-b-4 border-r-4 border-purple-dark hover:border-b-2 hover:border-r-2 transition-all font-bold rounded-none"
-            onClick={() => window.location.href = '#signup'}
-          >
-            Start Your Free Trial
-          </Button>
         </div>
       </div>
     </section>
