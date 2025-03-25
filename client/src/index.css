@@ -17,7 +17,9 @@
   }
   
   /* Import 90s style fonts */
-  @import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
   /* Font classes */
   .font-retro {
@@ -27,6 +29,18 @@
   
   .font-display {
     font-family: 'Space Grotesk', sans-serif;
+
+h1, h2, h3, .pixel-font {
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.game-text {
+  font-family: 'VT323', monospace;
+  font-size: 1.2em;
+}
+
     font-weight: 700;
   }
 }
