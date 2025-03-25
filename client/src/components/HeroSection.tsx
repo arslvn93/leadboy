@@ -20,6 +20,11 @@ const HeroSection = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-16 md:mb-0">
+          {/* 90s Mode Badge as eyebrow copy */}
+          <div className="inline-block px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs mb-4">
+            90s MODE ACTIVE
+          </div>
+          
           {/* Main heading with Kid Cosmo chrome style */}
           <h1 className="mb-10 relative">
             <div className="text-5xl md:text-6xl lg:text-7xl font-display font-black mb-2 kid-cosmo-text">
@@ -134,11 +139,6 @@ const HeroSection = () => {
                 <div className="speaker-line"></div>
                 <div className="speaker-line"></div>
                 <div className="speaker-line"></div>
-              </div>
-              
-              {/* 90s Mode Badge */}
-              <div className="absolute top-[350px] left-5 px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs z-10">
-                90s MODE ACTIVE
               </div>
             </div>
             
