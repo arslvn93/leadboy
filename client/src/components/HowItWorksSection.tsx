@@ -7,7 +7,7 @@ const HowItWorksSection = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16">
           <h2 className="font-pixel text-2xl md:text-3xl text-gameboy-green mb-4">
-            BEAT THE LEAD CONVERSION GAME IN 3 EASY STEPS:
+            EAT THE LEAD CONVERSION GAME IN 3 EASY STEPS:
           </h2>
         </div>
         
@@ -40,12 +40,6 @@ const HowItWorksSection = () => {
             description="OK, maybe your leads aren't exactly 'the final boss' (we're being dramatic) – but copy these scripts into your CRM and watch cold prospects transform into clients faster than you can say 'FINISH HIM!'"
             position="left"
           />
-        </div>
-        
-        <div className="mt-16 text-center">
-          <button className="pixel-button bg-purple-primary text-white px-8 py-4 text-xl border-b-4 border-purple-dark hover:border-b-2 hover:translate-y-[2px] transition-all">
-            LEVEL UP YOUR LEAD GAME
-          </button>
         </div>
       </div>
     </section>
