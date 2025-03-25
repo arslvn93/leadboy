@@ -6,25 +6,25 @@ const HeroSection = () => {
     <section id="hero" className="pt-16 pb-24 px-4 relative overflow-hidden bg-retro-dark">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
-      
+
       {/* Diagonal neon lines */}
       <div className="absolute top-0 left-0 w-full h-1 bg-retro-purple shadow-neon-purple"></div>
       <div className="absolute -top-20 right-40 w-[800px] h-[2px] bg-retro-neon-blue transform rotate-45 shadow-neon-blue opacity-50"></div>
       <div className="absolute bottom-0 -right-20 w-[400px] h-[2px] bg-retro-neon-pink transform -rotate-45 shadow-neon-pink opacity-60"></div>
-      
+
       {/* VHS distortion lines - horizontal scan lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="w-full h-[2px] bg-retro-neon-blue opacity-5 animate-scan-line"></div>
       </div>
-      
+
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-16 md:mb-0">
           {/* 90s Mode Badge as eyebrow copy */}
           <div className="inline-block px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs mb-4">
-            90s MODE ACTIVE
+            FOR MODERN DAY REALTORS
           </div>
-          
+
           {/* Main heading with Kid Cosmo chrome style */}
           <h1 className="mb-10">
             <div className="text-4xl md:text-5xl lg:text-7xl font-display font-black mb-6 leading-tight">
@@ -35,14 +35,14 @@ const HeroSection = () => {
               </div>
             </div>
           </h1>
-          
+
           {/* Description card */}
           <div className="rounded-xl border border-retro-bright p-6 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-10">
             <p className="text-white text-lg">
               Get a completely personalized 15-day follow-up system built specifically for YOUR business — our AI analyzes your responses to deliver custom scripts, emails, and texts proven to boost response rates by up to <span className="text-retro-neon-pink font-bold neon-text-sm">247%</span>.
             </p>
           </div>
-          
+
           {/* Call to action buttons */}
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
             <Button 
@@ -57,7 +57,7 @@ const HeroSection = () => {
               <Play className="mr-2 h-6 w-6" /> Watch Demo
             </Button>
           </div>
-          
+
           {/* Social proof */}
           <div className="flex items-center">
             <div className="flex -space-x-3">
@@ -70,7 +70,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Right Column - Gameboy Terminal */}
         <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
           {/* Gameboy Console */}
@@ -88,7 +88,7 @@ const HeroSection = () => {
                       <span className="neon-text-primary">LEAD SYSTEM v1.0</span>
                       <span className="text-yellow-300 animate-blink">ONLINE</span>
                     </div>
-                    
+
                     <div className="flex-1">
                       <div className="mb-3 flex justify-between">
                         <span className="text-green-400">NEW LEADS:</span>
@@ -111,7 +111,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="gameboy-controls">
                 <div className="gameboy-dpad">
                   <div className="dpad-up"></div>
@@ -125,24 +125,24 @@ const HeroSection = () => {
                   <div className="btn-b">B</div>
                 </div>
               </div>
-              
+
               <div className="gameboy-options">
                 <div className="btn-select">SELECT</div>
                 <div className="btn-start">START</div>
               </div>
-              
+
               <div className="gameboy-speaker">
                 <div className="speaker-line"></div>
                 <div className="speaker-line"></div>
                 <div className="speaker-line"></div>
               </div>
             </div>
-            
+
             {/* Diagonal neon light beams */}
             <div className="absolute -bottom-8 -right-8 w-40 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
             <div className="absolute -top-8 -left-8 w-40 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
           </div>
-          
+
           {/* Additional floating elements */}
           <div className="absolute -bottom-20 left-20 text-4xl text-retro-neon-yellow animate-float">★</div>
           <div className="absolute top-0 right-10 w-16 h-16 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
