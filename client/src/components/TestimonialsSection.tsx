@@ -1,11 +1,9 @@
 interface TestimonialData {
   name: string;
   role: string;
-  rating: number;
-  score: string;
-  rank: string;
-  level: number;
+  content: string;
   avatarColor: string;
+  rank: string;
 }
 
 const TestimonialsSection = () => {
@@ -13,35 +11,25 @@ const TestimonialsSection = () => {
     {
       name: "SARAH J.",
       role: "Realtor, Century 21",
-      rating: 5,
-      score: "40,000 PTS",
-      rank: "1ST",
-      level: 5,
-      avatarColor: "#5affbc"
+      content: "LeadQuest has been a game-changer for my business. I've seen a 40% increase in lead conversions since I started using it 3 months ago.",
+      avatarColor: "#5affbc",
+      rank: "1ST"
     },
     {
       name: "MICHAEL D.",
       role: "Broker, RE/MAX",
-      rating: 5,
-      score: "35,500 PTS",
-      rank: "2ND",
-      level: 5,
-      avatarColor: "#00ffff"
+      content: "I was skeptical at first, but now my team couldn't live without LeadQuest. The automated sequences feel personal and our clients love the consistent communication.",
+      avatarColor: "#00ffff",
+      rank: "2ND"
     },
     {
       name: "JENNIFER S.",
       role: "Independent Agent",
-      rating: 4,
-      score: "28,750 PTS",
-      rank: "3RD",
-      level: 4,
-      avatarColor: "#FFCC00"
+      content: "As a solo agent, LeadQuest has given me the ability to compete with larger teams. I can provide the same level of follow-up without hiring an assistant.",
+      avatarColor: "#FFCC00",
+      rank: "3RD"
     }
   ];
-
-  const renderStars = (count: number) => {
-    return "★".repeat(count);
-  };
 
   return (
     <section className="high-scores-section py-16 relative bg-[#051736]">
@@ -66,10 +54,9 @@ const TestimonialsSection = () => {
           <div className="leaderboard-container">
             {/* Score table header */}
             <div className="score-table-header flex mb-4 px-4 py-2 bg-[#8BAC0F] rounded-t-md">
-              <div className="w-1/6 text-black font-bold text-sm">RANK</div>
-              <div className="w-2/6 text-black font-bold text-sm">PLAYER</div>
-              <div className="w-2/6 text-black font-bold text-sm">SCORE</div>
-              <div className="w-1/6 text-black font-bold text-sm">LEVEL</div>
+              <div className="w-1/4 text-black font-bold text-sm">PLAYER</div>
+              <div className="w-2/4 text-black font-bold text-sm">WHAT THEY HAD TO SAY</div>
+              <div className="w-1/4 text-black font-bold text-sm">REVIEW</div>
             </div>
             
             {/* Testimonial rows */}
@@ -78,20 +65,21 @@ const TestimonialsSection = () => {
                 key={index}
                 className="testimonial-row flex items-center p-4 border-b border-[#333]"
               >
-                <div className="w-1/6 text-[#FFCC00] font-bold text-xl">{testimonial.rank}</div>
-                <div className="w-2/6 flex items-center">
+                <div className="w-1/4 flex items-center">
                   <div className="pixel-avatar mr-3 w-10 h-10 rounded" style={{backgroundColor: testimonial.avatarColor}}></div>
                   <div>
                     <p className="font-bold text-white text-sm">{testimonial.name}</p>
                     <p className="text-gray-400 text-xs">{testimonial.role}</p>
                   </div>
                 </div>
-                <div className="w-2/6">
-                  <div className="score-value text-[#FFCC00] font-bold mb-2">{testimonial.score}</div>
-                  <div className="text-white text-sm">Lead conversions x{(testimonial.rating * 10)}%</div>
+                <div className="w-2/4">
+                  <div className="text-white text-sm">{testimonial.content}</div>
                 </div>
-                <div className="w-1/6">
-                  <div className="star-rating text-[#FFCC00]">{renderStars(testimonial.level)}</div>
+                <div className="w-1/4">
+                  <div className="flex items-center">
+                    <div className="text-[#FFCC00] font-bold mr-2">{testimonial.rank}</div>
+                    <div className="text-[#FFCC00] text-lg">★★★★★</div>
+                  </div>
                 </div>
               </div>
             ))}
