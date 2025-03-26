@@ -4,6 +4,8 @@ interface TestimonialData {
   content: string;
   avatarColor: string;
   rank: string;
+  score: string;
+  achievement: string;
 }
 
 const TestimonialsSection = () => {
@@ -13,21 +15,27 @@ const TestimonialsSection = () => {
       role: "Realtor, Century 21",
       content: "LeadQuest has been a game-changer for my business. I've seen a 40% increase in lead conversions since I started using it 3 months ago.",
       avatarColor: "#5affbc",
-      rank: "1ST"
+      rank: "1ST",
+      score: "40,000 PTS",
+      achievement: "Lead conversions x40%"
     },
     {
       name: "MICHAEL D.",
       role: "Broker, RE/MAX",
       content: "I was skeptical at first, but now my team couldn't live without LeadQuest. The automated sequences feel personal and our clients love the consistent communication.",
       avatarColor: "#00ffff",
-      rank: "2ND"
+      rank: "2ND",
+      score: "32,500 PTS",
+      achievement: "Response rate x65%"
     },
     {
       name: "JENNIFER S.",
       role: "Independent Agent",
       content: "As a solo agent, LeadQuest has given me the ability to compete with larger teams. I can provide the same level of follow-up without hiring an assistant.",
       avatarColor: "#FFCC00",
-      rank: "3RD"
+      rank: "3RD",
+      score: "29,750 PTS",
+      achievement: "Time saved x10 hrs/wk"
     }
   ];
 
@@ -45,41 +53,41 @@ const TestimonialsSection = () => {
       {/* Arcade cabinet frame */}
       <div className="arcade-cabinet-frame max-w-5xl mx-auto relative">
         {/* Arcade screen */}
-        <div className="arcade-screen p-6 border-4 border-[#333] rounded-lg">
+        <div className="arcade-screen bg-black p-6 border-4 border-[#333] rounded-lg relative overflow-hidden">
           {/* CRT scan line effect */}
-          <div className="scan-lines absolute inset-0 pointer-events-none"></div>
+          <div className="scan-lines absolute inset-0 pointer-events-none opacity-30"></div>
           
           <h2 className="text-center font-bold text-4xl mb-8 text-[#00ffff] glow-text">HIGH SCORES</h2>
           
           <div className="leaderboard-container">
             {/* Score table header */}
             <div className="score-table-header flex mb-4 px-4 py-2 bg-[#8BAC0F] rounded-t-md">
-              <div className="w-1/4 text-black font-bold text-sm">PLAYER</div>
-              <div className="w-2/4 text-black font-bold text-sm">WHAT THEY HAD TO SAY</div>
-              <div className="w-1/4 text-black font-bold text-sm">REVIEW</div>
+              <div className="w-1/6 text-black font-bold text-sm">RANK</div>
+              <div className="w-2/6 text-black font-bold text-sm">PLAYER</div>
+              <div className="w-2/6 text-black font-bold text-sm">SCORE</div>
+              <div className="w-1/6 text-black font-bold text-sm">STARS</div>
             </div>
             
             {/* Testimonial rows */}
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="testimonial-row flex items-center p-4 border-b border-[#333]"
+                className="testimonial-row flex items-center hover:bg-[rgba(90,255,188,0.1)] transition-all p-4 border-b border-[#333]"
               >
-                <div className="w-1/4 flex items-center">
+                <div className="w-1/6 text-[#FFCC00] font-bold text-xl">{testimonial.rank}</div>
+                <div className="w-2/6 flex items-center">
                   <div className="pixel-avatar mr-3 w-10 h-10 rounded" style={{backgroundColor: testimonial.avatarColor}}></div>
                   <div>
                     <p className="font-bold text-white text-sm">{testimonial.name}</p>
                     <p className="text-gray-400 text-xs">{testimonial.role}</p>
                   </div>
                 </div>
-                <div className="w-2/4">
-                  <div className="text-white text-sm">{testimonial.content}</div>
+                <div className="w-2/6">
+                  <div className="score-value text-[#FFCC00] font-bold mb-2">{testimonial.score}</div>
+                  <div className="achievement text-white text-sm">{testimonial.achievement}</div>
                 </div>
-                <div className="w-1/4">
-                  <div className="flex items-center">
-                    <div className="text-[#FFCC00] font-bold mr-2">{testimonial.rank}</div>
-                    <div className="text-[#FFCC00] text-lg">★★★★★</div>
-                  </div>
+                <div className="w-1/6">
+                  <div className="text-[#FFCC00] text-lg">★★★★★</div>
                 </div>
               </div>
             ))}
