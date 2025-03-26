@@ -88,16 +88,16 @@ const HeroSection = () => {
 
           {/* Social proof - simplified for mobile but slightly larger since we have more space */}
           {isMobile ? (
-            <div className="flex flex-row items-center justify-center gap-2 trust-container mb-3">
+            <div className="flex flex-col items-center justify-center gap-1 trust-container mb-2">
               {/* Trusted by - simplified */}
-              <div className="flex items-center justify-center trust-item">
+              <div className="flex items-center justify-center trust-item trusted-by-container">
                 <div className="px-3 py-1.5 border-2 border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center shadow-neon-blue">
                   <span className="font-bold text-white text-[12px]">Trusted by <span className="text-retro-neon-pink text-shadow-neon-pink animate-pulse">2,500+</span> agents</span>
                 </div>
               </div>
               
               {/* Response rate badge - simplified */}
-              <div className="flex items-center justify-center trust-item">
+              <div className="flex items-center justify-center trust-item response-container">
                 <div className="px-3 py-1.5 border-2 border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
                   <span className="text-white text-[12px]">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black text-shadow-neon-pink animate-pulse">247%</span></span>
                 </div>
@@ -144,7 +144,7 @@ const HeroSection = () => {
           )}
           
           {/* GameBoy Component with reduced bottom margin on mobile and moved up more */}
-          <div className={isMobile ? 'transform -translate-y-6' : ''}>
+          <div className={isMobile ? 'transform -translate-y-10' : ''}>
             <GameBoyConsole leads={12} sequences={15} conversions={8} />
           </div>
           
