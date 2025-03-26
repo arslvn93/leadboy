@@ -13,9 +13,23 @@ const HowItWorksSection = () => {
       <div className="absolute bottom-20 left-0 w-[400px] h-[2px] bg-retro-neon-pink transform rotate-45 shadow-neon-pink opacity-30"></div>
       
       <div className="container mx-auto max-w-5xl relative z-10">
-        <h2 className="text-center text-4xl mb-16 text-retro-blue neon-text font-display uppercase tracking-wider">
-          Beat The Lead Conversion Game in 3 Easy Steps:
-        </h2>
+        <div className="text-center mb-16">
+          <div className="inline-block px-6 py-3 bg-retro-dark-blue border-2 border-retro-neon-blue rounded-lg shadow-neon-blue relative">
+            <div className="absolute inset-0 bg-retro-grid opacity-30 rounded-lg"></div>
+            <h2 className="text-3xl md:text-4xl text-white font-display uppercase tracking-wider">
+              <span className="text-retro-neon-pink neon-text">Beat</span> The Lead Conversion <span className="text-retro-neon-green neon-text">Game</span>
+            </h2>
+            <p className="text-xl text-retro-bright mt-2 font-bold">In 3 Easy Steps:</p>
+            
+            {/* Game controller icons for decoration */}
+            <div className="absolute -top-3 -left-3 text-retro-neon-pink">
+              <Gamepad className="w-6 h-6 animate-pulse" />
+            </div>
+            <div className="absolute -bottom-3 -right-3 text-retro-neon-green">
+              <Trophy className="w-6 h-6 animate-pulse" />
+            </div>
+          </div>
+        </div>
         
         <div className="max-w-5xl mx-auto space-y-6">
           {/* Step 1 */}
