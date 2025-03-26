@@ -39,24 +39,34 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "How much does LeadQuest cost?",
-      answer: "Our basic plan starts at $99/month with unlimited leads and sequences. Premium power-ups available for larger teams starting at $299/month. No setup fees, no contracts - cancel anytime.",
+      question: "WILL THIS WORK WITH MY CRM?",
+      answer: "YES! Your custom sequence can be copied into any CRM including Follow Up Boss, KV Core, and others. No special integrations needed - just copy and paste.",
       cheatCode: "↑↑"
     },
     {
-      question: "How long until I see results?",
-      answer: "Most users see improved engagement within 48 hours and closed deals within 2 weeks. Our average user reports a 40% increase in response rates and 22% more closings after 30 days.",
+      question: "IS THIS ACTUALLY CUSTOMIZED FOR ME?",
+      answer: "ABSOLUTELY. Unlike generic templates, our AI creates your sequence based on your specific market, lead sources, and communication style. No two sequences are the same.",
       cheatCode: "↓↓"
     },
     {
-      question: "Do I need technical skills?",
-      answer: "Not at all! Our system is designed for easy setup with no coding required. If you can use email, you can use LeadQuest. Our setup wizard guides you through the entire process in just minutes.",
+      question: "HOW SOON CAN I START USING THIS?",
+      answer: "IMMEDIATELY. As soon as you complete the 3-minute questionnaire, your custom 15-day follow-up sequence is ready to use. No waiting, no complicated setup.",
       cheatCode: "←→"
     },
     {
-      question: "Can I customize the messages?",
-      answer: "Absolutely! We offer both pre-built templates and fully customizable sequences. You can personalize every message, adjust timing, and create branching paths based on client responses.",
+      question: "DO I NEED TECH SKILLS TO USE THIS?",
+      answer: "NOT AT ALL. If you can copy and paste, you can use this system. The scripts work with regular texts, emails, and phone calls - no coding or special software required.",
       cheatCode: "BA"
+    },
+    {
+      question: "IS THIS ACTUALLY FREE, AND WHY?",
+      answer: "YES, IT'S 100% FREE. We're offering this powerful tool at no cost because many agents who love their free sequence later want our help implementing advanced systems. But there's no obligation - the sequence is yours to keep and use forever.",
+      cheatCode: "AB"
+    },
+    {
+      question: "WHAT IF MY LEADS DON'T RESPOND?",
+      answer: "THESE SEQUENCES ARE DESIGNED AS A STARTING POINT. While they use proven messaging, you may need to optimize them for your specific market. By using our tool, you agree to review all content before sending to your leads. Many agents find even small tweaks can dramatically improve response rates.",
+      cheatCode: "↑↓"
     }
   ];
 
@@ -114,7 +124,7 @@ const FAQSection = () => {
         <div className="secret-bonus mt-12 text-center">
           <div className="inline-block bg-[#222] border-2 border-[#FFCC00] rounded p-4 shadow-glow-yellow">
             <p className="font-bold text-[#FFCC00] text-sm">SECRET BONUS UNLOCKED!</p>
-            <p className="text-white text-lg mt-2">First-time players get a 14-day free trial with all power-ups included!</p>
+            <p className="text-white text-lg mt-2">First-time agents get a custom sequence 100% FREE!</p>
           </div>
         </div>
       </div>
