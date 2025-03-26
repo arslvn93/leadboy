@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-2 md:py-3 sticky top-0 z-50 shadow-neon-purple">
+    <header className="bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-1 md:py-3 sticky top-0 z-50 shadow-neon-purple">
       {/* Grid background for header */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:20px_20px] opacity-20"></div>
       
@@ -24,12 +24,12 @@ const Header = () => {
         <div className="flex items-center logo-container">
           <div className="relative">
             {/* Chrome/gold logo similar to Kid Cosmo */}
-            <div className="relative font-display font-black tracking-wider text-xl md:text-3xl transform -rotate-3">
-              <span className="kid-cosmo-text text-xl md:text-4xl font-black tracking-wider">LEADBOY</span>
-              <span className="text-xs md:text-base block mt-0.5 md:mt-1 text-retro-gray salesgenius-text">By SalesGenius</span>
+            <div className="relative font-display font-black tracking-wider text-lg md:text-3xl transform -rotate-3">
+              <span className="kid-cosmo-text text-lg md:text-4xl font-black tracking-wider">LEADBOY</span>
+              <span className="text-[10px] md:text-base block mt-0 md:mt-1 text-retro-gray salesgenius-text">By SalesGenius</span>
               
               {/* Angled line through text - like the Kid Cosmo image */}
-              <div className="absolute top-1/2 left-0 w-full h-[3px] bg-retro-purple shadow-neon-purple transform -rotate-6 translate-y-[-2px]"></div>
+              <div className="absolute top-1/2 left-0 w-full h-[2px] md:h-[3px] bg-retro-purple shadow-neon-purple transform -rotate-6 translate-y-[-2px]"></div>
             </div>
           </div>
         </div>
@@ -57,21 +57,21 @@ const Header = () => {
         </nav>
         
         {/* Action buttons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           <Button 
-            className="cta-button bg-retro-gradient-blue text-white font-bold uppercase rounded px-2 md:px-3 py-1 md:py-2 shadow-neon-blue text-[10px] md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
+            className="cta-button bg-retro-gradient-blue text-white font-bold uppercase rounded px-1.5 md:px-3 py-0.5 md:py-2 shadow-neon-blue text-[9px] md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
             onClick={() => smoothScrollTo('signup')}
           >
-            <Zap className="w-2 h-2 md:w-3 md:h-3 mr-1 text-retro-neon-yellow" />
-            Start Free
+            <Zap className="w-1.5 h-1.5 md:w-3 md:h-3 mr-0.5 md:mr-1 text-retro-neon-yellow" />
+            <span className="whitespace-nowrap">Start Free</span>
           </Button>
           
           <button 
-            className="md:hidden text-white p-1 rounded border border-retro-bright"
+            className="md:hidden text-white p-0.5 rounded border border-retro-bright"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={20} className="text-retro-neon-pink" /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} className="text-retro-neon-pink" /> : <Menu size={18} />}
           </button>
         </div>
       </div>
