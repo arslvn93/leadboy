@@ -870,14 +870,20 @@ h1, h2, h3, .pixel-font {
 
 /* FAQ Cheat Codes Section Styles */
 .bg-grid {
-  background-image: linear-gradient(rgba(5, 23, 54, 0.5) 1px, transparent 1px),
-                   linear-gradient(90deg, rgba(5, 23, 54, 0.5) 1px, transparent 1px);
+  background-image: 
+    linear-gradient(rgba(90, 255, 188, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 255, 188, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
+  background-position: center center;
 }
 
 .floating-pixel {
   position: absolute;
-  opacity: 0.8;
+  font-family: 'Press Start 2P', cursive;
+  color: #5affbc;
+  font-size: 16px;
+  opacity: 0.2;
+  animation: float-around 20s linear infinite;
   text-shadow: 0 0 10px currentColor;
 }
 
@@ -893,14 +899,64 @@ h1, h2, h3, .pixel-font {
   }
 }
 
+@keyframes float-around {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, 20px);
+  }
+  50% {
+    transform: translate(0, 40px);
+  }
+  75% {
+    transform: translate(-20px, 20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 .game-manual {
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.game-manual::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background: #222;
+  border-right: 4px solid #00ffff;
+  border-top: 4px solid #00ffff;
+  z-index: -1;
 }
 
 .manual-inner {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-image: radial-gradient(#0a2a5c 1px, transparent 1px);
+  background-size: 10px 10px;
 }
 
 .shadow-glow-yellow {
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+}
+
+.shadow-glow-sm {
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.faq-question:hover .cheat-code {
+  animation: pulse-code 0.5s infinite alternate;
+}
+
+@keyframes pulse-code {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.faq-question[aria-expanded="true"] .toggle-icon {
+  transform: rotate(180deg);
 }

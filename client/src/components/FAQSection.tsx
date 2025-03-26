@@ -15,12 +15,13 @@ const FAQItem = ({ question, answer, cheatCode, isOpen, onClick }: FAQItemProps)
       <button 
         className="faq-question w-full flex items-center justify-between bg-[#051736] hover:bg-[#0a2a5c] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all"
         onClick={onClick}
+        aria-expanded={isOpen}
       >
         <div className="flex items-center">
           <span className="cheat-code font-bold text-[#FFCC00] mr-3">{cheatCode}</span>
           <span className="font-bold text-white text-sm sm:text-base">{question}</span>
         </div>
-        <div className={`toggle-icon text-[#00ffff] transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+        <div className="toggle-icon text-[#00ffff] transition-transform">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
