@@ -1137,6 +1137,21 @@ h1, h2, h3, .pixel-font {
     margin-bottom: 5px !important;
   }
   
+  /* Target the specific element that has response rates */
+  .response-rates-container,
+  div:has(> [class*="response"]),
+  div:has(> [class*="Response"]) {
+    margin-top: -15px !important; /* Use negative margin to pull it up */
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* If that doesn't work, try this more aggressive approach */
+  .trusted-by-container ~ div,
+  div:has(> [class*="trusted"]) ~ div {
+    margin-top: -15px !important;
+  }
+  
   /* Logo & Header adjustments */
   .logo-container img {
     width: 80%; /* Reduce logo size */

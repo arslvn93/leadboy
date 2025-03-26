@@ -97,7 +97,7 @@ const HeroSection = () => {
               </div>
               
               {/* Response rate badge - simplified */}
-              <div className="flex items-center justify-center trust-item response-container mt-0">
+              <div className="flex items-center justify-center trust-item response-container mt-[-15px]">
                 <div className="px-3 py-1 border-2 border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
                   <span className="text-white text-[12px]">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black text-shadow-neon-pink animate-pulse">247%</span></span>
                 </div>
