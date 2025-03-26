@@ -29,11 +29,8 @@ const HowItWorksSection = () => {
           
           {/* Connection line with animation */}
           <div className="flex justify-center">
-            <div className="connection-line relative h-16 w-2">
-              <div className="absolute inset-0 bg-retro-blue opacity-30"></div>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-6">
-                <ArrowDown className="text-retro-blue h-6 w-6 animate-bounce" />
-              </div>
+            <div className="connection-line">
+              <div className="pixel-arrow bounce-animation"></div>
             </div>
           </div>
           
@@ -48,11 +45,8 @@ const HowItWorksSection = () => {
           
           {/* Connection line with animation */}
           <div className="flex justify-center">
-            <div className="connection-line relative h-16 w-2">
-              <div className="absolute inset-0 bg-retro-pink opacity-30"></div>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-6">
-                <ArrowDown className="text-retro-pink h-6 w-6 animate-bounce" />
-              </div>
+            <div className="connection-line">
+              <div className="pixel-arrow bounce-animation"></div>
             </div>
           </div>
           
@@ -84,19 +78,11 @@ interface GameLevelCardProps {
 
 const GameLevelCard = ({ number, title, description, icon, gradient }: GameLevelCardProps) => {
   return (
-    <div className="game-level-card group relative border border-gray-700 rounded-lg bg-retro-dark-blue bg-opacity-80 backdrop-blur-lg transition-all duration-300 hover:transform hover:scale-[1.02] overflow-hidden">
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-      
-      {/* Top border glow */}
-      <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${gradient} shadow-lg`}></div>
-      
+    <div className="game-level-card group transition-all duration-300 hover:transform hover:scale-[1.02]">
       <div className="flex flex-col md:flex-row gap-6 items-center p-6">
         {/* Level number container */}
-        <div className="level-number-container flex-shrink-0 w-20 h-20 rounded-full border-2 border-gray-700 bg-retro-dark flex items-center justify-center relative overflow-hidden">
-          {/* Background glow */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-50`}></div>
-          <div className="level-number relative z-10 font-display text-3xl font-bold text-white">{number}</div>
+        <div className="level-number-container">
+          <div className="level-number">{number}</div>
         </div>
         
         <div className="flex-1 text-center md:text-left">
@@ -113,9 +99,6 @@ const GameLevelCard = ({ number, title, description, icon, gradient }: GameLevel
           </div>
         </div>
       </div>
-      
-      {/* Side accent */}
-      <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"></div>
     </div>
   );
 };
