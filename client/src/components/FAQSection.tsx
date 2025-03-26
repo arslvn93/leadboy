@@ -13,7 +13,7 @@ const FAQItem = ({ question, answer, cheatCode, isOpen, onClick }: FAQItemProps)
   return (
     <div className="faq-item">
       <button 
-        className="faq-question w-full flex items-center justify-between bg-[#051736] hover:bg-[#0a2a5c] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all"
+        className="faq-question w-full flex items-center justify-between bg-[#1a1a1a] hover:bg-[#2a2a2a] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all"
         onClick={onClick}
         aria-expanded={isOpen}
       >
@@ -83,7 +83,7 @@ const FAQSection = () => {
   }, []);
 
   return (
-    <section className="faq-section py-16 relative bg-[#051736]">
+    <section className="faq-section py-16 relative bg-retro-dark">
       {/* Background grid with subtle glow */}
       <div className="absolute inset-0 bg-grid opacity-10"></div>
       
