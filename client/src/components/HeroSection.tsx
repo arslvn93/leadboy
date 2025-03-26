@@ -68,7 +68,25 @@ const HeroSection = () => {
             </div>
           )}
 
-          {/* Social proof - simplified for mobile - MOVED UP */}
+          {/* Call to action button - smaller for mobile - MOVED UP */}
+          <div className="flex flex-col mb-5">
+            <div className="w-full mb-1">
+              <Button 
+                className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-3 py-2 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
+                onClick={() => smoothScrollTo('signup')}
+              >
+                <Star className={`mr-2 ${isMobile ? 'h-3 w-3' : 'h-4 w-4 md:h-5 md:w-5'} flex-shrink-0`} /> 
+                <span>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
+              </Button>
+            </div>
+            <div className="text-center w-full mb-1">
+              <span className={`text-retro-bright ${isMobile ? 'text-[10px]' : 'text-xs'} font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
+                <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
+              </span>
+            </div>
+          </div>
+
+          {/* Social proof - simplified for mobile */}
           {isMobile ? (
             <div className="flex flex-col gap-2 trust-container mb-4">
               {/* Trusted by - simplified */}
@@ -113,24 +131,6 @@ const HeroSection = () => {
               </div>
             </div>
           )}
-
-          {/* Call to action button - smaller for mobile */}
-          <div className="flex flex-col mb-3">
-            <div className="w-full mb-1">
-              <Button 
-                className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-3 py-2 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
-                onClick={() => smoothScrollTo('signup')}
-              >
-                <Star className={`mr-2 ${isMobile ? 'h-3 w-3' : 'h-4 w-4 md:h-5 md:w-5'} flex-shrink-0`} /> 
-                <span>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
-              </Button>
-            </div>
-            <div className="text-center w-full mb-1">
-              <span className={`text-retro-bright ${isMobile ? 'text-[10px]' : 'text-xs'} font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
-                <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
-              </span>
-            </div>
-          </div>
         </div>
 
         {/* Right Column - Modern GameBoy Console */}
