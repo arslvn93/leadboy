@@ -1165,10 +1165,15 @@ h1, h2, h3, .pixel-font {
     padding-right: 16px;
   }
   
-  /* Force removal of ALL top space */
+  /* Control top space for better visibility */
   body, html {
     margin: 0 !important;
     padding: 0 !important;
+  }
+  
+  /* Make sure there's room for the headline */
+  #hero {
+    padding-top: 8px !important;
   }
   
   /* Target the grid background container */
@@ -1185,7 +1190,11 @@ h1, h2, h3, .pixel-font {
   
   /* First visible content element */
   .pill-headline, .free-ai-tool {
-    margin-top: 15px !important; /* Just enough spacing from the very top */
+    margin-top: 10px !important; /* Just enough spacing from the very top */
+    display: block !important; /* Ensure visibility */
+    opacity: 1 !important; /* Make sure it's visible */
+    position: relative !important; /* Prevent any strange positioning */
+    z-index: 10 !important; /* Keep it on top */
   }
   
   /* Reset any negative margins if they're causing issues */
