@@ -24,25 +24,22 @@ const HeroSection = () => {
 
       <div className="container mx-auto flex flex-col md:flex-row items-start justify-between relative z-10 pt-0 md:pt-6">
         {/* Left Column - Headline and CTA */}
-        <div className="md:w-5/12 mb-2 md:mb-0 mt-0 pt-0">
+        <div className="md:w-5/12 mb-0 md:mb-0 mt-0 pt-0">
           {/* Eyebrow copy badge - pill style for mobile */}
-          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-3 mt-2' : 'mb-6'} free-ai-tool pill-headline`}>
-            <div className={`${isMobile ? 'px-4 py-1.5' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase ${isMobile ? 'text-[11px]' : 'text-xs sm:text-sm'} text-retro-dark text-center`}>
+          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-2 mt-3' : 'mb-5'} free-ai-tool pill-headline`}>
+            <div className={`${isMobile ? 'px-5 py-1.5' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase ${isMobile ? 'text-[11px]' : 'text-xs sm:text-sm'} text-retro-dark text-center`}>
               FREE AI TOOL FOR MODERN AGENTS
             </div>
           </div>
 
-          {/* Clean heading with adjusted size - more compact */}
-          <h1 className="mb-3 md:mb-6 relative hero-headline">
+          {/* Clean heading with adjusted size - more compact and cohesive */}
+          <h1 className="mb-2 md:mb-4 relative hero-headline">
             {isMobile ? (
-              <div className="flex flex-col text-[2.4rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.05] tracking-wide text-center">
+              <div className="flex flex-col text-[1.95rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green">IT'S NOT THE 90'S,</div>
-                <div className="flex flex-col items-center justify-center mt-2">
-                  <span>STOP FOLLOWING</span>
-                  <div className="flex items-center justify-center">
-                    <span>UP LIKE IT...</span>
-                    <span className="ml-2 text-xl text-retro-neon-blue neon-text animate-pulse">★</span>
-                  </div>
+                <div className="flex items-center justify-center mt-1 whitespace-nowrap">
+                  <span>STOP FOLLOWING UP LIKE IT</span>
+                  <span className="ml-1 text-xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
             ) : (

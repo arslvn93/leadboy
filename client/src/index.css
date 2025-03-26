@@ -584,6 +584,15 @@ h1, h2, h3, .pixel-font {
   .animate-spin-slow {
     animation: spin 8s linear infinite;
   }
+  
+  .animate-gentle-bounce {
+    animation: gentle-bounce 4s ease-in-out infinite;
+  }
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 /* Improved button styling */
 .cta-button {
@@ -1171,9 +1180,14 @@ h1, h2, h3, .pixel-font {
     padding: 0 !important;
   }
   
-  /* Make sure there's room for the headline */
+  /* Optimized spacing for better vertical layout */
   #hero {
-    padding-top: 8px !important;
+    padding-top: 5px !important;
+    padding-bottom: 0 !important;
+  }
+  
+  #hero .container {
+    gap: 0 !important;
   }
   
   /* Target the grid background container */
