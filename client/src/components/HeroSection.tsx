@@ -26,16 +26,18 @@ const HeroSection = () => {
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-8 md:mb-0">
           {/* Eyebrow copy badge - pill style for mobile */}
-          <div className="inline-block px-4 py-2 bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase text-xs sm:text-sm mb-6 text-retro-dark">
-            FREE AI TOOL FOR MODERN AGENTS
+          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} mb-6`}>
+            <div className="px-4 py-2 bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase text-xs sm:text-sm text-retro-dark">
+              FREE AI TOOL FOR MODERN AGENTS
+            </div>
           </div>
 
           {/* Clean heading with adjusted size - more compact */}
           <h1 className="mb-5 md:mb-6 relative hero-headline">
             {isMobile ? (
-              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
+              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm">IT'S NOT THE 90'S,</div>
-                <div className="flex flex-wrap items-center mt-1">
+                <div className="flex flex-wrap items-center justify-center mt-1">
                   <span>STOP FOLLOWING UP LIKE IT...</span>
                   <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
@@ -56,7 +58,7 @@ const HeroSection = () => {
           {/* Condensed description - Simplified for mobile, with key highlights only */}
           {isMobile ? (
             <div className="rounded-xl border border-retro-bright p-3 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-5 hero-subheadline">
-              <p className="text-white text-base leading-relaxed">
+              <p className="text-white text-base leading-relaxed text-center">
                 Try <span className="text-retro-neon-green font-bold">LeadBoy</span> for <span className="text-retro-neon-pink font-bold">FREE!</span> Our <span className="text-retro-neon-yellow font-bold">Brand NEW</span> AI Tool builds <span className="italic">personalized 15-day nurture campaigns</span> with automated texts, emails, and call scripts.
               </p>
             </div>
@@ -80,7 +82,7 @@ const HeroSection = () => {
               </Button>
             </div>
             <div className="text-center w-full mb-3">
-              <span className="text-retro-bright text-xs font-medium inline-flex items-center">
+              <span className={`text-retro-bright text-xs font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
                 <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
               </span>
             </div>
