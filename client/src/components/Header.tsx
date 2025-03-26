@@ -84,11 +84,11 @@ const Header = () => {
           </Button>
           
           <button 
-            className="md:hidden text-white p-0.5 rounded border border-retro-bright"
+            className="md:hidden text-white p-0.5 rounded border border-retro-bright ml-1"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={18} className="text-retro-neon-pink" /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={16} className="text-retro-neon-pink" /> : <Menu size={16} />}
           </button>
         </div>
       </div>
