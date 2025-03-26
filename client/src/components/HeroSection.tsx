@@ -8,7 +8,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="hero" className="pt-6 pb-12 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple">
+    <section id="hero" className="pt-5 pb-10 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
 
@@ -24,16 +24,16 @@ const HeroSection = () => {
 
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
         {/* Left Column - Headline and CTA */}
-        <div className="md:w-5/12 mb-8 md:mb-0">
+        <div className="md:w-5/12 mb-4 md:mb-0">
           {/* Eyebrow copy badge - pill style for mobile */}
-          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} mb-6`}>
-            <div className="px-4 py-2 bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase text-xs sm:text-sm text-retro-dark">
+          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-3' : 'mb-6'}`}>
+            <div className={`${isMobile ? 'px-3 py-1' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase text-xs sm:text-sm text-retro-dark`}>
               FREE AI TOOL FOR MODERN AGENTS
             </div>
           </div>
 
           {/* Clean heading with adjusted size - more compact */}
-          <h1 className="mb-5 md:mb-6 relative hero-headline">
+          <h1 className="mb-3 md:mb-6 relative hero-headline">
             {isMobile ? (
               <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm">IT'S NOT THE 90'S,</div>
@@ -55,7 +55,7 @@ const HeroSection = () => {
 
           {/* Condensed description - Simplified for mobile, with key highlights only */}
           {isMobile ? (
-            <div className="rounded-xl border border-retro-bright p-3 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-5 hero-subheadline">
+            <div className="rounded-xl border border-retro-bright p-2 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-3 hero-subheadline">
               <p className="text-white text-base leading-relaxed text-center">
                 Try <span className="text-retro-neon-green font-bold">LeadBoy</span> for <span className="text-retro-neon-pink font-bold">FREE!</span> Our <span className="text-retro-neon-yellow font-bold">Brand NEW</span> AI Tool builds <span className="italic">personalized 15-day nurture campaigns</span> with automated texts, emails, and call scripts.
               </p>
@@ -69,7 +69,7 @@ const HeroSection = () => {
           )}
 
           {/* Call to action button - smaller for mobile - MOVED UP */}
-          <div className="flex flex-col mb-5">
+          <div className="flex flex-col mb-2">
             <div className="w-full mb-1">
               <Button 
                 className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-3 py-2 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
@@ -88,17 +88,17 @@ const HeroSection = () => {
 
           {/* Social proof - simplified for mobile */}
           {isMobile ? (
-            <div className="flex flex-col gap-2 trust-container mb-4">
+            <div className="flex flex-col gap-1 trust-container mb-2">
               {/* Trusted by - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-3 py-1.5 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
+                <div className="px-3 py-1 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
                   <span className="font-bold text-white text-xs">Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> agents</span>
                 </div>
               </div>
               
               {/* Response rate badge - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-3 py-1.5 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
+                <div className="px-3 py-1 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
                   <span className="text-white text-xs">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black">247%</span></span>
                 </div>
               </div>
@@ -134,7 +134,7 @@ const HeroSection = () => {
         </div>
 
         {/* Right Column - Modern GameBoy Console */}
-        <div className="md:w-6/12 w-full relative md:mt-0 mt-2">
+        <div className="md:w-6/12 w-full relative md:mt-0 mt-0">
           {/* Star decorations - hidden on mobile */}
           {!isMobile && (
             <>
