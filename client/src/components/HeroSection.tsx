@@ -45,13 +45,15 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Call to action buttons */}
+          {/* Call to action buttons - responsive text */}
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
             <Button 
-              className="bg-retro-gradient-pink text-white px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg"
+              className="bg-retro-gradient-pink text-white px-6 sm:px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-sm sm:text-base lg:text-lg whitespace-normal text-center"
               onClick={() => smoothScrollTo('signup')}
             >
-              <Star className="mr-2 h-6 w-6" /> GET YOUR FREE SEQUENCE
+              <Star className="mr-2 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" /> 
+              <span className="hidden sm:inline">BUILD YOUR 15 DAY SEQUENCE WITH LEADBOY NOW</span>
+              <span className="sm:hidden">BUILD YOUR 15 DAY SEQUENCE NOW</span>
             </Button>
           </div>
 
