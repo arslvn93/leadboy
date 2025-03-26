@@ -59,10 +59,10 @@ const Header = () => {
         {/* Action buttons */}
         <div className="flex items-center gap-4">
           <Button 
-            className="cta-button bg-retro-gradient-blue text-white font-bold uppercase rounded px-4 py-2 shadow-neon-blue text-sm md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
+            className="cta-button bg-retro-gradient-blue text-white font-bold uppercase rounded px-3 py-2 shadow-neon-blue text-xs md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
             onClick={() => smoothScrollTo('signup')}
           >
-            <Zap className="w-4 h-4 mr-1 text-retro-neon-yellow" />
+            <Zap className="w-3 h-3 mr-1 text-retro-neon-yellow" />
             Start Free
           </Button>
           

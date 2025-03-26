@@ -32,15 +32,25 @@ const HeroSection = () => {
 
           {/* Clean heading with adjusted size - more compact */}
           <h1 className="mb-4 md:mb-6 relative hero-headline">
-            <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
-              <div>IT'S NOT THE</div>
-              <div>90'S ANYMORE...</div>
-              <div className="flex flex-wrap items-center">
-                <span>STOP FOLLOWING </span>
-                <span>UP LIKE IT...</span>
-                <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+            {isMobile ? (
+              <div className="flex flex-col text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
+                <div>IT'S NOT THE 90'S,</div>
+                <div className="flex flex-wrap items-center">
+                  <span>STOP FOLLOWING UP LIKE IT...</span>
+                  <span className="ml-1 text-xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
+                <div>IT'S NOT THE</div>
+                <div>90'S ANYMORE...</div>
+                <div className="flex flex-wrap items-center">
+                  <span>STOP FOLLOWING </span>
+                  <span>UP LIKE IT...</span>
+                  <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                </div>
+              </div>
+            )}
           </h1>
 
           {/* Condensed description - Simplified for mobile, with key highlights only */}
@@ -62,10 +72,10 @@ const HeroSection = () => {
           <div className="flex flex-col mb-6">
             <div className="w-full mb-1">
               <Button 
-                className="cta-button bg-retro-gradient-pink text-white px-6 py-5 font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg md:text-xl whitespace-normal text-center w-full"
+                className="cta-button bg-retro-gradient-pink text-white px-4 py-3 md:px-6 md:py-5 font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-base md:text-xl whitespace-normal text-center w-full"
                 onClick={() => smoothScrollTo('signup')}
               >
-                <Star className="mr-2 h-5 w-5 flex-shrink-0" /> 
+                <Star className="mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" /> 
                 <span>TRY LEADBOY FOR FREE</span>
               </Button>
             </div>
