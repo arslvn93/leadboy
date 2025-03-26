@@ -38,17 +38,14 @@ const HeroSection = () => {
               <div className="flex flex-col text-[1.6rem] font-bold text-white leading-tight tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-0">STILL CHASING LEADS LIKE IT'S 1995?</div>
                 <div className="text-white">
-                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts - in 60 Seconds! <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
+                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts in 3 Minutes! <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
                 </div>
               </div>
             ) : (
               <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-1">STILL CHASING LEADS LIKE IT'S 1995?</div>
                 <div>
-                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts
-                </div>
-                <div>
-                  - in 60 Seconds! <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts in 3 Minutes! <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
             )}
