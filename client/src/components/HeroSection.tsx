@@ -44,11 +44,9 @@ const HeroSection = () => {
               </div>
             ) : (
               <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
-                <div>IT'S NOT THE</div>
-                <div>90'S ANYMORE...</div>
-                <div className="flex flex-wrap items-center">
-                  <span>STOP FOLLOWING </span>
-                  <span>UP LIKE IT...</span>
+                <div className="text-retro-neon-green neon-text-sm">IT'S NOT THE 90'S,</div>
+                <div className="flex flex-wrap items-center mt-1">
+                  <span>STOP FOLLOWING UP LIKE IT...</span>
                   <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
