@@ -21,9 +21,9 @@ const HeroSection = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-16 md:mb-0">
-          {/* Eyebrow copy badge - larger and more readable */}
-          <div className="inline-block px-5 py-3 bg-retro-bright rounded-md shadow-neon-blue font-bold uppercase text-sm sm:text-base mb-5 text-retro-dark">
-            FREE FOR MODERN AGENTS
+          {/* Eyebrow copy badge - more readable */}
+          <div className="inline-block px-4 py-2 bg-retro-bright rounded-md shadow-neon-blue font-bold uppercase text-xs sm:text-sm mb-5 text-retro-dark">
+            FREE AI TOOL FOR MODERN REALTORS
           </div>
 
           {/* Clean heading with adjusted size */}
@@ -38,8 +38,8 @@ const HeroSection = () => {
 
           {/* Description card - More compact for above-the-fold visibility */}
           <div className="rounded-xl border border-retro-bright p-4 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-6">
-            <p className="text-white text-lg">
-              Try <span className="text-retro-neon-green font-bold">LeadBoy FREE!</span> Our Brand NEW AI Tool builds personalized 15-day nurture campaigns for your real estate leads. Stop wasting time on manual follow-ups and start closing more deals with automated texts, emails, and call scripts.
+            <p className="text-white text-lg leading-relaxed">
+              Try <span className="text-retro-neon-green font-bold text-xl">LeadBoy</span> for <span className="text-retro-neon-pink font-bold">FREE!</span> Our <span className="text-retro-neon-yellow italic font-semibold">Brand NEW</span> AI Tool builds <span className="italic">personalized 15-day nurture campaigns</span> for your real estate leads. <span className="text-retro-bright font-semibold">Stop wasting time</span> on manual follow-ups and <span className="text-retro-neon-blue italic font-semibold">start closing more deals</span> with automated texts, emails, and call scripts.
             </p>
           </div>
 
