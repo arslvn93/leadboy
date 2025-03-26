@@ -1,18 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Star, Zap } from 'lucide-react';
 import { smoothScrollTo } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const isMobile = useIsMobile();
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // Only show header on mobile when scrolled down at least 100px
+  const headerVisible = !isMobile || scrollPosition > 100 || mobileMenuOpen;
+
   return (
-    <header className="bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-1 md:py-3 sticky top-0 z-50 shadow-neon-purple">
+    <header className={`bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-1 md:py-3 sticky top-0 z-50 shadow-neon-purple transition-all duration-300 ${headerVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       {/* Grid background for header */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:20px_20px] opacity-20"></div>
       
