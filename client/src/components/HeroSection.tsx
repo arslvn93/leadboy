@@ -33,20 +33,18 @@ const HeroSection = () => {
           </div>
 
           {/* Clean heading with adjusted size - more compact and cohesive */}
-          <h1 className="mb-2 md:mb-4 relative hero-headline">
+          <h1 className="mb-1 md:mb-2 relative hero-headline">
             {isMobile ? (
-              <div className="flex flex-col text-[1.7rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-wide text-center">
-                <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green">STILL CHASING LEADS LIKE IT'S 1995?</div>
-                <div className="flex flex-col items-center justify-center mt-1">
-                  <span>Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom</span>
-                  <span>Texts, Emails, and Call Scripts</span>
-                  <span>from Our AI Tool in 60 Seconds <span className="ml-1 text-xl text-retro-neon-blue neon-text animate-pulse">★</span></span>
+              <div className="flex flex-col text-[1.7rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.05] tracking-wide text-center">
+                <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-0">STILL CHASING LEADS LIKE IT'S 1995?</div>
+                <div className="text-white leading-tight">
+                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails, and Call Scripts from Our AI Tool in 60 Seconds <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
-                <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green">STILL CHASING LEADS LIKE IT'S 1995?</div>
-                <div className="flex flex-wrap items-center mt-1">
+              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.05] tracking-wide">
+                <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-1">STILL CHASING LEADS LIKE IT'S 1995?</div>
+                <div className="flex flex-wrap items-center">
                   <span>Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails, and Call Scripts</span>
                 </div>
                 <div className="flex flex-wrap items-center">
@@ -57,15 +55,15 @@ const HeroSection = () => {
             )}
           </h1>
 
-          {/* Condensed description - Simplified for mobile, with key highlights only */}
+          {/* Condensed description - More compact for mobile */}
           {isMobile ? (
-            <div className="rounded-lg border-2 border-retro-bright p-3 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-4 hero-subheadline shadow-neon-blue">
-              <p className="text-white text-[0.95rem] leading-relaxed text-center">
-                Tell us how you met your lead <span className="text-retro-neon-green font-semibold">(open house, online, referral)</span> and in just <span className="text-retro-neon-pink font-bold">3 minutes</span>, get <span className="text-retro-neon-yellow font-bold">15 days</span> of <span className="italic">ready-to-use texts, emails, and call scripts</span> that sound like you wrote them - all for <span className="text-retro-neon-pink font-bold text-shadow-neon-pink">FREE!</span>
+            <div className="rounded-lg border-2 border-retro-bright p-2 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-2 hero-subheadline shadow-neon-blue">
+              <p className="text-white text-[0.85rem] leading-tight text-center">
+                Tell us how you met your lead <span className="text-retro-neon-green font-semibold">(open house, online, referral)</span> and in just <span className="text-retro-neon-pink font-bold">3 minutes</span>, get <span className="text-retro-neon-yellow font-bold">15 days</span> of ready-to-use texts, emails, and call scripts that sound like you wrote them - all for <span className="text-retro-neon-pink font-bold text-shadow-neon-pink">FREE!</span>
               </p>
             </div>
           ) : (
-            <div className="rounded-xl border border-retro-bright p-4 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-6 hero-subheadline">
+            <div className="rounded-xl border border-retro-bright p-3 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-4 hero-subheadline">
               <p className="text-white text-lg leading-relaxed">
                 Tell us how you met your lead <span className="text-retro-neon-green font-semibold">(open house, online, referral)</span> and in just <span className="text-retro-neon-pink font-bold">3 minutes</span>, get <span className="text-retro-neon-yellow font-semibold">15 days</span> of <span className="italic">ready-to-use texts, emails, and call scripts</span> that sound like you wrote them - <span className="text-retro-bright font-semibold">all for</span> <span className="text-retro-neon-pink font-bold text-shadow-neon-pink">FREE!</span>
               </p>
@@ -148,7 +146,7 @@ const HeroSection = () => {
           )}
           
           {/* GameBoy Component with reduced bottom margin on mobile and moved up more */}
-          <div className={isMobile ? 'transform -translate-y-10' : ''}>
+          <div className={isMobile ? 'transform -translate-y-14' : ''}>
             <GameBoyConsole leads={12} sequences={15} conversions={8} />
           </div>
           
