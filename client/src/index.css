@@ -37,7 +37,7 @@
   }
 
   body {
-    @apply font-sans antialiased text-white;
+    @apply font-sans antialiased text-white m-0 p-0 overflow-x-hidden;
     background-color: var(--retro-dark-blue);
     background-image: 
       linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px),
