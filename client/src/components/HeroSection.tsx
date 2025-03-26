@@ -58,9 +58,9 @@ const HeroSection = () => {
 
           {/* Condensed description - Simplified for mobile, with key highlights only */}
           {isMobile ? (
-            <div className="rounded-lg border border-retro-bright p-2 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-2 hero-subheadline">
-              <p className="text-white text-sm leading-relaxed text-center">
-                Try <span className="text-retro-neon-green font-bold">LeadBoy</span> for <span className="text-retro-neon-pink font-bold">FREE!</span> Our <span className="text-retro-neon-yellow font-bold">Brand NEW</span> AI Tool builds <span className="italic">personalized 15-day nurture campaigns</span> with automated texts, emails, and call scripts.
+            <div className="rounded-lg border-2 border-retro-bright p-3 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-4 hero-subheadline shadow-neon-blue">
+              <p className="text-white text-[1.03rem] leading-relaxed text-center">
+                Try <span className="text-retro-neon-green font-bold text-shadow-neon-green">LeadBoy</span> for <span className="text-retro-neon-pink font-bold text-shadow-neon-pink">FREE!</span> Our <span className="text-retro-neon-yellow font-bold">Brand NEW</span> AI Tool builds <span className="italic">personalized 15-day nurture campaigns</span> with automated texts, emails, and call scripts.
               </p>
             </div>
           ) : (
@@ -72,37 +72,37 @@ const HeroSection = () => {
           )}
 
           {/* Call to action button - better sized for mobile now that we have more space */}
-          <div className="flex flex-col mb-2">
-            <div className="w-full mb-1">
+          <div className="flex flex-col mb-4 mt-1">
+            <div className="w-full mb-2">
               <Button 
-                className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-3 py-2 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
+                className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-4 py-3 text-base' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
                 onClick={() => smoothScrollTo('signup')}
               >
-                <Star className={`${isMobile ? 'mr-1.5 h-3 w-3' : 'mr-2 h-4 w-4 md:h-5 md:w-5'} flex-shrink-0`} /> 
-                <span>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
+                <Star className={`${isMobile ? 'mr-2 h-4 w-4 animate-pulse' : 'mr-2 h-4 w-4 md:h-5 md:w-5'} flex-shrink-0 text-retro-neon-blue`} /> 
+                <span className={isMobile ? 'text-shadow-neon-pink' : ''}>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
               </Button>
             </div>
-            <div className="text-center w-full mb-1">
-              <span className={`text-retro-bright ${isMobile ? 'text-[10px]' : 'text-xs'} font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
-                <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
+            <div className="text-center w-full mb-2">
+              <span className={`text-retro-bright ${isMobile ? 'text-[11px]' : 'text-xs'} font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
+                <span className="mr-1 text-retro-neon-green animate-pulse">✓</span> No Credit Card Required
               </span>
             </div>
           </div>
 
           {/* Social proof - simplified for mobile but slightly larger since we have more space */}
           {isMobile ? (
-            <div className="flex flex-col gap-1 trust-container mb-2">
+            <div className="flex flex-row items-center justify-center gap-3 trust-container mb-4">
               {/* Trusted by - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-3 py-1 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
-                  <span className="font-bold text-white text-[11px]">Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> agents</span>
+                <div className="px-3 py-1.5 border-2 border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center shadow-neon-blue">
+                  <span className="font-bold text-white text-[12px]">Trusted by <span className="text-retro-neon-pink text-shadow-neon-pink animate-pulse">2,500+</span> agents</span>
                 </div>
               </div>
               
               {/* Response rate badge - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-3 py-1 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
-                  <span className="text-white text-[11px]">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black">247%</span></span>
+                <div className="px-3 py-1.5 border-2 border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
+                  <span className="text-white text-[12px]">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black text-shadow-neon-pink animate-pulse">247%</span></span>
                 </div>
               </div>
             </div>

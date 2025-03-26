@@ -14,18 +14,18 @@ const GameBoyConsole = ({
   const isMobile = useIsMobile();
   
   return (
-    <div className="game-console-container relative mx-auto" style={{maxWidth: isMobile ? '300px' : '400px'}}>
+    <div className="game-console-container relative mx-auto animate-gentle-bounce" style={{maxWidth: isMobile ? '300px' : '400px'}}>
       {/* Spotlight effect and light rays */}
-      <div className="gameboy-spotlight"></div>
-      <div className="light-ray ray1"></div>
-      <div className="light-ray ray2"></div>
-      <div className="light-ray ray3"></div>
+      <div className="gameboy-spotlight animate-pulse-strong"></div>
+      <div className="light-ray ray1 animate-pulse"></div>
+      <div className="light-ray ray2 animate-pulse-slow"></div>
+      <div className="light-ray ray3 animate-pulse"></div>
       
       {/* Outer glow */}
-      <div className="absolute inset-0 rounded-[10%] bg-[#00ffff] opacity-20 blur-xl"></div>
+      <div className="absolute inset-0 rounded-[10%] bg-[#00ffff] opacity-30 blur-xl animate-pulse-slow"></div>
       
       {/* Console body - more rectangular like the image */}
-      <div className="game-console-body gameboy-image relative bg-[#222] rounded-[28px] border border-[#333] p-5 shadow-xl" 
+      <div className="game-console-body gameboy-image relative bg-[#222] rounded-[28px] border-2 border-[#333] p-5 shadow-xl" 
            style={{aspectRatio: isMobile ? '0.7/1' : '0.65/1'}}>
         {/* Cyan neon border glow */}
         <div className="absolute inset-0 rounded-[28px] border border-[#00ffff] opacity-40 shadow-[0_0_15px_rgba(0,255,255,0.5)]"></div>
@@ -35,46 +35,49 @@ const GameBoyConsole = ({
           {/* Power LED */}
           <div className="w-2.5 h-2.5 absolute top-5 left-5 rounded-full bg-[#FF33CC] shadow-[0_0_12px_#FF33CC] animate-pulse-strong"></div>
           
-          {/* Screen - more rounded corners */}
-          <div className="screen bg-[#143522] rounded-2xl p-4 relative overflow-hidden font-mono text-sm"
+          {/* Screen - more rounded corners with enhanced brightness */}
+          <div className="screen bg-[#0a2616] rounded-2xl p-4 relative overflow-hidden font-mono text-sm shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
                style={{aspectRatio: '1/0.75'}}>
+            {/* Green backlight glow */}
+            <div className="absolute inset-0 bg-[#5affbc] opacity-10 animate-pulse-slow"></div>
+            
             {/* Screen content */}
             <div className="relative z-10 h-full flex flex-col">
               <div className="flex justify-between items-center border-b border-[#1a472f] pb-2 mb-3">
-                <span className="text-[#5affbc] font-bold text-sm md:text-base tracking-wide">LEADBOY AI v1.0</span>
-                <span className="text-[#FFCC00] animate-blink text-sm md:text-base">ONLINE</span>
+                <span className="text-[#5affbc] font-bold text-sm md:text-base tracking-wide text-shadow-neon-green">LEADBOY AI v1.0</span>
+                <span className="text-[#FFCC00] animate-blink text-sm md:text-base text-shadow-neon-blue">ONLINE</span>
               </div>
               
               <div className="flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between mb-2 md:mb-3">
                     <span className="text-[#5affbc] tracking-wide">NEW LEADS:</span>
-                    <span className="text-[#FFCC00]">{leads}</span>
+                    <span className="text-[#FFCC00] animate-pulse">{leads}</span>
                   </div>
                   
                   <div className="flex justify-between mb-2 md:mb-3">
                     <span className="text-[#5affbc] tracking-wide">SEQUENCES:</span>
-                    <span className="text-[#FFCC00]">{sequences}</span>
+                    <span className="text-[#FFCC00] animate-pulse">{sequences}</span>
                   </div>
                   
                   <div className="flex justify-between mb-2 md:mb-3">
                     <span className="text-[#5affbc] tracking-wide">CONVERSIONS:</span>
-                    <span className="text-[#FFCC00]">{conversions}</span>
+                    <span className="text-[#FFCC00] animate-pulse">{conversions}</span>
                   </div>
                 </div>
                 
                 <div className="mt-2 md:mt-3 flex items-center">
                   <span className="text-[#5affbc] mr-2 animate-blink">▶</span>
-                  <span className="text-[#5affbc] tracking-wide">AI Assistant ready...</span>
+                  <span className="text-[#5affbc] tracking-wide font-bold text-shadow-neon-green">AI Assistant ready...</span>
                 </div>
               </div>
             </div>
             
-            {/* Scanlines - more subtle */}
-            <div className="absolute inset-0 bg-scanlines opacity-40 pointer-events-none"></div>
+            {/* Scanlines - with animation */}
+            <div className="absolute inset-0 bg-scanlines opacity-40 pointer-events-none animate-scan-line"></div>
             
-            {/* CRT effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(90,255,188,0.03)] to-transparent pointer-events-none"></div>
+            {/* CRT effect with green glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(90,255,188,0.07)] to-transparent pointer-events-none"></div>
             
             {/* Vignette effect - darker at edges */}
             <div className="absolute inset-0 bg-vignette pointer-events-none"></div>
