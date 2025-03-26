@@ -1165,10 +1165,11 @@ h1, h2, h3, .pixel-font {
   /* Headline adjustments */
   .hero-headline {
     font-size: 32px; /* Smaller headline */
-    line-height: 1.2;
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.35); /* Reduced glow intensity by 30% */
+    line-height: 1.1; /* Tighter line height */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 255, 255, 0.5); /* Enhanced readability */
     padding: 0.5rem 0;
     position: relative;
+    letter-spacing: 0.05em; /* Slightly increased letter spacing */
   }
   
   .hero-headline::after {
@@ -1296,21 +1297,26 @@ h1, h2, h3, .pixel-font {
 
 /* Enhanced text shadows for specific colors */
 .text-shadow-neon-green {
-  text-shadow: 0 0 7px rgba(0, 255, 136, 0.7), 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+              0 0 7px rgba(0, 255, 136, 0.7), 
               0 0 10px rgba(0, 255, 136, 0.5), 
               0 0 15px rgba(0, 255, 136, 0.4), 
               0 0 20px rgba(0, 255, 136, 0.3);
+  letter-spacing: 0.05em;
 }
 
 .text-shadow-neon-pink {
-  text-shadow: 0 0 7px rgba(255, 0, 170, 0.7), 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7),
+              0 0 7px rgba(255, 0, 170, 0.7), 
               0 0 10px rgba(255, 0, 170, 0.5), 
               0 0 15px rgba(255, 0, 170, 0.4), 
               0 0 20px rgba(255, 0, 170, 0.3);
+  font-weight: 700;
 }
 
 .text-shadow-neon-blue {
-  text-shadow: 0 0 7px rgba(0, 183, 255, 0.7), 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7),
+              0 0 7px rgba(0, 183, 255, 0.7), 
               0 0 10px rgba(0, 183, 255, 0.5), 
               0 0 15px rgba(0, 183, 255, 0.4), 
               0 0 20px rgba(0, 183, 255, 0.3);
