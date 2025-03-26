@@ -87,7 +87,7 @@ const TestimonialsSection = () => {
           
           {/* Blinking cursor at bottom */}
           <div className="text-center mt-8">
-            <span className="text-[#00ffff] font-bold text-lg blinking-cursor">INSERT COIN TO CONTINUE_</span>
+            <span className="text-[#00ffff] font-bold text-lg blinking-cursor">USE LEADBOY TO CONVERT NEW LEADS TODAY_</span>
           </div>
         </div>
         
