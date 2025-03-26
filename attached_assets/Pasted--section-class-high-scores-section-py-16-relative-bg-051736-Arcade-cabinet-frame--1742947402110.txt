@@ -1,0 +1,57 @@
+<section class="high-scores-section py-16 relative bg-[#051736]">
+  <!-- Arcade cabinet frame -->
+  <div class="arcade-cabinet-frame max-w-5xl mx-auto relative">
+    <!-- Arcade screen -->
+    <div class="arcade-screen bg-black p-6 border-4 border-[#333] rounded-lg">
+      <!-- CRT scan line effect -->
+      <div class="scan-lines absolute inset-0 pointer-events-none"></div>
+      
+      <h2 class="text-center font-press-start text-4xl mb-8 text-[#00ffff] glow-text">HIGH SCORES</h2>
+      
+      <div class="leaderboard-container">
+        <!-- Score table header -->
+        <div class="score-table-header flex mb-4 px-4 py-2 bg-[#8BAC0F] rounded-t-md">
+          <div class="w-1/6 text-black font-press-start text-sm">RANK</div>
+          <div class="w-2/6 text-black font-press-start text-sm">PLAYER</div>
+          <div class="w-2/6 text-black font-press-start text-sm">SCORE</div>
+          <div class="w-1/6 text-black font-press-start text-sm">LEVEL</div>
+        </div>
+        
+        <!-- Testimonial rows -->
+        <div class="testimonial-row flex items-center hover:bg-[rgba(90,255,188,0.1)] transition-all p-4 border-b border-[#333]">
+          <div class="w-1/6 text-[#FFCC00] font-press-start text-xl">1ST</div>
+          <div class="w-2/6 flex items-center">
+            <div class="pixel-avatar mr-3 bg-[#5affbc] w-10 h-10 rounded"></div>
+            <div>
+              <p class="font-press-start text-white text-sm">SARAH J.</p>
+              <p class="text-gray-400 text-xs">Realtor, Century 21</p>
+            </div>
+          </div>
+          <div class="w-2/6">
+            <div class="score-value text-[#FFCC00] font-press-start mb-2">40,000 PTS</div>
+            <div class="text-white text-sm">Lead conversions x40% </div>
+          </div>
+          <div class="w-1/6">
+            <div class="star-rating text-[#FFCC00]">★★★★★</div>
+          </div>
+        </div>
+        
+        <!-- Repeat for other testimonials with different colors/ranks -->
+        <!-- MICHAEL D. row -->
+        <!-- JENNIFER S. row -->
+      </div>
+      
+      <!-- Blinking cursor at bottom -->
+      <div class="text-center mt-8">
+        <span class="text-[#00ffff] font-press-start text-lg blinking-cursor">INSERT COIN TO CONTINUE_</span>
+      </div>
+    </div>
+    
+    <!-- Arcade cabinet details -->
+    <div class="arcade-details absolute -bottom-4 left-0 right-0 h-8 bg-[#333] rounded-b-lg"></div>
+    <div class="arcade-controls absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-4">
+      <div class="w-12 h-12 rounded-full bg-[#ff3366] border-4 border-[#333]"></div>
+      <div class="w-12 h-12 rounded-full bg-[#FFCC00] border-4 border-[#333]"></div>
+    </div>
+  </div>
+</section>
