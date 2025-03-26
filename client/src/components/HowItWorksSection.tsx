@@ -17,7 +17,7 @@ const HowItWorksSection = () => {
           Beat The Lead Conversion Game in 3 Easy Steps:
         </h2>
         
-        <div className="max-w-5xl mx-auto space-y-12">
+        <div className="max-w-5xl mx-auto space-y-6">
           {/* Step 1 */}
           <GameLevelCard 
             number={1}
