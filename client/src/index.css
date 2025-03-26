@@ -860,8 +860,12 @@ h1, h2, h3, .pixel-font {
 }
 
 .neon-text, .glow-text {
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  text-shadow: 0 0 3.5px #00ffff, 0 0 7px #00ffff;
   animation: glow-pulse 2s infinite alternate;
+}
+
+.neon-text-sm {
+  text-shadow: 0 0 3.5px #00ffff, 0 0 7px #00ffff;
 }
 
 .shadow-neon-blue {
@@ -967,10 +971,10 @@ h1, h2, h3, .pixel-font {
 
 @keyframes glow-pulse {
   from {
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    text-shadow: 0 0 3.5px #00ffff, 0 0 7px #00ffff;
   }
   to {
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    text-shadow: 0 0 7px #00ffff, 0 0 14px #00ffff, 0 0 21px #00ffff;
   }
 }
 
@@ -1083,7 +1087,7 @@ h1, h2, h3, .pixel-font {
   .hero-headline {
     font-size: 32px; /* Smaller headline */
     line-height: 1.2;
-    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.35); /* Reduced glow intensity by 30% */
     padding: 0.5rem 0;
     position: relative;
   }
