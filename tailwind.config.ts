@@ -125,6 +125,19 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        "pulse-border": {
+          "0%, 100%": { boxShadow: "0 0 0 rgba(0, 255, 255, 0.4)" },
+          "50%": { boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)" },
+        },
+        "screen-flicker": {
+          "0%, 100%": { opacity: "1" },
+          "98%": { opacity: "1" },
+          "99%": { opacity: "0.8" },
+        },
+        "pulse-strong": {
+          "0%, 100%": { opacity: "0.8", boxShadow: "0 0 15px currentColor" },
+          "50%": { opacity: "0.4", boxShadow: "0 0 5px currentColor" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -133,6 +146,9 @@ export default {
         "float": "float 3s ease-in-out infinite",
         "scan-line": "scan-line 2s linear infinite",
         "holographic-shift": "holographic-shift 10s ease infinite",
+        "pulse-border": "pulse-border 2s ease-in-out infinite",
+        "screen-flicker": "screen-flicker 6s linear infinite",
+        "pulse-strong": "pulse-strong 2s infinite alternate",
       },
       backgroundImage: {
         'retro-grid': 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
