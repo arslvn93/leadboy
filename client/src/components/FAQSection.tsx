@@ -97,7 +97,7 @@ const FAQSection = () => {
       <div className="container max-w-4xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-12">
-          <h2 className="font-bold text-4xl text-[#00ffff] glow-text mb-4">CHEAT CODES</h2>
+          <h2 className="font-bold text-4xl text-[#00ffff] glow-text mb-4">FAQs</h2>
           <p className="text-[#5affbc] text-xl">Unlock these secrets to maximize your lead conversion powers</p>
         </div>
         
