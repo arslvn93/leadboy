@@ -88,7 +88,10 @@ const FeaturesSection = () => {
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block bg-[#FF00FF] border-4 border-black px-8 py-2 transform -rotate-1 shadow-[4px_4px_0_#000] mb-6">
-            <h2 className="font-pixel text-2xl md:text-3xl text-white drop-shadow-[2px_2px_0_#000]">Why Use LeadBoy?</h2>
+            <h2 className="font-pixel text-2xl md:text-3xl text-white drop-shadow-[2px_2px_0_#000]">Why Real Estate Agents Choose LeadBoy</h2>
+          </div>
+          <div className="max-w-2xl mx-auto mb-12">
+            <p className="text-lg text-black text-center">Stop losing commissions to poor follow-up. Our AI creates custom messages that convert leads into clients – automatically.</p>
           </div>
 
           <div className="max-w-2xl mx-auto bg-white border-4 border-black p-6 transform rotate-1 shadow-[6px_6px_0_#000]">
