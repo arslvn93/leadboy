@@ -96,7 +96,7 @@ const FeaturesSection = () => {
 
           <div className="max-w-2xl mx-auto bg-white border-4 border-black p-6 transform rotate-1 shadow-[6px_6px_0_#000]">
             <p className="text-black font-bold">
-              Equip your real estate business with these <span className="text-[#FF00FF] font-extrabold">totally tubular</span> tools to automate your lead nurturing and close more deals!
+              Stop losing commissions to poor follow-up. Our AI creates custom messages that convert leads into clients – automatically.
             </p>
           </div>
         </div>
