@@ -39,7 +39,7 @@ const HeroSection = () => {
           {/* Description card - More compact for above-the-fold visibility */}
           <div className="rounded-xl border border-retro-bright p-4 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-6">
             <p className="text-white text-lg">
-              Get a personalized 15-day follow-up system that delivers custom scripts, emails, and texts proven to boost response rates by up to <span className="text-retro-neon-pink font-bold neon-text-sm">247%</span>.
+              Use our FREE AI tool <span className="text-retro-neon-green font-bold">"LeadBoy"</span> to create a custom 15-day nurture sequence for your new leads. It creates personalized texts, emails and call scripts, for your lead sources.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ const HeroSection = () => {
                   {/* Terminal Content */}
                   <div className="font-retro text-xl h-full flex flex-col">
                     <div className="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
-                      <span className="neon-text-primary">LEAD SYSTEM v1.0</span>
+                      <span className="neon-text-green">LEADBOY AI v1.0</span>
                       <span className="text-yellow-300 animate-blink">ONLINE</span>
                     </div>
 
@@ -90,8 +90,8 @@ const HeroSection = () => {
                         <span className="text-yellow-300">12</span>
                       </div>
                       <div className="mb-3 flex justify-between">
-                        <span className="text-green-400">FOLLOW-UPS:</span>
-                        <span className="text-yellow-300">24</span>
+                        <span className="text-green-400">SEQUENCES:</span>
+                        <span className="text-yellow-300">15</span>
                       </div>
                       <div className="mb-3 flex justify-between">
                         <span className="text-green-400">CONVERSIONS:</span>
@@ -100,7 +100,7 @@ const HeroSection = () => {
                       <div className="my-3 h-[1px] w-full bg-gray-700 opacity-30"></div>
                       <div className="flex items-center text-green-300">
                         <span className="animate-blink mr-2">▶</span>
-                        <span>Ready for next command...</span>
+                        <span>AI Assistant ready...</span>
                       </div>
                     </div>
                   </div>
