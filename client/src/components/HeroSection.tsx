@@ -47,17 +47,17 @@ const HeroSection = () => {
 
           {/* Call to action buttons - responsive text */}
           <div className="flex flex-col mb-8">
-            <div className="mb-2">
+            <div className="w-full sm:w-auto mb-1">
               <Button 
-                className="bg-retro-gradient-pink text-white px-8 sm:px-10 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-base sm:text-lg lg:text-xl whitespace-normal text-center w-full sm:w-auto"
+                className="bg-retro-gradient-pink text-white px-8 sm:px-10 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-base sm:text-lg lg:text-xl whitespace-normal text-center w-full"
                 onClick={() => smoothScrollTo('signup')}
               >
                 <Star className="mr-2 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" /> 
                 <span>TRY LEADBOY FOR FREE</span>
               </Button>
             </div>
-            <div className="text-center sm:text-left">
-              <span className="text-retro-bright text-sm font-medium bg-retro-dark-blue px-3 py-1 rounded-full border border-retro-bright inline-block">
+            <div className="text-center w-full mb-4">
+              <span className="text-retro-bright text-xs font-medium inline-flex items-center">
                 <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
               </span>
             </div>
