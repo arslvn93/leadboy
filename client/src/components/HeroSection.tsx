@@ -38,7 +38,7 @@ const HeroSection = () => {
               <div className="flex flex-col text-[1.6rem] font-bold text-white leading-tight tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-0">STILL CHASING LEADS LIKE IT'S 1995?</div>
                 <div className="text-white">
-                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts from Our AI Tool in 60 Seconds <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
+                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts - in 60 Seconds! <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
                 </div>
               </div>
             ) : (
@@ -48,7 +48,7 @@ const HeroSection = () => {
                   Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts
                 </div>
                 <div>
-                  From Our AI Tool - in 60 Seconds! <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                  - in 60 Seconds! <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
             )}
@@ -77,7 +77,7 @@ const HeroSection = () => {
                 onClick={() => smoothScrollTo('signup')}
               >
                 <Star className={`${isMobile ? 'mr-2 h-4 w-4 animate-pulse' : 'mr-2 h-4 w-4 md:h-5 md:w-5'} flex-shrink-0 text-retro-neon-blue`} /> 
-                <span className={isMobile ? 'text-shadow-neon-pink' : ''}>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
+                <span className={isMobile ? 'text-shadow-neon-pink' : ''}>{isMobile ? 'GET YOUR SEQUENCE' : 'GET YOUR CUSTOM FOLLOW UP SEQUENCE NOW'}</span>
               </Button>
             </div>
             <div className="text-center w-full mb-1">
