@@ -859,6 +859,54 @@ h1, h2, h3, .pixel-font {
   }
 }
 
+/* GameBoy Console - Modern Style */
+.bg-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+.bg-vignette {
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.animate-pulse-strong {
+  animation: pulse-strong 2s infinite alternate;
+}
+
+/* Smooth tilt animation for GameBoy on hover */
+.game-console-body {
+  transition: transform 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+  .game-console-container:hover .game-console-body {
+    transform: rotate(2deg) translateY(-5px);
+  }
+}
+
+/* Button press effect */
+.a-btn, .b-btn {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.a-btn:active, .b-btn:active {
+  transform: scale(0.9);
+}
+
+.game-console-container:hover .a-btn, 
+.game-console-container:hover .b-btn {
+  box-shadow: 0 0 15px currentColor;
+}
+
 @keyframes glow-pulse {
   from {
     text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;

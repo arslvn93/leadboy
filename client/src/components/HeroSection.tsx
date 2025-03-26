@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Star } from 'lucide-react';
 import { smoothScrollTo } from '../lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import GameBoyConsole from './GameBoyConsole';
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
@@ -122,154 +123,18 @@ const HeroSection = () => {
           )}
         </div>
 
-        {/* Right Column - Gameboy Terminal - Responsive for all screens */}
-        <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
-          {/* Gameboy Console */}
-          <div className={`gameboy-container ${isMobile ? 'mx-auto' : ''}`} style={{maxWidth: isMobile ? '280px' : 'none'}}>
-            {/* Outer glow */}
-            <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
-
-            <div className={`gameboy-body transform ${isMobile ? 'rotate-0 scale-90' : 'rotate-2'} glow-container`}>
-              <div className="gameboy-screen-area">
-                <div className="gameboy-power-led"></div>
-                <div className="gameboy-screen crt-screen">
-                  {/* Terminal Content */}
-                  <div className="font-retro h-full flex flex-col">
-                    <div className="flex justify-between items-center mb-2 md:mb-4 border-b border-gray-700 pb-2">
-                      <span className="neon-text-green text-sm md:text-base">LEADBOY AI v1.0</span>
-                      <span className="text-yellow-300 animate-blink text-sm md:text-base">ONLINE</span>
-                    </div>
-
-                    <div className="flex-1">
-                      {isMobile ? (
-                        // Simplified display for mobile
-                        <>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-green-400 text-sm">LEADS:</span>
-                            <span className="text-yellow-300 text-sm">12</span>
-                          </div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-green-400 text-sm">CONVERSIONS:</span>
-                            <span className="text-yellow-300 text-sm">8</span>
-                          </div>
-                          <div className="my-2 h-[1px] w-full bg-gray-700 opacity-30"></div>
-                          <div className="flex items-center text-green-300 text-sm">
-                            <span className="animate-blink mr-2">▶</span>
-                            <span>AI ready...</span>
-                          </div>
-                        </>
-                      ) : (
-                        // Full display for desktop
-                        <>
-                          <div className="mb-3 flex justify-between">
-                            <span className="text-green-400">NEW LEADS:</span>
-                            <span className="text-yellow-300">12</span>
-                          </div>
-                          <div className="mb-3 flex justify-between">
-                            <span className="text-green-400">SEQUENCES:</span>
-                            <span className="text-yellow-300">15</span>
-                          </div>
-                          <div className="mb-3 flex justify-between">
-                            <span className="text-green-400">CONVERSIONS:</span>
-                            <span className="text-yellow-300">8</span>
-                          </div>
-                          <div className="my-3 h-[1px] w-full bg-gray-700 opacity-30"></div>
-                          <div className="flex items-center text-green-300">
-                            <span className="animate-blink mr-2">▶</span>
-                            <span>AI Assistant ready...</span>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {isMobile ? (
-                // Mobile controls (scaled down)
-                <>
-                  <div className="gameboy-controls scale-75 mt-[-10px]">
-                    <div className="gameboy-dpad">
-                      <div className="dpad-up"></div>
-                      <div className="dpad-right"></div>
-                      <div className="dpad-down"></div>
-                      <div className="dpad-left"></div>
-                      <div className="dpad-center"></div>
-                    </div>
-                    <div className="gameboy-buttons">
-                      <div className="btn-a">A</div>
-                      <div className="btn-b">B</div>
-                    </div>
-                  </div>
-
-                  <div className="gameboy-options scale-75 mt-[-5px]">
-                    <div className="btn-select">SELECT</div>
-                    <div className="btn-start">START</div>
-                  </div>
-
-                  <div className="gameboy-speaker scale-75">
-                    <div className="speaker-line"></div>
-                    <div className="speaker-line"></div>
-                    <div className="speaker-line"></div>
-                  </div>
-                </>
-              ) : (
-                // Desktop controls (normal size)
-                <>
-                  <div className="gameboy-controls">
-                    <div className="gameboy-dpad">
-                      <div className="dpad-up"></div>
-                      <div className="dpad-right"></div>
-                      <div className="dpad-down"></div>
-                      <div className="dpad-left"></div>
-                      <div className="dpad-center"></div>
-                    </div>
-                    <div className="gameboy-buttons">
-                      <div className="btn-a">A</div>
-                      <div className="btn-b">B</div>
-                    </div>
-                  </div>
-
-                  <div className="gameboy-options">
-                    <div className="btn-select">SELECT</div>
-                    <div className="btn-start">START</div>
-                  </div>
-
-                  <div className="gameboy-speaker">
-                    <div className="speaker-line"></div>
-                    <div className="speaker-line"></div>
-                    <div className="speaker-line"></div>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Diagonal neon light beams - Smaller on mobile */}
-            {isMobile ? (
-              <>
-                <div className="absolute -bottom-4 -right-4 w-20 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
-                <div className="absolute -top-4 -left-4 w-20 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
-              </>
-            ) : (
-              <>
-                <div className="absolute -bottom-8 -right-8 w-40 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
-                <div className="absolute -top-8 -left-8 w-40 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
-              </>
-            )}
-          </div>
-
-          {/* Additional floating elements - Less prominent on mobile */}
-          {isMobile ? (
-            <>
-              <div className="absolute -bottom-10 left-10 text-2xl text-retro-neon-yellow animate-float">★</div>
-              <div className="absolute top-0 right-5 w-8 h-8 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
-            </>
-          ) : (
-            <>
-              <div className="absolute -bottom-20 left-20 text-4xl text-retro-neon-yellow animate-float">★</div>
-              <div className="absolute top-0 right-10 w-16 h-16 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
-            </>
-          )}
+        {/* Right Column - Modern GameBoy Console */}
+        <div className="md:w-6/12 w-full relative md:mt-0 mt-8">
+          {/* Star decorations */}
+          <div className="absolute -bottom-16 left-12 text-3xl text-retro-neon-yellow animate-float z-20">★</div>
+          <div className="absolute top-0 right-8 w-12 h-12 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong z-20"></div>
+          
+          {/* GameBoy Component */}
+          <GameBoyConsole leads={12} sequences={15} conversions={8} />
+          
+          {/* Diagonal neon light beams */}
+          <div className="absolute -bottom-8 -right-8 w-40 h-2 bg-retro-neon-pink rounded-full blur-md transform rotate-45 opacity-50 z-10"></div>
+          <div className="absolute -top-8 -left-8 w-40 h-2 bg-retro-neon-blue rounded-full blur-md transform -rotate-45 opacity-50 z-10"></div>
         </div>
       </div>
     </section>
