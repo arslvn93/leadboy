@@ -122,48 +122,71 @@ const HeroSection = () => {
           )}
         </div>
 
-        {/* Right Column - Gameboy Terminal - Hidden on small screens, simplified on medium */}
-        <div className="md:w-6/12 w-full relative md:mt-0 hidden md:block">
+        {/* Right Column - Gameboy Terminal - Responsive for all screens */}
+        <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
           {/* Gameboy Console */}
-          <div className="gameboy-container">
+          <div className="gameboy-container mx-auto" style={{maxWidth: isMobile ? '280px' : 'none'}}>
             {/* Outer glow */}
             <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
 
-            <div className="gameboy-body transform rotate-2 glow-container">
+            <div className={`gameboy-body transform ${isMobile ? 'rotate-0 scale-90' : 'rotate-2'} glow-container`}>
               <div className="gameboy-screen-area">
                 <div className="gameboy-power-led"></div>
                 <div className="gameboy-screen crt-screen">
                   {/* Terminal Content */}
-                  <div className="font-retro text-xl h-full flex flex-col">
-                    <div className="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
-                      <span className="neon-text-green">LEADBOY AI v1.0</span>
-                      <span className="text-yellow-300 animate-blink">ONLINE</span>
+                  <div className="font-retro text-base md:text-xl h-full flex flex-col">
+                    <div className="flex justify-between items-center mb-2 md:mb-4 border-b border-gray-700 pb-2">
+                      <span className="neon-text-green text-sm md:text-base">LEADBOY AI v1.0</span>
+                      <span className="text-yellow-300 animate-blink text-sm md:text-base">ONLINE</span>
                     </div>
 
                     <div className="flex-1">
-                      <div className="mb-3 flex justify-between">
-                        <span className="text-green-400">NEW LEADS:</span>
-                        <span className="text-yellow-300">12</span>
-                      </div>
-                      <div className="mb-3 flex justify-between">
-                        <span className="text-green-400">SEQUENCES:</span>
-                        <span className="text-yellow-300">15</span>
-                      </div>
-                      <div className="mb-3 flex justify-between">
-                        <span className="text-green-400">CONVERSIONS:</span>
-                        <span className="text-yellow-300">8</span>
-                      </div>
-                      <div className="my-3 h-[1px] w-full bg-gray-700 opacity-30"></div>
-                      <div className="flex items-center text-green-300">
-                        <span className="animate-blink mr-2">▶</span>
-                        <span>AI Assistant ready...</span>
-                      </div>
+                      {isMobile ? (
+                        // Simplified display for mobile
+                        <>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-green-400 text-sm">LEADS:</span>
+                            <span className="text-yellow-300 text-sm">12</span>
+                          </div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-green-400 text-sm">CONVERSIONS:</span>
+                            <span className="text-yellow-300 text-sm">8</span>
+                          </div>
+                          <div className="my-2 h-[1px] w-full bg-gray-700 opacity-30"></div>
+                          <div className="flex items-center text-green-300 text-sm">
+                            <span className="animate-blink mr-2">▶</span>
+                            <span>AI ready...</span>
+                          </div>
+                        </>
+                      ) : (
+                        // Full display for desktop
+                        <>
+                          <div className="mb-3 flex justify-between">
+                            <span className="text-green-400">NEW LEADS:</span>
+                            <span className="text-yellow-300">12</span>
+                          </div>
+                          <div className="mb-3 flex justify-between">
+                            <span className="text-green-400">SEQUENCES:</span>
+                            <span className="text-yellow-300">15</span>
+                          </div>
+                          <div className="mb-3 flex justify-between">
+                            <span className="text-green-400">CONVERSIONS:</span>
+                            <span className="text-yellow-300">8</span>
+                          </div>
+                          <div className="my-3 h-[1px] w-full bg-gray-700 opacity-30"></div>
+                          <div className="flex items-center text-green-300">
+                            <span className="animate-blink mr-2">▶</span>
+                            <span>AI Assistant ready...</span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="gameboy-controls">
+              {/* Scale down controls on mobile */}
+              <div className={`gameboy-controls ${isMobile ? 'scale-75 mt-[-10px]' : ''}`}>
                 <div className="gameboy-dpad">
                   <div className="dpad-up"></div>
                   <div className="dpad-right"></div>
@@ -177,26 +200,26 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <div className="gameboy-options">
+              <div className={`gameboy-options ${isMobile ? 'scale-75 mt-[-5px]' : ''}`}>
                 <div className="btn-select">SELECT</div>
                 <div className="btn-start">START</div>
               </div>
 
-              <div className="gameboy-speaker">
+              <div className={`gameboy-speaker ${isMobile ? 'scale-75' : ''}`}>
                 <div className="speaker-line"></div>
                 <div className="speaker-line"></div>
                 <div className="speaker-line"></div>
               </div>
             </div>
 
-            {/* Diagonal neon light beams */}
-            <div className="absolute -bottom-8 -right-8 w-40 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
-            <div className="absolute -top-8 -left-8 w-40 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
+            {/* Diagonal neon light beams - Smaller on mobile */}
+            <div className={`absolute ${isMobile ? '-bottom-4 -right-4 w-20' : '-bottom-8 -right-8 w-40'} h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45`}></div>
+            <div className={`absolute ${isMobile ? '-top-4 -left-4 w-20' : '-top-8 -left-8 w-40'} h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45`}></div>
           </div>
 
-          {/* Additional floating elements */}
-          <div className="absolute -bottom-20 left-20 text-4xl text-retro-neon-yellow animate-float">★</div>
-          <div className="absolute top-0 right-10 w-16 h-16 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
+          {/* Additional floating elements - Less prominent on mobile */}
+          <div className={`absolute ${isMobile ? '-bottom-10 left-10 text-2xl' : '-bottom-20 left-20 text-4xl'} text-retro-neon-yellow animate-float`}>★</div>
+          <div className={`absolute ${isMobile ? 'top-0 right-5 w-8 h-8' : 'top-0 right-10 w-16 h-16'} rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong`}></div>
         </div>
       </div>
     </section>
