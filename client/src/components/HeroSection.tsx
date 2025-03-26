@@ -125,7 +125,7 @@ const HeroSection = () => {
         {/* Right Column - Gameboy Terminal - Responsive for all screens */}
         <div className="md:w-6/12 w-full relative md:mt-0 mt-12">
           {/* Gameboy Console */}
-          <div className="gameboy-container mx-auto" style={{maxWidth: isMobile ? '280px' : 'none'}}>
+          <div className={`gameboy-container ${isMobile ? 'mx-auto' : ''}`} style={{maxWidth: isMobile ? '280px' : 'none'}}>
             {/* Outer glow */}
             <div className="absolute inset-0 rounded-2xl bg-retro-neon-blue opacity-30 blur-xl"></div>
 
@@ -134,7 +134,7 @@ const HeroSection = () => {
                 <div className="gameboy-power-led"></div>
                 <div className="gameboy-screen crt-screen">
                   {/* Terminal Content */}
-                  <div className="font-retro text-base md:text-xl h-full flex flex-col">
+                  <div className="font-retro h-full flex flex-col">
                     <div className="flex justify-between items-center mb-2 md:mb-4 border-b border-gray-700 pb-2">
                       <span className="neon-text-green text-sm md:text-base">LEADBOY AI v1.0</span>
                       <span className="text-yellow-300 animate-blink text-sm md:text-base">ONLINE</span>
@@ -185,41 +185,91 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Scale down controls on mobile */}
-              <div className={`gameboy-controls ${isMobile ? 'scale-75 mt-[-10px]' : ''}`}>
-                <div className="gameboy-dpad">
-                  <div className="dpad-up"></div>
-                  <div className="dpad-right"></div>
-                  <div className="dpad-down"></div>
-                  <div className="dpad-left"></div>
-                  <div className="dpad-center"></div>
-                </div>
-                <div className="gameboy-buttons">
-                  <div className="btn-a">A</div>
-                  <div className="btn-b">B</div>
-                </div>
-              </div>
+              {isMobile ? (
+                // Mobile controls (scaled down)
+                <>
+                  <div className="gameboy-controls scale-75 mt-[-10px]">
+                    <div className="gameboy-dpad">
+                      <div className="dpad-up"></div>
+                      <div className="dpad-right"></div>
+                      <div className="dpad-down"></div>
+                      <div className="dpad-left"></div>
+                      <div className="dpad-center"></div>
+                    </div>
+                    <div className="gameboy-buttons">
+                      <div className="btn-a">A</div>
+                      <div className="btn-b">B</div>
+                    </div>
+                  </div>
 
-              <div className={`gameboy-options ${isMobile ? 'scale-75 mt-[-5px]' : ''}`}>
-                <div className="btn-select">SELECT</div>
-                <div className="btn-start">START</div>
-              </div>
+                  <div className="gameboy-options scale-75 mt-[-5px]">
+                    <div className="btn-select">SELECT</div>
+                    <div className="btn-start">START</div>
+                  </div>
 
-              <div className={`gameboy-speaker ${isMobile ? 'scale-75' : ''}`}>
-                <div className="speaker-line"></div>
-                <div className="speaker-line"></div>
-                <div className="speaker-line"></div>
-              </div>
+                  <div className="gameboy-speaker scale-75">
+                    <div className="speaker-line"></div>
+                    <div className="speaker-line"></div>
+                    <div className="speaker-line"></div>
+                  </div>
+                </>
+              ) : (
+                // Desktop controls (normal size)
+                <>
+                  <div className="gameboy-controls">
+                    <div className="gameboy-dpad">
+                      <div className="dpad-up"></div>
+                      <div className="dpad-right"></div>
+                      <div className="dpad-down"></div>
+                      <div className="dpad-left"></div>
+                      <div className="dpad-center"></div>
+                    </div>
+                    <div className="gameboy-buttons">
+                      <div className="btn-a">A</div>
+                      <div className="btn-b">B</div>
+                    </div>
+                  </div>
+
+                  <div className="gameboy-options">
+                    <div className="btn-select">SELECT</div>
+                    <div className="btn-start">START</div>
+                  </div>
+
+                  <div className="gameboy-speaker">
+                    <div className="speaker-line"></div>
+                    <div className="speaker-line"></div>
+                    <div className="speaker-line"></div>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Diagonal neon light beams - Smaller on mobile */}
-            <div className={`absolute ${isMobile ? '-bottom-4 -right-4 w-20' : '-bottom-8 -right-8 w-40'} h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45`}></div>
-            <div className={`absolute ${isMobile ? '-top-4 -left-4 w-20' : '-top-8 -left-8 w-40'} h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45`}></div>
+            {isMobile ? (
+              <>
+                <div className="absolute -bottom-4 -right-4 w-20 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
+                <div className="absolute -top-4 -left-4 w-20 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
+              </>
+            ) : (
+              <>
+                <div className="absolute -bottom-8 -right-8 w-40 h-3 bg-retro-neon-pink rounded-full blur-sm transform rotate-45"></div>
+                <div className="absolute -top-8 -left-8 w-40 h-3 bg-retro-neon-blue rounded-full blur-sm transform -rotate-45"></div>
+              </>
+            )}
           </div>
 
           {/* Additional floating elements - Less prominent on mobile */}
-          <div className={`absolute ${isMobile ? '-bottom-10 left-10 text-2xl' : '-bottom-20 left-20 text-4xl'} text-retro-neon-yellow animate-float`}>★</div>
-          <div className={`absolute ${isMobile ? 'top-0 right-5 w-8 h-8' : 'top-0 right-10 w-16 h-16'} rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong`}></div>
+          {isMobile ? (
+            <>
+              <div className="absolute -bottom-10 left-10 text-2xl text-retro-neon-yellow animate-float">★</div>
+              <div className="absolute top-0 right-5 w-8 h-8 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
+            </>
+          ) : (
+            <>
+              <div className="absolute -bottom-20 left-20 text-4xl text-retro-neon-yellow animate-float">★</div>
+              <div className="absolute top-0 right-10 w-16 h-16 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong"></div>
+            </>
+          )}
         </div>
       </div>
     </section>
