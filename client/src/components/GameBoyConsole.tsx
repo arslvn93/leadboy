@@ -25,7 +25,7 @@ const GameBoyConsole = ({
       <div className="absolute inset-0 rounded-[10%] bg-[#00ffff] opacity-20 blur-xl"></div>
       
       {/* Console body - more rectangular like the image */}
-      <div className="game-console-body relative bg-[#222] rounded-[28px] border border-[#333] p-5 shadow-xl" 
+      <div className="game-console-body gameboy-image relative bg-[#222] rounded-[28px] border border-[#333] p-5 shadow-xl" 
            style={{aspectRatio: isMobile ? '0.7/1' : '0.65/1'}}>
         {/* Cyan neon border glow */}
         <div className="absolute inset-0 rounded-[28px] border border-[#00ffff] opacity-40 shadow-[0_0_15px_rgba(0,255,255,0.5)]"></div>
