@@ -54,14 +54,30 @@ const HeroSection = () => {
           </div>
 
           {/* Social proof */}
-          <div className="flex items-center">
-            <div className="flex -space-x-3">
-              <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-purple"></div>
-              <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-pink"></div>
-              <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-blue"></div>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            {/* Trusted by */}
+            <div className="flex items-center">
+              <div className="flex -space-x-3">
+                <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-purple"></div>
+                <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-pink"></div>
+                <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-blue"></div>
+              </div>
+              <div className="ml-4 font-bold text-white px-4 py-2 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm">
+                Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> real estate agents
+              </div>
             </div>
-            <div className="ml-4 font-bold text-white px-4 py-2 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm">
-              Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> real estate agents
+            
+            {/* Response rate badge */}
+            <div className="flex items-center">
+              <div className="px-4 py-3 border-2 border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green">
+                <div className="flex items-center">
+                  <div className="text-retro-neon-green text-2xl mr-2 animate-pulse">★</div>
+                  <div>
+                    <span className="font-bold text-white">Proven to increase response rates by up to </span>
+                    <span className="text-retro-neon-pink font-black neon-text-sm text-xl">247%</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
