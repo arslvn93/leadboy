@@ -30,8 +30,7 @@ const HeroSection = () => {
           <h1 className="mb-6 relative">
             <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
               <div>IT'S NOT THE</div>
-              <div>90'S</div>
-              <div>ANYMORE...</div>
+              <div>90'S ANYMORE...</div>
               <div>STOP FOLLOWING</div>
               <div className="flex items-center">UP LIKE IT... <span className="ml-4 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
