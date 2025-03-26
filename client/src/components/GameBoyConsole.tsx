@@ -14,7 +14,13 @@ const GameBoyConsole = ({
   const isMobile = useIsMobile();
   
   return (
-    <div className="game-console-container mx-auto" style={{maxWidth: isMobile ? '300px' : '400px'}}>
+    <div className="game-console-container relative mx-auto" style={{maxWidth: isMobile ? '300px' : '400px'}}>
+      {/* Spotlight effect and light rays */}
+      <div className="gameboy-spotlight"></div>
+      <div className="light-ray ray1"></div>
+      <div className="light-ray ray2"></div>
+      <div className="light-ray ray3"></div>
+      
       {/* Outer glow */}
       <div className="absolute inset-0 rounded-[10%] bg-[#00ffff] opacity-20 blur-xl"></div>
       

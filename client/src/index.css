@@ -549,6 +549,17 @@ h1, h2, h3, .pixel-font {
                    0 0 70px currentColor,
                    0 0 80px currentColor; }
   }
+  
+  @keyframes pulse-spotlight {
+    0%, 100% {
+      opacity: 0.7;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
 
   .animate-blink {
     animation: blink 1s steps(5, start) infinite;
@@ -678,6 +689,59 @@ h1, h2, h3, .pixel-font {
   background-size: 8px 8px;
   margin: 0 auto;
   position: relative;
+}
+
+.gameboy-spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; /* Adjust based on GameBoy size */
+  height: 300px;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 255, 0.8) 0%,
+    rgba(0, 255, 255, 0.4) 20%,
+    rgba(0, 255, 255, 0.1) 40%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: -1;
+  opacity: 0.7;
+  animation: pulse-spotlight 4s ease-in-out infinite;
+}
+
+.light-ray {
+  position: absolute;
+  height: 2px;
+  background: rgba(0, 255, 255, 0.6);
+  filter: blur(3px);
+  z-index: -1;
+  transform-origin: left center;
+}
+
+.ray1 {
+  width: 150px;
+  top: 30%;
+  left: 50%;
+  transform: rotate(-30deg);
+  opacity: 0.4;
+}
+
+.ray2 {
+  width: 180px;
+  top: 60%;
+  left: 45%;
+  transform: rotate(20deg);
+  opacity: 0.3;
+}
+
+.ray3 {
+  width: 120px;
+  top: 45%;
+  left: 55%;
+  transform: rotate(-5deg);
+  opacity: 0.5;
 }
 
 .pixel-arrow {
