@@ -1165,38 +1165,42 @@ h1, h2, h3, .pixel-font {
     padding-right: 16px;
   }
   
-  /* Fix the dead space at the top */
+  /* Force removal of ALL top space */
   body, html {
-    margin-top: 0;
-    padding-top: 0;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
-  /* Target the main container */
-  .main-container, #main, .hero-section {
-    margin-top: 0;
-    padding-top: 0;
-  }
-  
-  /* Move the top headline up */
-  .pill-headline {
-    margin-top: 0;
-    margin-bottom: 15px;
-  }
-  
-  /* Adjust spacing between elements */
-  .hero-content {
-    gap: 15px;
-  }
-  
-  /* Remove any fixed heights that might be causing the space */
-  .hero-section, .top-section {
-    min-height: auto;
-    height: auto;
-  }
-  
-  /* Adjust any positioned elements */
-  .top-element, .header-container {
-    position: relative;
+  /* Target the grid background container */
+  .grid-bg, .background-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Place behind content */
+  }
+  
+  /* First visible content element */
+  .pill-headline, .free-ai-tool {
+    margin-top: 15px !important; /* Just enough spacing from the very top */
+  }
+  
+  /* Reset any negative margins if they're causing issues */
+  .content-container, .hero-section {
+    margin-top: 0 !important;
+  }
+  
+  /* If header is fixed or absolute positioned */
+  header, .header-container {
+    position: fixed !important;
+    top: -100px !important; /* Move completely out of view initially */
+    transition: top 0.3s ease-in-out;
+  }
+  
+  header.visible, .header-container.visible {
+    top: 0 !important;
   }
 }

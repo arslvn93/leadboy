@@ -8,7 +8,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="hero" className="pt-0 pb-4 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple -mt-6 md:mt-0">
+    <section id="hero" className="pt-0 pb-4 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple -mt-10 md:mt-0">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
 
@@ -26,7 +26,7 @@ const HeroSection = () => {
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-2 md:mb-0 mt-0 pt-0">
           {/* Eyebrow copy badge - pill style for mobile */}
-          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-1 -mt-1' : 'mb-6'}`}>
+          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-1 mt-0' : 'mb-6'} free-ai-tool pill-headline`}>
             <div className={`${isMobile ? 'px-2.5 py-1' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase ${isMobile ? 'text-[11px]' : 'text-xs sm:text-sm'} text-retro-dark`}>
               FREE AI TOOL FOR MODERN AGENTS
             </div>

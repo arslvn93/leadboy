@@ -29,7 +29,7 @@ const Header = () => {
   const headerVisible = !isMobile || scrollPosition > 100 || mobileMenuOpen;
 
   return (
-    <header className={`bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-1 md:py-3 sticky top-0 z-50 shadow-neon-purple transition-all duration-300 ${headerVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+    <header className={`bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-1 md:py-3 sticky top-0 z-50 shadow-neon-purple transition-all duration-300 ${headerVisible ? 'opacity-100 visible' : 'opacity-0 pointer-events-none'}`}>
       {/* Grid background for header */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:20px_20px] opacity-20"></div>
       
