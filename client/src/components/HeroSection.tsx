@@ -35,21 +35,20 @@ const HeroSection = () => {
           {/* Clean heading with adjusted size - more compact and cohesive */}
           <h1 className="mb-1 md:mb-2 relative hero-headline">
             {isMobile ? (
-              <div className="flex flex-col text-[1.7rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.05] tracking-wide text-center">
+              <div className="flex flex-col text-[1.6rem] font-bold text-white leading-tight tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-0">STILL CHASING LEADS LIKE IT'S 1995?</div>
-                <div className="text-white leading-tight">
-                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails, and Call Scripts from Our AI Tool in 60 Seconds <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
+                <div className="text-white">
+                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts from Our AI Tool in 60 Seconds <span className="text-xl text-retro-neon-blue neon-text animate-pulse align-middle">★</span>
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.05] tracking-wide">
+              <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green mb-1">STILL CHASING LEADS LIKE IT'S 1995?</div>
-                <div className="flex flex-wrap items-center">
-                  <span>Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails, and Call Scripts</span>
+                <div>
+                  Get 15 Days of <span className="text-retro-neon-pink text-shadow-neon-pink">FREE</span> Custom Texts, Emails & Call Scripts
                 </div>
-                <div className="flex flex-wrap items-center">
-                  <span>from Our AI Tool in 60 Seconds</span>
-                  <span className="ml-3 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                <div>
+                  From Our AI Tool - in 60 Seconds! <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
             )}
