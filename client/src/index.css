@@ -713,35 +713,24 @@ h1, h2, h3, .pixel-font {
 
 .light-ray {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
   height: 2px;
-  background: rgba(0, 255, 255, 0.6);
-  filter: blur(3px);
+  background: rgba(0, 255, 255, 0.3);
   z-index: -1;
-  transform-origin: left center;
 }
 
 .ray1 {
-  width: 150px;
-  top: 30%;
-  left: 50%;
-  transform: rotate(-30deg);
-  opacity: 0.4;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .ray2 {
-  width: 180px;
-  top: 60%;
-  left: 45%;
-  transform: rotate(20deg);
-  opacity: 0.3;
+  transform: translate(-50%, -50%) rotate(135deg);
 }
 
 .ray3 {
-  width: 120px;
-  top: 45%;
-  left: 55%;
-  transform: rotate(-5deg);
-  opacity: 0.5;
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .pixel-arrow {
