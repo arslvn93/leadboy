@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Star, Zap } from 'lucide-react';
+import { smoothScrollTo } from '@/lib/utils';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,7 +39,14 @@ const Header = () => {
           {['Features', 'How It Works', 'Testimonials'].map((item, index) => (
             <a 
               key={index}
-              href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                const id = item.toLowerCase().replace(/\s+/g, '-');
+                // Special case for testimonials
+                const targetId = item === 'Testimonials' ? 'testimonials' : id;
+                smoothScrollTo(targetId);
+              }}
               className="relative group"
             >
               <span className="text-white font-display uppercase tracking-wider text-sm transition-colors duration-300 border-b border-transparent group-hover:border-retro-neon-blue group-hover:text-retro-neon-blue group-hover:neon-text-sm">
@@ -52,7 +60,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Button 
             className="bg-retro-gradient-blue text-white font-bold uppercase rounded px-4 py-2 shadow-neon-blue text-sm md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
-            onClick={() => window.location.href = '#signup'}
+            onClick={() => smoothScrollTo('signup')}
           >
             <Zap className="w-4 h-4 mr-1 text-retro-neon-yellow" />
             Start Free
@@ -82,9 +90,16 @@ const Header = () => {
             {['Features', 'How It Works', 'Testimonials'].map((item, index) => (
               <a 
                 key={index}
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                href="#"
                 className="transform transition-all duration-300 hover:translate-x-2"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  const id = item.toLowerCase().replace(/\s+/g, '-');
+                  // Special case for testimonials
+                  const targetId = item === 'Testimonials' ? 'testimonials' : id;
+                  smoothScrollTo(targetId);
+                }}
               >
                 <div className="flex items-center">
                   <span className="text-retro-neon-pink mr-2">▶</span>

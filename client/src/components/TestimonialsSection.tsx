@@ -40,7 +40,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="high-scores-section py-16 relative bg-[#051736]">
+    <section id="testimonials" className="high-scores-section py-16 relative bg-[#051736]">
       {/* VHS distortion scan lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="w-full h-[2px] bg-[#00ffff] opacity-5 animate-scan-line"></div>
@@ -62,10 +62,9 @@ const TestimonialsSection = () => {
           <div className="leaderboard-container">
             {/* Score table header */}
             <div className="score-table-header flex mb-4 px-4 py-2 bg-[#8BAC0F] rounded-t-md">
-              <div className="w-1/6 text-black font-bold text-sm">RANK</div>
-              <div className="w-2/6 text-black font-bold text-sm">PLAYER</div>
-              <div className="w-2/6 text-black font-bold text-sm">SCORE</div>
-              <div className="w-1/6 text-black font-bold text-sm">STARS</div>
+              <div className="w-1/4 text-black font-bold text-sm">PLAYER</div>
+              <div className="w-2/4 text-black font-bold text-sm">WHAT THEY HAD TO SAY</div>
+              <div className="w-1/4 text-black font-bold text-sm">REVIEW</div>
             </div>
             
             {/* Testimonial rows */}
@@ -74,20 +73,21 @@ const TestimonialsSection = () => {
                 key={index}
                 className="testimonial-row flex items-center hover:bg-[rgba(90,255,188,0.1)] transition-all p-4 border-b border-[#333]"
               >
-                <div className="w-1/6 text-[#FFCC00] font-bold text-xl">{testimonial.rank}</div>
-                <div className="w-2/6 flex items-center">
+                <div className="w-1/4 flex items-center">
                   <div className="pixel-avatar mr-3 w-10 h-10 rounded" style={{backgroundColor: testimonial.avatarColor}}></div>
                   <div>
                     <p className="font-bold text-white text-sm">{testimonial.name}</p>
                     <p className="text-gray-400 text-xs">{testimonial.role}</p>
                   </div>
                 </div>
-                <div className="w-2/6">
-                  <div className="score-value text-[#FFCC00] font-bold mb-2">{testimonial.score}</div>
-                  <div className="achievement text-white text-sm">{testimonial.achievement}</div>
+                <div className="w-2/4">
+                  <div className="text-white text-sm">{testimonial.content}</div>
                 </div>
-                <div className="w-1/6">
-                  <div className="text-[#FFCC00] text-lg">★★★★★</div>
+                <div className="w-1/4">
+                  <div className="flex items-center">
+                    <div className="text-[#FFCC00] font-bold mr-2">{testimonial.rank}</div>
+                    <div className="text-[#FFCC00] text-lg">★★★★★</div>
+                  </div>
                 </div>
               </div>
             ))}
