@@ -867,3 +867,40 @@ h1, h2, h3, .pixel-font {
     text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
   }
 }
+
+/* FAQ Cheat Codes Section Styles */
+.bg-grid {
+  background-image: linear-gradient(rgba(5, 23, 54, 0.5) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(5, 23, 54, 0.5) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.floating-pixel {
+  position: absolute;
+  opacity: 0.8;
+  text-shadow: 0 0 10px currentColor;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(15px, -15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.game-manual {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.manual-inner {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.shadow-glow-yellow {
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+}

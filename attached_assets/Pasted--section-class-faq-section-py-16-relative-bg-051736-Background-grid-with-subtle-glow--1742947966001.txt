@@ -1,0 +1,108 @@
+<section class="faq-section py-16 relative bg-[#051736]">
+  <!-- Background grid with subtle glow -->
+  <div class="absolute inset-0 bg-grid opacity-10"></div>
+  
+  <!-- Floating pixel elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="floating-pixel" style="top: 10%; left: 5%;">?</div>
+    <div class="floating-pixel" style="top: 70%; right: 10%;">!</div>
+    <div class="floating-pixel" style="top: 40%; right: 5%;">↑↓</div>
+  </div>
+
+  <div class="container max-w-4xl mx-auto px-4">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <h2 class="font-press-start text-4xl text-[#00ffff] glow-text mb-4">CHEAT CODES</h2>
+      <p class="text-[#5affbc] font-vt323 text-xl">Unlock these secrets to maximize your lead conversion powers</p>
+    </div>
+    
+    <!-- Game manual style FAQ container -->
+    <div class="game-manual bg-[#222] border-4 border-[#00ffff] rounded-lg p-1">
+      <div class="manual-inner border-2 border-dashed border-[#5affbc] rounded p-6">
+        
+        <!-- FAQ items -->
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between bg-[#051736] hover:bg-[#0a2a5c] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all">
+              <div class="flex items-center">
+                <span class="cheat-code font-press-start text-[#FFCC00] mr-3">↑↑</span>
+                <span class="font-press-start text-white text-sm sm:text-base">How much does LeadQuest cost?</span>
+              </div>
+              <div class="toggle-icon text-[#00ffff] transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer hidden bg-black bg-opacity-50 p-4 rounded mt-1 border-l-4 border-[#5affbc]">
+              <p class="text-[#FFFFFF] font-vt323 text-lg">Our basic plan starts at $99/month with unlimited leads and sequences. Premium power-ups available for larger teams starting at $299/month. No setup fees, no contracts - cancel anytime.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 2 -->
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between bg-[#051736] hover:bg-[#0a2a5c] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all">
+              <div class="flex items-center">
+                <span class="cheat-code font-press-start text-[#FFCC00] mr-3">↓↓</span>
+                <span class="font-press-start text-white text-sm sm:text-base">How long until I see results?</span>
+              </div>
+              <div class="toggle-icon text-[#00ffff] transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer hidden bg-black bg-opacity-50 p-4 rounded mt-1 border-l-4 border-[#5affbc]">
+              <p class="text-[#FFFFFF] font-vt323 text-lg">Most users see improved engagement within 48 hours and closed deals within 2 weeks. Our average user reports a 40% increase in response rates and 22% more closings after 30 days.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 3 -->
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between bg-[#051736] hover:bg-[#0a2a5c] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all">
+              <div class="flex items-center">
+                <span class="cheat-code font-press-start text-[#FFCC00] mr-3">←→</span>
+                <span class="font-press-start text-white text-sm sm:text-base">Do I need technical skills?</span>
+              </div>
+              <div class="toggle-icon text-[#00ffff] transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer hidden bg-black bg-opacity-50 p-4 rounded mt-1 border-l-4 border-[#5affbc]">
+              <p class="text-[#FFFFFF] font-vt323 text-lg">Not at all! Our system is designed for easy setup with no coding required. If you can use email, you can use LeadQuest. Our setup wizard guides you through the entire process in just minutes.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 4 -->
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between bg-[#051736] hover:bg-[#0a2a5c] p-4 rounded border-l-4 border-[#9013FE] text-left transition-all">
+              <div class="flex items-center">
+                <span class="cheat-code font-press-start text-[#FFCC00] mr-3">BA</span>
+                <span class="font-press-start text-white text-sm sm:text-base">Can I customize the messages?</span>
+              </div>
+              <div class="toggle-icon text-[#00ffff] transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer hidden bg-black bg-opacity-50 p-4 rounded mt-1 border-l-4 border-[#5affbc]">
+              <p class="text-[#FFFFFF] font-vt323 text-lg">Absolutely! We offer both pre-built templates and fully customizable sequences. You can personalize every message, adjust timing, and create branching paths based on client responses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bonus secret -->
+    <div class="secret-bonus mt-12 text-center">
+      <div class="inline-block bg-[#222] border-2 border-[#FFCC00] rounded p-4 shadow-glow-sm">
+        <p class="font-press-start text-[#FFCC00] text-sm">SECRET BONUS UNLOCKED!</p>
+        <p class="text-white font-vt323 text-lg mt-2">First-time players get a 14-day free trial with all power-ups included!</p>
+      </div>
+    </div>
+  </div>
+</section>
