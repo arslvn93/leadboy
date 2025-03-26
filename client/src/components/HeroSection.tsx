@@ -77,7 +77,7 @@ const HeroSection = () => {
                 onClick={() => smoothScrollTo('signup')}
               >
                 <Star className={`${isMobile ? 'mr-1 h-3 w-3 animate-pulse' : 'mr-2 h-4 w-4 md:h-5 md:w-5'} flex-shrink-0 text-retro-neon-blue`} /> 
-                <span className={isMobile ? 'text-shadow-neon-pink text-xs' : 'text-sm md:text-base'}>{isMobile ? 'GET YOUR SEQUENCE' : 'GET YOUR CUSTOM FOLLOW UP SEQUENCE NOW'}</span>
+                <span className={isMobile ? 'text-shadow-neon-pink text-xs' : 'text-sm md:text-base'}>{isMobile ? 'CREATE FREE SCRIPTS' : 'CREATE FREE SCRIPTS NOW'}</span>
               </Button>
             </div>
             <div className="text-center w-full mb-1">
@@ -93,14 +93,14 @@ const HeroSection = () => {
               {/* Trusted by - simplified */}
               <div className="flex items-center justify-center trust-item trusted-by-container">
                 <div className="px-3 py-1 border-2 border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center shadow-neon-blue">
-                  <span className="font-bold text-white text-[12px]">Trusted by <span className="text-retro-neon-pink text-shadow-neon-pink animate-pulse">2,500+</span> agents</span>
+                  <span className="font-bold text-white text-[12px]">Trusted by <span className="stat-highlight animate-pulse">2,500+</span> agents</span>
                 </div>
               </div>
               
               {/* Response rate badge - simplified */}
               <div className="flex items-center justify-center trust-item response-container mt-[-15px]">
                 <div className="px-3 py-1 border-2 border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
-                  <span className="text-white text-[12px]">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black text-shadow-neon-pink animate-pulse">247%</span></span>
+                  <span className="text-white text-[12px]">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="stat-highlight animate-pulse">247%</span></span>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ const HeroSection = () => {
                   <div className="w-12 h-12 rounded-full border-2 border-retro-bright bg-retro-gradient-blue"></div>
                 </div>
                 <div className="ml-4 font-bold text-white px-4 py-2 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm">
-                  Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> real estate agents
+                  Trusted by <span className="stat-highlight">2,500+</span> real estate agents
                 </div>
               </div>
               
@@ -125,7 +125,7 @@ const HeroSection = () => {
                     <div className="text-retro-neon-green text-2xl mr-2 animate-pulse">★</div>
                     <div>
                       <span className="font-bold text-white">Proven to increase response rates by up to </span>
-                      <span className="text-retro-neon-pink font-black neon-text-sm text-xl">247%</span>
+                      <span className="stat-highlight text-xl">247%</span>
                     </div>
                   </div>
                 </div>

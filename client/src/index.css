@@ -1314,6 +1314,14 @@ h1, h2, h3, .pixel-font {
   font-weight: 700;
 }
 
+/* Enhanced stat highlighting for better contrast */
+.stat-highlight {
+  color: #00FFFF; /* Bright cyan */
+  font-weight: 800;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 255, 255, 0.7);
+  letter-spacing: 0.03em;
+}
+
 .text-shadow-neon-blue {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7),
               0 0 7px rgba(0, 183, 255, 0.7), 
