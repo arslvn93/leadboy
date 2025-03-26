@@ -1095,6 +1095,14 @@ h1, h2, h3, .pixel-font {
     box-sizing: border-box !important;
   }
   
+  /* Ensure headlines wrap properly on small screens */
+  .headline, .subheadline, .hero-headline, .hero-subheadline {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    width: 100% !important;
+  }
+  
   /* Logo & Header adjustments */
   .logo-container img {
     width: 80%; /* Reduce logo size */

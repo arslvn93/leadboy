@@ -35,9 +35,9 @@ const HeroSection = () => {
           {/* Clean heading with adjusted size - more compact and cohesive */}
           <h1 className="mb-2 md:mb-4 relative hero-headline">
             {isMobile ? (
-              <div className="flex flex-col text-[1.95rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-wide text-center">
+              <div className="flex flex-col text-[1.85rem] md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-wide text-center">
                 <div className="text-retro-neon-green neon-text-sm text-shadow-neon-green">IT'S NOT THE 90'S,</div>
-                <div className="flex items-center justify-center mt-1 whitespace-nowrap">
+                <div className="flex items-center justify-center mt-1">
                   <span>STOP FOLLOWING UP LIKE IT</span>
                   <span className="ml-1 text-xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
