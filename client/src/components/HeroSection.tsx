@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div className="md:w-5/12 mb-16 md:mb-0">
           {/* Eyebrow copy badge - more readable */}
           <div className="inline-block px-4 py-2 bg-retro-bright rounded-md shadow-neon-blue font-bold uppercase text-xs sm:text-sm mb-5 text-retro-dark">
-            FREE AI TOOL FOR MODERN REALTORS
+            FREE AI TOOL FOR MODERN AGENTS
           </div>
 
           {/* Clean heading with adjusted size - more compact */}
@@ -46,14 +46,21 @@ const HeroSection = () => {
           </div>
 
           {/* Call to action buttons - responsive text */}
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-            <Button 
-              className="bg-retro-gradient-pink text-white px-8 sm:px-10 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-base sm:text-lg lg:text-xl whitespace-normal text-center w-full sm:w-auto"
-              onClick={() => smoothScrollTo('signup')}
-            >
-              <Star className="mr-2 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" /> 
-              <span>TRY LEADBOY FOR FREE</span>
-            </Button>
+          <div className="flex flex-col mb-8">
+            <div className="mb-2">
+              <Button 
+                className="bg-retro-gradient-pink text-white px-8 sm:px-10 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-base sm:text-lg lg:text-xl whitespace-normal text-center w-full sm:w-auto"
+                onClick={() => smoothScrollTo('signup')}
+              >
+                <Star className="mr-2 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" /> 
+                <span>TRY LEADBOY FOR FREE</span>
+              </Button>
+            </div>
+            <div className="text-center sm:text-left">
+              <span className="text-retro-bright text-sm font-medium bg-retro-dark-blue px-3 py-1 rounded-full border border-retro-bright inline-block">
+                <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
+              </span>
+            </div>
           </div>
 
           {/* Social proof */}
