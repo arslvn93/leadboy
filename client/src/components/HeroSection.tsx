@@ -133,8 +133,8 @@ const HeroSection = () => {
           )}
         </div>
 
-        {/* Right Column - Modern GameBoy Console */}
-        <div className="md:w-6/12 w-full relative md:mt-0 mt-0">
+        {/* Right Column - Modern GameBoy Console - improved positioning for mobile */}
+        <div className={`md:w-6/12 w-full relative ${isMobile ? 'mt-0 pt-0' : 'md:mt-0'}`}>
           {/* Star decorations - hidden on mobile */}
           {!isMobile && (
             <>
@@ -143,8 +143,10 @@ const HeroSection = () => {
             </>
           )}
           
-          {/* GameBoy Component */}
-          <GameBoyConsole leads={12} sequences={15} conversions={8} />
+          {/* GameBoy Component with reduced bottom margin on mobile */}
+          <div className={isMobile ? 'transform -translate-y-2' : ''}>
+            <GameBoyConsole leads={12} sequences={15} conversions={8} />
+          </div>
           
           {/* Diagonal neon light beams - reduced on mobile */}
           <div className={`absolute -bottom-8 -right-8 ${isMobile ? 'w-20' : 'w-40'} h-2 bg-retro-neon-pink rounded-full blur-md transform rotate-45 opacity-50 z-10`}></div>

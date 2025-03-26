@@ -14,15 +14,15 @@ const GameBoyConsole = ({
   const isMobile = useIsMobile();
   
   return (
-    <div className="game-console-container relative mx-auto animate-gentle-bounce" style={{maxWidth: isMobile ? '300px' : '400px'}}>
+    <div className={`game-console-container relative mx-auto ${isMobile ? 'animate-gentle-bounce mb-0 pb-0' : 'mb-4'}`} style={{maxWidth: isMobile ? '280px' : '400px'}}>
       {/* Spotlight effect and light rays */}
       <div className="gameboy-spotlight animate-pulse-strong"></div>
       <div className="light-ray ray1 animate-pulse"></div>
       <div className="light-ray ray2 animate-pulse-slow"></div>
       <div className="light-ray ray3 animate-pulse"></div>
       
-      {/* Outer glow */}
-      <div className="absolute inset-0 rounded-[10%] bg-[#00ffff] opacity-30 blur-xl animate-pulse-slow"></div>
+      {/* Outer glow - stronger on mobile for better visibility */}
+      <div className={`absolute inset-0 rounded-[10%] bg-[#00ffff] ${isMobile ? 'opacity-40' : 'opacity-30'} blur-xl animate-pulse-slow`}></div>
       
       {/* Console body - more rectangular like the image */}
       <div className="game-console-body gameboy-image relative bg-[#222] rounded-[28px] border-2 border-[#333] p-5 shadow-xl" 

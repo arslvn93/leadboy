@@ -1086,6 +1086,15 @@ h1, h2, h3, .pixel-font {
 
 /* Mobile optimizations - only apply to screens smaller than 768px */
 @media (max-width: 767px) {
+  /* Container spacing optimization */
+  .hero-container, .content-container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
   /* Logo & Header adjustments */
   .logo-container img {
     width: 80%; /* Reduce logo size */
