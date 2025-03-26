@@ -69,8 +69,8 @@ const HeroSection = () => {
           )}
 
           {/* Call to action button - better sized for mobile now that we have more space */}
-          <div className="flex flex-col mb-4 mt-1">
-            <div className="w-full mb-2">
+          <div className="flex flex-col mb-1 mt-1">
+            <div className="w-full mb-1">
               <Button 
                 className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-4 py-3 text-base' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
                 onClick={() => smoothScrollTo('signup')}
@@ -79,7 +79,7 @@ const HeroSection = () => {
                 <span className={isMobile ? 'text-shadow-neon-pink' : ''}>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
               </Button>
             </div>
-            <div className="text-center w-full mb-2">
+            <div className="text-center w-full mb-1">
               <span className={`text-retro-bright ${isMobile ? 'text-[11px]' : 'text-xs'} font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
                 <span className="mr-1 text-retro-neon-green animate-pulse">✓</span> No Credit Card Required
               </span>
@@ -88,7 +88,7 @@ const HeroSection = () => {
 
           {/* Social proof - simplified for mobile but slightly larger since we have more space */}
           {isMobile ? (
-            <div className="flex flex-row items-center justify-center gap-3 trust-container mb-4">
+            <div className="flex flex-row items-center justify-center gap-2 trust-container mb-3">
               {/* Trusted by - simplified */}
               <div className="flex items-center justify-center trust-item">
                 <div className="px-3 py-1.5 border-2 border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center shadow-neon-blue">
@@ -143,8 +143,8 @@ const HeroSection = () => {
             </>
           )}
           
-          {/* GameBoy Component with reduced bottom margin on mobile */}
-          <div className={isMobile ? 'transform -translate-y-2' : ''}>
+          {/* GameBoy Component with reduced bottom margin on mobile and moved up more */}
+          <div className={isMobile ? 'transform -translate-y-6' : ''}>
             <GameBoyConsole leads={12} sequences={15} conversions={8} />
           </div>
           
