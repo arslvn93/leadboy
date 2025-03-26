@@ -1137,8 +1137,8 @@ h1, h2, h3, .pixel-font {
   
   /* Overall spacing */
   .hero-section {
-    padding: 24px 16px;
-    gap: 20px;
+    padding: 16px 12px;
+    gap: 10px;
   }
   
   /* GameBoy spotlight adjustments for mobile */

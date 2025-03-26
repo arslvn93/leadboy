@@ -70,43 +70,25 @@ const HeroSection = () => {
             </div>
           )}
 
-          {/* Call to action button - larger and more prominent */}
-          <div className="flex flex-col mb-6">
-            <div className="w-full mb-1">
-              <Button 
-                className="cta-button bg-retro-gradient-pink text-white px-4 py-3 md:px-6 md:py-5 font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-base md:text-xl whitespace-normal text-center w-full"
-                onClick={() => smoothScrollTo('signup')}
-              >
-                <Star className="mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" /> 
-                <span>TRY LEADBOY FOR FREE</span>
-              </Button>
-            </div>
-            <div className="text-center w-full mb-3">
-              <span className={`text-retro-bright text-xs font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
-                <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
-              </span>
-            </div>
-          </div>
-
-          {/* Social proof - simplified for mobile */}
+          {/* Social proof - simplified for mobile - MOVED UP */}
           {isMobile ? (
-            <div className="flex flex-col gap-3 trust-container">
+            <div className="flex flex-col gap-2 trust-container mb-4">
               {/* Trusted by - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-4 py-2 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
-                  <span className="font-bold text-white text-sm">Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> agents</span>
+                <div className="px-3 py-1.5 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
+                  <span className="font-bold text-white text-xs">Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> agents</span>
                 </div>
               </div>
               
               {/* Response rate badge - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-4 py-2 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
-                  <span className="text-white text-sm">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black">247%</span></span>
+                <div className="px-3 py-1.5 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
+                  <span className="text-white text-xs">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black">247%</span></span>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 trust-container">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 trust-container mb-6">
               {/* Trusted by */}
               <div className="flex items-center trust-item">
                 <div className="flex -space-x-3">
@@ -133,20 +115,42 @@ const HeroSection = () => {
               </div>
             </div>
           )}
+
+          {/* Call to action button - smaller for mobile */}
+          <div className="flex flex-col mb-3">
+            <div className="w-full mb-1">
+              <Button 
+                className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-3 py-2 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-base md:text-xl'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
+                onClick={() => smoothScrollTo('signup')}
+              >
+                <Star className={`mr-2 ${isMobile ? 'h-3 w-3' : 'h-4 w-4 md:h-5 md:w-5'} flex-shrink-0`} /> 
+                <span>{isMobile ? 'TRY FREE' : 'TRY LEADBOY FOR FREE'}</span>
+              </Button>
+            </div>
+            <div className="text-center w-full mb-1">
+              <span className={`text-retro-bright ${isMobile ? 'text-[10px]' : 'text-xs'} font-medium ${isMobile ? 'flex justify-center' : 'inline-flex'} items-center`}>
+                <span className="mr-1 text-retro-neon-green">✓</span> No Credit Card Required
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Right Column - Modern GameBoy Console */}
-        <div className="md:w-6/12 w-full relative md:mt-0 mt-8">
-          {/* Star decorations */}
-          <div className="absolute -bottom-16 left-12 text-3xl text-retro-neon-yellow animate-float z-20">★</div>
-          <div className="absolute top-0 right-8 w-12 h-12 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong z-20"></div>
+        <div className="md:w-6/12 w-full relative md:mt-0 mt-2">
+          {/* Star decorations - hidden on mobile */}
+          {!isMobile && (
+            <>
+              <div className="absolute -bottom-16 left-12 text-3xl text-retro-neon-yellow animate-float z-20">★</div>
+              <div className="absolute top-0 right-8 w-12 h-12 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong z-20"></div>
+            </>
+          )}
           
           {/* GameBoy Component */}
           <GameBoyConsole leads={12} sequences={15} conversions={8} />
           
-          {/* Diagonal neon light beams */}
-          <div className="absolute -bottom-8 -right-8 w-40 h-2 bg-retro-neon-pink rounded-full blur-md transform rotate-45 opacity-50 z-10"></div>
-          <div className="absolute -top-8 -left-8 w-40 h-2 bg-retro-neon-blue rounded-full blur-md transform -rotate-45 opacity-50 z-10"></div>
+          {/* Diagonal neon light beams - reduced on mobile */}
+          <div className={`absolute -bottom-8 -right-8 ${isMobile ? 'w-20' : 'w-40'} h-2 bg-retro-neon-pink rounded-full blur-md transform rotate-45 opacity-50 z-10`}></div>
+          <div className={`absolute -top-8 -left-8 ${isMobile ? 'w-20' : 'w-40'} h-2 bg-retro-neon-blue rounded-full blur-md transform -rotate-45 opacity-50 z-10`}></div>
         </div>
       </div>
     </section>
