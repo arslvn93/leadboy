@@ -1103,6 +1103,25 @@ h1, h2, h3, .pixel-font {
     width: 100% !important;
   }
   
+  /* Eyebrow copy spacing optimization */
+  .eyebrow-container, .cyan-pill, .pill-headline, .free-ai-tool {
+    margin-top: 15px !important;
+    padding-top: 8px !important;
+  }
+  
+  /* Trust indicators spacing */
+  .trust-container, .social-elements, .trust-indicators {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    gap: 10px !important; /* Reduce space between them */
+  }
+  
+  /* If they're separate elements rather than in a container */
+  .trusted-by, .response-rates, .trust-item {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  
   /* Logo & Header adjustments */
   .logo-container img {
     width: 80%; /* Reduce logo size */

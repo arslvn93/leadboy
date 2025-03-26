@@ -26,8 +26,8 @@ const HeroSection = () => {
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-0 md:mb-0 mt-0 pt-0">
           {/* Eyebrow copy badge - pill style for mobile */}
-          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-2 mt-3' : 'mb-5'} free-ai-tool pill-headline`}>
-            <div className={`${isMobile ? 'px-5 py-1.5' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase ${isMobile ? 'text-[11px]' : 'text-xs sm:text-sm'} text-retro-dark text-center`}>
+          <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-3 mt-3' : 'mb-5'} free-ai-tool pill-headline eyebrow-container`}>
+            <div className={`${isMobile ? 'px-5 py-1.5' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase ${isMobile ? 'text-[11px]' : 'text-xs sm:text-sm'} text-retro-dark text-center cyan-pill`}>
               FREE AI TOOL FOR MODERN AGENTS
             </div>
           </div>
