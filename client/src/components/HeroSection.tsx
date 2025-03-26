@@ -39,7 +39,7 @@ const HeroSection = () => {
                 <div className="text-retro-neon-green neon-text-sm">IT'S NOT THE 90'S,</div>
                 <div className="flex flex-wrap items-center justify-center mt-1">
                   <span>STOP FOLLOWING UP LIKE IT...</span>
-                  <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                  <span className="ml-3 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
             ) : (
@@ -47,7 +47,7 @@ const HeroSection = () => {
                 <div className="text-retro-neon-green neon-text-sm">IT'S NOT THE 90'S,</div>
                 <div className="flex flex-wrap items-center mt-1">
                   <span>STOP FOLLOWING UP LIKE IT...</span>
-                  <span className="ml-1 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
+                  <span className="ml-3 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span>
                 </div>
               </div>
             )}
@@ -88,17 +88,17 @@ const HeroSection = () => {
 
           {/* Social proof - simplified for mobile */}
           {isMobile ? (
-            <div className="flex flex-col gap-1 trust-container mb-2">
+            <div className="flex flex-col gap-0.5 trust-container mb-2">
               {/* Trusted by - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-3 py-1 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
+                <div className="px-2 py-0.5 border border-retro-bright rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm text-center">
                   <span className="font-bold text-white text-xs">Trusted by <span className="text-retro-neon-pink neon-text-sm">2,500+</span> agents</span>
                 </div>
               </div>
               
               {/* Response rate badge - simplified */}
               <div className="flex items-center justify-center trust-item">
-                <div className="px-3 py-1 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
+                <div className="px-2 py-0.5 border border-retro-neon-green rounded-lg bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm shadow-neon-green text-center">
                   <span className="text-white text-xs">Response rates <span className="text-retro-neon-pink font-bold">↑</span> by up to <span className="text-retro-neon-pink font-black">247%</span></span>
                 </div>
               </div>
