@@ -1066,3 +1066,80 @@ h1, h2, h3, .pixel-font {
 .faq-question[aria-expanded="true"] .toggle-icon {
   transform: rotate(180deg);
 }
+
+/* Mobile optimizations - only apply to screens smaller than 768px */
+@media (max-width: 767px) {
+  /* Logo & Header adjustments */
+  .logo-container img {
+    width: 80%; /* Reduce logo size */
+    max-width: 180px;
+  }
+  
+  .salesgenius-text {
+    font-size: 14px; /* Smaller "By SalesGenius" text */
+  }
+  
+  /* Headline adjustments */
+  .hero-headline {
+    font-size: 32px; /* Smaller headline */
+    line-height: 1.2;
+  }
+  
+  /* Subheadline adjustments */
+  .hero-subheadline {
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* CTA Button improvements */
+  .cta-button {
+    padding: 16px 24px;
+    font-size: 18px;
+    min-height: 54px; /* Ensure good touch target */
+    width: 100%; /* Full width on mobile */
+  }
+  
+  /* Trust indicators */
+  .trust-container {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .trust-item {
+    padding: 8px 16px;
+  }
+  
+  /* GameBoy display */
+  .gameboy-display {
+    width: 90%;
+    margin: 20px auto 0;
+  }
+  
+  .display-text {
+    font-size: 14px; /* Ensure readability */
+  }
+  
+  /* Overall spacing */
+  .hero-section {
+    padding: 24px 16px;
+    gap: 20px;
+  }
+  
+  /* GameBoy spotlight adjustments for mobile */
+  .gameboy-spotlight {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .light-ray {
+    width: 150px;
+  }
+  
+  /* Ensure proper padding on mobile */
+  section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
