@@ -8,7 +8,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="hero" className="pt-6 pb-4 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple">
+    <section id="hero" className="pt-0 pb-4 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
 
@@ -22,9 +22,9 @@ const HeroSection = () => {
         <div className="w-full h-[2px] bg-retro-neon-blue opacity-5 animate-scan-line"></div>
       </div>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+      <div className="container mx-auto flex flex-col md:flex-row items-start justify-between relative z-10 pt-1">
         {/* Left Column - Headline and CTA */}
-        <div className="md:w-5/12 mb-2 md:mb-0">
+        <div className="md:w-5/12 mb-2 md:mb-0 mt-1">
           {/* Eyebrow copy badge - pill style for mobile */}
           <div className={`${isMobile ? 'flex justify-center w-full' : 'inline-block'} ${isMobile ? 'mb-2' : 'mb-6'}`}>
             <div className={`${isMobile ? 'px-2.5 py-1' : 'px-4 py-2'} bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase ${isMobile ? 'text-[11px]' : 'text-xs sm:text-sm'} text-retro-dark`}>
