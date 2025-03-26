@@ -8,7 +8,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="hero" className="pt-6 pb-12 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark">
+    <section id="hero" className="pt-6 pb-12 md:pt-8 md:pb-16 px-4 relative overflow-hidden bg-retro-dark-purple">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
 
@@ -128,6 +128,9 @@ const HeroSection = () => {
           {/* Star decorations */}
           <div className="absolute -bottom-16 left-12 text-3xl text-retro-neon-yellow animate-float z-20">★</div>
           <div className="absolute top-0 right-8 w-12 h-12 rounded-full border-2 border-retro-neon-pink opacity-50 animate-pulse-strong z-20"></div>
+          
+          {/* Spotlight effect behind GameBoy */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-retro-neon-blue rounded-full blur-3xl opacity-10 animate-spotlight-glow z-0"></div>
           
           {/* GameBoy Component */}
           <GameBoyConsole leads={12} sequences={15} conversions={8} />

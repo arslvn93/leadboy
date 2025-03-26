@@ -83,7 +83,7 @@ const FAQSection = () => {
   }, []);
 
   return (
-    <section className="faq-section py-16 relative bg-retro-dark">
+    <section className="faq-section py-16 relative bg-retro-dark-purple">
       {/* Background grid with subtle glow */}
       <div className="absolute inset-0 bg-grid opacity-10"></div>
       

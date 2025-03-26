@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="high-scores-section py-12 md:py-16 relative bg-retro-dark">
+    <section id="testimonials" className="high-scores-section py-12 md:py-16 relative bg-retro-dark-purple">
       {/* VHS distortion scan lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="w-full h-[2px] bg-[#00ffff] opacity-5 animate-scan-line"></div>
