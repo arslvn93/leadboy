@@ -61,7 +61,7 @@ const HeroSection = () => {
           ) : (
             <div className="rounded-xl border border-retro-bright p-3 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-4 hero-subheadline">
               <p className="text-white text-lg leading-relaxed">
-                Tell us how you met your lead <span className="text-retro-neon-green font-semibold">(open house, online, referral)</span> and in just <span className="text-retro-neon-pink font-bold">3 minutes</span>, our AI tool <span className="text-retro-neon-yellow font-semibold">"LeadBoy"</span> creates follow-up messages that sound like you wrote them - <span className="text-retro-bright font-semibold">ready to use</span> <span className="text-retro-neon-pink font-bold text-shadow-neon-pink">immediately!</span>
+                Tell us how you meet your leads <span className="text-retro-neon-green font-semibold">(online, referral, etc)</span> and in just <span className="text-retro-neon-pink font-bold">3 minutes</span>, our AI tool <span className="text-retro-neon-yellow font-semibold">"LeadBoy"</span> creates follow-up messages that sound like you wrote them - <span className="text-retro-bright font-semibold">ready to use</span> <span className="text-retro-neon-pink font-bold text-shadow-neon-pink">immediately!</span>
               </p>
             </div>
           )}
