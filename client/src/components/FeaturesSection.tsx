@@ -54,7 +54,7 @@ const FeaturesSection = () => {
     {
       icon: <MessageCircle className="h-8 w-8 text-black" />,
       title: "DONE-FOR-YOU FOLLOW-UP MESSAGES",
-      description: "Custom texts, emails, and call scripts written specifically for your business. Just copy and paste to stop losing leads forever.",
+      description: "Stop losing commissions to poor follow-up. Our AI creates custom messages that convert leads into clients – automatically.",
       color: "#00FFFF",
       patternType: "dots" as const
     },
