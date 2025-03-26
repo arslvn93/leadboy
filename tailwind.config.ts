@@ -64,6 +64,7 @@ export default {
         // Retro 90s theme colors
         'retro-dark': '#121212',
         'retro-dark-blue': '#0D1B2A',
+        'retro-dark-purple': '#150A30', /* New dark purple background color */
         'retro-purple': {
           DEFAULT: '#8A2BE2',
           'dark': '#4A148C',
@@ -138,6 +139,11 @@ export default {
           "0%, 100%": { opacity: "0.8", boxShadow: "0 0 15px currentColor" },
           "50%": { opacity: "0.4", boxShadow: "0 0 5px currentColor" },
         },
+        "spotlight-glow": {
+          "0%": { opacity: "0.7", transform: "scale(0.95)" },
+          "50%": { opacity: "1", transform: "scale(1.05)" },
+          "100%": { opacity: "0.7", transform: "scale(0.95)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -149,6 +155,7 @@ export default {
         "pulse-border": "pulse-border 2s ease-in-out infinite",
         "screen-flicker": "screen-flicker 6s linear infinite",
         "pulse-strong": "pulse-strong 2s infinite alternate",
+        "spotlight-glow": "spotlight-glow 3s ease-in-out infinite",
       },
       backgroundImage: {
         'retro-grid': 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
