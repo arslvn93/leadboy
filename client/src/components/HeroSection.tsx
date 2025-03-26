@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Star, Play, Zap } from 'lucide-react';
+import { smoothScrollTo } from '../lib/utils';
 
 const HeroSection = () => {
   return (
@@ -20,19 +21,19 @@ const HeroSection = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
         {/* Left Column - Headline and CTA */}
         <div className="md:w-5/12 mb-16 md:mb-0">
-          {/* Eyebrow copy badge */}
-          <div className="inline-block px-4 py-2 bg-retro-neon-blue rounded-md shadow-neon-blue font-retro text-white uppercase text-xs mb-4">
+          {/* Eyebrow copy badge - larger and more readable */}
+          <div className="inline-block px-5 py-3 bg-retro-bright rounded-md shadow-neon-blue font-bold uppercase text-sm sm:text-base mb-5 text-retro-dark">
             FOR MODERN AGENTS
           </div>
 
-          {/* Clean heading that matches the screenshot exactly */}
+          {/* Clean heading with adjusted size */}
           <h1 className="mb-6 relative">
-            <div className="flex flex-col text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-wider">
+            <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
               <div>IT'S NOT THE</div>
               <div>90'S</div>
               <div>ANYMORE...</div>
               <div>STOP FOLLOWING</div>
-              <div className="flex items-center">UP LIKE IT... <span className="ml-4 text-3xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+              <div className="flex items-center">UP LIKE IT... <span className="ml-4 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
             </div>
           </h1>
 
@@ -47,7 +48,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
             <Button 
               className="bg-retro-gradient-pink text-white px-8 py-6 font-bold uppercase rounded-lg shadow-neon-pink transition-all duration-300 transform hover:scale-105 text-lg"
-              onClick={() => window.location.href = '#signup'}
+              onClick={() => smoothScrollTo('signup')}
             >
               <Star className="mr-2 h-6 w-6" /> GET YOUR FREE SEQUENCE
             </Button>
