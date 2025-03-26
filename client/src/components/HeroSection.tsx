@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div className="md:w-5/12 mb-16 md:mb-0">
           {/* Eyebrow copy badge - larger and more readable */}
           <div className="inline-block px-5 py-3 bg-retro-bright rounded-md shadow-neon-blue font-bold uppercase text-sm sm:text-base mb-5 text-retro-dark">
-            FOR MODERN AGENTS
+            FREE FOR MODERN AGENTS
           </div>
 
           {/* Clean heading with adjusted size */}
@@ -39,7 +39,7 @@ const HeroSection = () => {
           {/* Description card - More compact for above-the-fold visibility */}
           <div className="rounded-xl border border-retro-bright p-4 bg-retro-dark-blue bg-opacity-60 backdrop-blur-sm mb-6">
             <p className="text-white text-lg">
-              Use our FREE AI tool <span className="text-retro-neon-green font-bold">"LeadBoy"</span> to create a custom 15-day nurture sequence for your new leads. It creates personalized texts, emails and call scripts, for your lead sources.
+              Try <span className="text-retro-neon-green font-bold">LeadBoy FREE!</span> Our Brand NEW AI Tool builds personalized 15-day nurture campaigns for your real estate leads. Stop wasting time on manual follow-ups and start closing more deals with automated texts, emails, and call scripts.
             </p>
           </div>
 
