@@ -4,7 +4,7 @@ import { smoothScrollTo } from '../lib/utils';
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="pt-16 pb-24 px-4 relative overflow-hidden bg-retro-dark">
+    <section id="hero" className="pt-8 pb-16 px-4 relative overflow-hidden bg-retro-dark">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
 
@@ -26,13 +26,15 @@ const HeroSection = () => {
             FREE AI TOOL FOR MODERN REALTORS
           </div>
 
-          {/* Clean heading with adjusted size */}
-          <h1 className="mb-6 relative">
-            <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-wide">
+          {/* Clean heading with adjusted size - more compact */}
+          <h1 className="mb-4 relative">
+            <div className="flex flex-col text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.05] tracking-wide">
               <div>IT'S NOT THE</div>
               <div>90'S ANYMORE...</div>
-              <div>STOP FOLLOWING</div>
-              <div className="flex items-center">UP LIKE IT... <span className="ml-4 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span></div>
+              <div className="flex flex-wrap">
+                <span>STOP FOLLOWING </span>
+                <span className="flex items-center">UP LIKE IT...<span className="ml-2 text-2xl text-retro-neon-blue neon-text animate-pulse">★</span></span>
+              </div>
             </div>
           </h1>
 
