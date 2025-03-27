@@ -134,7 +134,8 @@
         .other-option-group .checkbox-label { margin-bottom: 0; }
         
         /* Initially hide 'Other' text inputs */
-        .other-option-group input[type="text"][id$="OtherText"] {
+        .other-option-group input[type="text"][id$="OtherText"],
+        input[type="text"][id$="OtherText"] {
             display: none;
         }
         
@@ -529,10 +530,13 @@
                             currentStep++;
                             showCurrentStep();
                             // Scroll to top of form
-                            document.querySelector('.screen-content')?.scrollTo({
-                                top: 0,
-                                behavior: 'smooth'
-                            });
+                            const screenContent = document.querySelector('.screen-content');
+                            if (screenContent) {
+                                screenContent.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth'
+                                });
+                            }
                         }
                     }
                 });
@@ -554,8 +558,10 @@
                         console.log('Form submitted:', formValues);
                         
                         // Show success message
-                        document.getElementById('successMessage')?.classList.remove('hidden');
-                        document.getElementById('sequenceForm')?.classList.add('hidden');
+                        const successMsg = document.getElementById('successMessage');
+                        const formEl = document.getElementById('sequenceForm');
+                        if (successMsg) successMsg.classList.remove('hidden');
+                        if (formEl) formEl.classList.add('hidden');
                     }
                 });
             }
