@@ -77,7 +77,7 @@ const Header = () => {
         <div className="flex items-center gap-2 md:gap-4">
           <Button 
             className="cta-button bg-retro-gradient-blue text-white font-bold uppercase rounded px-1.5 md:px-3 py-0.5 md:py-2 shadow-neon-blue text-[9px] md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
-            onClick={() => smoothScrollTo('signup')}
+            onClick={() => window.location.href = '/form.html'}
           >
             <Zap className="w-1.5 h-1.5 md:w-3 md:h-3 mr-0.5 md:mr-1 text-retro-neon-yellow" />
             <span className="whitespace-nowrap">Start Free</span>

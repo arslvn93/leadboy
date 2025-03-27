@@ -120,12 +120,14 @@ const FAQSection = () => {
           </div>
         </div>
         
-        {/* Bonus secret */}
+        {/* Bonus secret with CTA */}
         <div className="secret-bonus mt-12 text-center">
-          <div className="inline-block bg-[#222] border-2 border-[#FFCC00] rounded p-4 shadow-glow-yellow">
-            <p className="font-bold text-[#FFCC00] text-sm">SECRET BONUS UNLOCKED!</p>
-            <p className="text-white text-lg mt-2">First-time agents get a custom sequence 100% FREE!</p>
-          </div>
+          <a href="/form.html" className="inline-block">
+            <div className="inline-block bg-[#222] border-2 border-[#FFCC00] rounded p-4 shadow-glow-yellow hover:shadow-glow-bright-yellow transition-all transform hover:scale-105">
+              <p className="font-bold text-[#FFCC00] text-sm">SECRET BONUS UNLOCKED!</p>
+              <p className="text-white text-lg mt-2">First-time agents get a custom sequence 100% FREE!</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>

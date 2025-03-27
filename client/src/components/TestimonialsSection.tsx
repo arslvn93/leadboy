@@ -158,9 +158,14 @@ const TestimonialsSection = () => {
             </div>
           )}
           
-          {/* Blinking cursor at bottom */}
+          {/* Blinking cursor at bottom with CTA */}
           <div className="text-center mt-6 md:mt-8">
-            <span className="text-[#00ffff] font-bold text-base md:text-lg blinking-cursor">USE LEADBOY TO CONVERT NEW LEADS TODAY_</span>
+            <a 
+              href="/form.html" 
+              className="inline-block"
+            >
+              <span className="text-[#00ffff] font-bold text-base md:text-lg blinking-cursor hover:text-[#5affbc] transition-colors">USE LEADBOY TO CONVERT NEW LEADS TODAY_</span>
+            </a>
           </div>
         </div>
         
