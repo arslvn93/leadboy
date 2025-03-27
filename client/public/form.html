@@ -6,11 +6,26 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <title>🕹️ REALTY BOT-GBC 🚀 AI Lead Dominator</title>
+        <title>🕹️ SG LEADBOY</title>
         <link
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
             rel="stylesheet"
         />
+        
+        <!-- Facebook Pixel Code -->
+        <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1057475448873422');
+          fbq('track', 'PageView');
+        </script>
+        <!-- End Facebook Pixel Code -->
         <style>
             /* --- Root Variables --- */
             :root {
@@ -372,6 +387,7 @@
             }
             input[type="text"],
             input[type="email"],
+            input[type="tel"],
             select,
             textarea {
                 width: 100%;
@@ -866,6 +882,11 @@
         </style>
     </head>
     <body>
+    <!-- Facebook Pixel Code (noscript) -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1057475448873422&ev=PageView&noscript=1"/>
+    </noscript>
         <div class="gameboy-container">
             <!-- Screen Area (Top) -->
             <div class="gameboy-shell-top">
@@ -927,6 +948,20 @@
                             <div class="form-step" data-step="3">
                                 <h2>Basic Information</h2>
                                 <fieldset class="form-group">
+                                    <legend>Phone Number:</legend>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        inputmode="numeric"
+                                        pattern="[0-9]*"
+                                        required
+                                    />
+                                </fieldset>
+                            </div>
+                            <div class="form-step" data-step="4">
+                                <h2>Basic Information</h2>
+                                <fieldset class="form-group">
                                     <legend>Primary Market Location:</legend>
                                     <input
                                         type="text"
@@ -936,7 +971,7 @@
                                     />
                                 </fieldset>
                             </div>
-                            <div class="form-step" data-step="4">
+                            <div class="form-step" data-step="5">
                                 <h2>Basic Information</h2>
                                 <fieldset class="form-group">
                                     <legend>Brokerage:</legend>
@@ -950,7 +985,7 @@
                             </div>
 
                             <!-- Step 2: Lead Attraction Strategy -->
-                            <div class="form-step" data-step="5">
+                            <div class="form-step" data-step="6">
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset class="form-group">
                                     <legend>
@@ -1002,7 +1037,7 @@
                             </div>
 
                             <!-- Conditional for Ads -->
-                            <div class="form-step" data-step="6">
+                            <div class="form-step" data-step="7">
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset
                                     class="form-group"
@@ -1065,7 +1100,7 @@
                             </div>
 
                             <!-- Conditional for Website -->
-                            <div class="form-step" data-step="7">
+                            <div class="form-step" data-step="8">
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset
                                     class="form-group"
@@ -1129,11 +1164,13 @@
                                 </fieldset>
                             </div>
 
-                            <div class="form-step" data-step="8">
+                            <div class="form-step" data-step="9">
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset class="form-group">
                                     <legend>
-                                        What valuable information do you currently provide to attract new clients?
+                                        What valuable information do you
+                                        currently provide to attract new
+                                        clients?
                                     </legend>
                                     <label class="checkbox-label"
                                         ><input
@@ -1181,7 +1218,7 @@
                             </div>
 
                             <!-- Step 3: Customize Your Sequence -->
-                            <div class="form-step" data-step="9">
+                            <div class="form-step" data-step="10">
                                 <h2>Customize Your Sequence</h2>
                                 <fieldset class="form-group">
                                     <legend>
@@ -1226,7 +1263,7 @@
                                 </fieldset>
                             </div>
 
-                            <div class="form-step" data-step="10">
+                            <div class="form-step" data-step="11">
                                 <h2>Customize Your Sequence</h2>
                                 <fieldset class="form-group">
                                     <legend>
@@ -1275,31 +1312,6 @@
                                         ></label
                                     >
                                 </fieldset>
-                            </div>
-
-                            <div class="form-step" data-step="11">
-                                <h2>Customize Your Sequence</h2>
-                                <div class="form-group">
-                                    <legend>
-                                        What are the top 2 value propositions
-                                        you offer to new clients?
-                                    </legend>
-                                    <input
-                                        type="text"
-                                        id="valueProp1"
-                                        name="valueProp1"
-                                        placeholder="Value Proposition 1"
-                                        required
-                                    />
-                                    <input
-                                        type="text"
-                                        id="valueProp2"
-                                        name="valueProp2"
-                                        placeholder="Value Proposition 2"
-                                        required
-                                        style="margin-top: 10px"
-                                    />
-                                </div>
                             </div>
 
                             <div class="form-step" data-step="12">
@@ -1430,11 +1442,32 @@
                                             name="leadStage"
                                             value="looking"
                                         />
-                                        <span>Actively looking but not ready to commit</span></label>
-                                    <label class="radio-label"><input type="radio" name="leadStage" value="ready"/>
-                                        <span>Ready to buy/sell immediately</span></label>
-                                    <label class="radio-label"><input type="radio" name="leadStage" value="varying"/>
-                                        <span>Varying stages (need multi-stage nurturing)</span></label>
+                                        <span
+                                            >Actively looking but not ready to
+                                            commit</span
+                                        ></label
+                                    >
+                                    <label class="radio-label"
+                                        ><input
+                                            type="radio"
+                                            name="leadStage"
+                                            value="ready"
+                                        />
+                                        <span
+                                            >Ready to buy/sell immediately</span
+                                        ></label
+                                    >
+                                    <label class="radio-label"
+                                        ><input
+                                            type="radio"
+                                            name="leadStage"
+                                            value="varying"
+                                        />
+                                        <span
+                                            >Varying stages (need multi-stage
+                                            nurturing)</span
+                                        ></label
+                                    >
                                 </fieldset>
                             </div>
 
@@ -1697,6 +1730,7 @@
                                     type="submit"
                                     id="finalSubmitBtn"
                                     class="submit-btn"
+                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_completion'});}"
                                 >
                                     Create My Custom Sequence
                                 </button>
@@ -1806,7 +1840,7 @@
 
                 // State
                 let currentStepIndex = 0;
-                const totalSteps = steps.length;
+                const totalSteps = steps.length; // This will now correctly count the new total number of steps
 
                 // --- Core Step Logic ---
                 function showStep(index) {
@@ -1845,7 +1879,7 @@
 
                     // Update progress indicator
                     if (progressIndicator) {
-                        progressIndicator.textContent = `STEP ${index + 1} OF ${totalSteps}`;
+                        progressIndicator.textContent = `STEP ${index + 1} OF ${totalSteps}`; // Dynamically updates based on totalSteps
                     }
 
                     // Scroll screen to top
@@ -1907,7 +1941,7 @@
                                 }
                             }
                         } else if (!input.checkValidity()) {
-                            // Text, email, etc.
+                            // Text, email, tel, etc.
                             fieldIsValid = false;
                             input.style.borderColor = "red";
                             if (!firstInvalidElement)
@@ -1991,30 +2025,11 @@
                     // --- Gather Data in Desired Format (Questions as Keys) ---
                     const payloadData = {};
                     steps.forEach((step) => {
-                        // --- Check for Value Prop step FIRST ---
-                        const valueProp1 = step.querySelector("#valueProp1");
-                        const valueProp2 = step.querySelector("#valueProp2");
-                        if (valueProp1 && valueProp2) {
-                            // Use placeholder as key for value props
-                            if (valueProp1.value)
-                                payloadData[
-                                    valueProp1.placeholder ||
-                                        "Value Proposition 1"
-                                ] = valueProp1.value.trim();
-                            if (valueProp2.value)
-                                payloadData[
-                                    valueProp2.placeholder ||
-                                        "Value Proposition 2"
-                                ] = valueProp2.value.trim();
-                            return; // Go to next step
-                        }
-                        // --- End Value Prop Check ---
-
                         // --- Find Question Text (Legend or Label) ---
                         const legend = step.querySelector("legend");
                         const label = step.querySelector(
                             "label:not(.checkbox-label):not(.radio-label)",
-                        ); // For single text inputs like name/email
+                        ); // For single text inputs like name/email/phone
                         let questionText = "";
 
                         if (legend) {
@@ -2081,7 +2096,7 @@
 
                         // Handle Text Inputs (excluding 'Other' text inputs handled above and value props)
                         const textInput = step.querySelector(
-                            'input[type="text"]:not([id$="OtherText"]):not(#valueProp1):not(#valueProp2), input[type="email"], select, textarea',
+                            'input[type="text"]:not([id$="OtherText"]):not(#valueProp1):not(#valueProp2), input[type="email"], input[type="tel"], select, textarea',
                         );
                         if (textInput && textInput.value) {
                             payloadData[questionText] = textInput.value.trim();

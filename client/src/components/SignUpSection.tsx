@@ -207,7 +207,13 @@ const SignUpSection = () => {
                     <Button 
                       type="button" 
                       className="bg-[#FF00FF] text-white px-10 py-6 font-bold uppercase border-4 border-black shadow-[6px_6px_0_#000] hover:shadow-[3px_3px_0_#000] hover:translate-y-[3px] hover:translate-x-[3px] transition-all tracking-wide mt-4 w-full md:w-auto relative group"
-                      onClick={() => window.location.href = '/form.html'}
+                      onClick={() => {
+                        window.location.href = '/form.html';
+                        // Track lead button click if fbq exists
+                        if (typeof window.fbq !== 'undefined') {
+                          window.fbq('track', 'Lead', {content_name: 'signup_button_click'});
+                        }
+                      }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#FF00FF] to-[#B026FF] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       <div className="relative flex items-center justify-center">
