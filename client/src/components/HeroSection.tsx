@@ -71,7 +71,7 @@ const HeroSection = () => {
             <div className="w-full mb-1">
               <Button 
                 className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-4 py-3 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-sm md:text-base'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
-                onClick={() => smoothScrollTo('signup')}
+                onClick={() => window.location.href = '/form'}
               >
                 <Star className={`${isMobile ? 'mr-1 h-3 w-3 animate-pulse' : 'mr-2 h-4 w-4 md:h-5 md:w-5'} flex-shrink-0 text-retro-neon-blue`} /> 
                 <span className={isMobile ? 'text-shadow-neon-pink text-xs' : 'text-sm md:text-base'}>{isMobile ? 'CREATE FREE SCRIPTS' : 'CREATE FREE SCRIPTS NOW'}</span>
