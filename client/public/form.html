@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🕹️ REALTY BOT-GBC 🚀 AI Lead Dominator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* --- Root Variables --- */
+        :root {
+            --gbc-body: #e6e6e6; --gbc-body-dark: #c4c4c4;
+            --gbc-screen-bg: #0f380f; --gbc-screen-text: #9bbc0f;
+            --gbc-screen-border: #306230; --gbc-button-red: #ff0000;
+            --gbc-button-blue: #0066cc; --gbc-button-dark: #333333;
+            --gbc-glow: 0 0 10px var(--gbc-screen-text);
+        }
+        /* --- Base & Reset --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'VT323', monospace; background: #222; color: var(--gbc-screen-text);
+            touch-action: manipulation; overscroll-behavior-y: contain; display: flex;
+            justify-content: center; align-items: center; min-height: 100vh; padding: 10px;
+        }
+        /* --- Gameboy Structure --- */
+        .gameboy-container { width: 100%; max-width: 500px; position: relative; display: flex; flex-direction: column; height: 95vh; max-height: 1000px; }
+        .gameboy-shell-top {
+            background: var(--gbc-body); border: 15px solid var(--gbc-body-dark); border-bottom: none;
+            border-radius: 30px 30px 0 0; width: 100%; position: relative; flex-grow: 1;
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .gameboy-shell-bottom {
+            background: var(--gbc-body); border: 15px solid var(--gbc-body-dark); border-top: none;
+            border-radius: 0 0 30px 30px; width: 100%; position: relative; height: 20vh;
+            min-height: 180px; flex-shrink: 0; overflow: auto;
+        }
+        /* --- Screen Area --- */
+        .screen-container {
+            flex-grow: 1; background: var(--gbc-screen-bg); border: 12px solid var(--gbc-screen-border);
+            border-radius: 10px; margin: 20px 20px 0 20px; padding: 15px; position: relative;
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .scanlines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient( rgba(155, 188, 15, 0.1) 50%, transparent 50% ); background-size: 100% 4px; pointer-events: none; z-index: 1; }
+        .screen-content { position: relative; z-index: 2; height: 100%; overflow-y: auto; padding-right: 5px; }
+        /* --- Controls Area --- */
+        .controls-container { padding: 15px 20px; }
+        /* --- Branding --- */
+        .gbc-branding { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Press Start 2P', cursive; font-size: 0.8rem; color: #cc0000; text-shadow: 0 2px 0 rgba(0,0,0,0.3); padding-top: 3px; }
+        /* --- Typography --- */
+        h1, h2, h3, h4 { font-family: 'Press Start 2P', cursive; margin-bottom: 1rem; color: var(--gbc-screen-text); text-shadow: var(--gbc-glow); word-wrap: break-word; }
+        h1 { font-size: 1.4rem; line-height: 1.3; }
+        h2 { font-size: 1.1rem; } /* Step headers */
+        h3 { font-size: 0.9rem; } /* Result header */
+        /* --- Logo --- */
+        .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+        .logo-icon { width: 40px; height: 40px; background: var(--gbc-screen-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--gbc-screen-text); font-weight: bold; border: 2px solid var(--gbc-screen-text); box-shadow: 0 0 0 2px var(--gbc-screen-bg); }
+
+        /* --- Step-by-step Form Styling --- */
+        #sequenceForm .form-step { display: none; margin-bottom: 1rem; animation: fadeIn 0.5s ease-in-out; }
+        #sequenceForm .form-step.active { display: block; }
+        #sequenceForm > h2 { display: none; } /* Hide holder H2 */
+
+        /* --- Labels & Legends --- */
+        label, legend { display: block; margin-bottom: 0.5rem; color: var(--gbc-screen-text); font-size: 1.1rem; font-family: 'Press Start 2P', cursive; }
+        legend { font-size: 0.9rem; margin-bottom: 0.8rem; padding: 0; width: 100%; line-height: 1.4; }
+
+        /* --- Custom Radio Button Styling --- */
+        .radio-label {
+            position: relative; display: block; padding: 12px 15px 12px 45px; margin-bottom: 10px;
+            border: 3px solid var(--gbc-screen-border); background-color: rgba(15, 56, 15, 0.2);
+            cursor: pointer; transition: background-color 0.2s, border-color 0.2s;
+            font-family: 'VT323', monospace; font-size: 1.2rem; color: var(--gbc-screen-text);
+        }
+        .radio-label input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+        .radio-label span { display: inline-block; vertical-align: middle; }
+        .radio-label::before {
+            content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            width: 18px; height: 18px; border: 2px solid var(--gbc-screen-text);
+            background-color: var(--gbc-screen-bg); border-radius: 50%;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        .radio-label input[type="radio"]:checked + span::before { background-color: var(--gbc-screen-text); box-shadow: var(--gbc-glow); }
+        @supports selector(:has(*)) { .radio-label:has(input[type="radio"]:checked) { border-color: var(--gbc-screen-text); background-color: rgba(155, 188, 15, 0.1); } }
+        .radio-label:hover { background-color: rgba(15, 56, 15, 0.4); }
+        .radio-label:active { transform: scale(0.99); }
+
+        /* --- Styling for Custom Checkbox/Radio Labels --- */
+        .checkbox-label,
+        .radio-label {
+            position: relative; display: block; padding: 12px 15px 12px 45px; margin-bottom: 10px;
+            border: 3px solid var(--gbc-screen-border); background-color: rgba(15, 56, 15, 0.2);
+            cursor: pointer; transition: background-color 0.2s, border-color 0.2s;
+            font-family: 'VT323', monospace; font-size: 1.2rem; color: var(--gbc-screen-text);
+        }
+        /* Hide actual inputs */
+        .checkbox-label input[type="checkbox"],
+        .radio-label input[type="radio"] {
+            position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none;
+        }
+        /* Draw the indicator square */
+        .checkbox-label::before,
+        .radio-label::before {
+            content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            width: 18px; height: 18px; border: 2px solid var(--gbc-screen-text);
+            background-color: var(--gbc-screen-bg);
+            transition: background-color 0.2s, box-shadow 0.2s;
+            /* Ensure it's square, remove any border-radius */
+            border-radius: 0;
+        }
+        /* Style CHECKED indicator square (background change) */
+        @supports selector(:has(*)) {
+            .checkbox-label:has(input:checked)::before,
+            .radio-label:has(input:checked)::before {
+                background-color: var(--gbc-screen-text); box-shadow: var(--gbc-glow);
+            }
+        }
+        /* Hover/Active/Checked states for the label box */
+        .checkbox-label:hover,
+        .radio-label:hover { background-color: rgba(15, 56, 15, 0.4); }
+        .checkbox-label:active,
+        .radio-label:active { transform: scale(0.99); }
+        @supports selector(:has(*)) {
+            .checkbox-label:has(input:checked),
+            .radio-label:has(input:checked) { /* Apply checked style to label */
+                border-color: var(--gbc-screen-text); background-color: rgba(155, 188, 15, 0.1);
+            }
+        }
+
+        /* Label text alignment */
+        .checkbox-label span,
+        .radio-label span { display: inline-block; vertical-align: middle; line-height: 1.2; }
+        /* --- 'Other' Option Group Styling --- */
+        .other-option-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+        .other-option-group input[type="text"] { flex-grow: 1; min-width: 150px; margin-top: 0; }
+        .other-option-group .checkbox-label { margin-bottom: 0; }
+        
+        /* Initially hide 'Other' text inputs */
+        .other-option-group input[type="text"][id$="OtherText"] {
+            display: none;
+        }
+        
+        /* --- General Form Element Styling --- */
+        .form-group { margin-bottom: 1rem; }
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        legend {
+            color: var(--gbc-screen-text);
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%; padding: 12px; background: rgba(15, 56, 15, 0.3);
+            border: 2px solid var(--gbc-screen-border); border-radius: 0; color: var(--gbc-screen-text);
+            font-family: 'VT323', monospace; font-size: 1.2rem; -webkit-appearance: none;
+        }
+        input[type="text"][id$="OtherText"] { margin-top: 5px; } /* Keep specific margin for non-grouped 'other' inputs if any */
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gbc-screen-text); background: rgba(15, 56, 15, 0.5); }
+        select { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239bbc0f'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; }
+
+        /* --- Navigation Buttons Styling --- */
+        .form-navigation { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 10px; }
+        .nav-btn, .submit-btn {
+            padding: 12px 15px; background: var(--gbc-screen-border); color: var(--gbc-screen-text); border: none;
+            font-family: 'Press Start 2P', cursive; font-size: 0.8rem; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 1px; border: 3px solid var(--gbc-screen-text); box-shadow: 0 4px 0 var(--gbc-screen-bg);
+            transition: all 0.1s; flex-grow: 1; text-align: center;
+        }
+        .submit-btn { width: 100%; } /* This is applied when it's the only button */
+        .nav-btn:active, .submit-btn:active { transform: translateY(4px); box-shadow: none; }
+        .nav-btn.prev-btn { background-color: var(--gbc-button-dark); }
+        .nav-btn:disabled, .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: 0 4px 0 var(--gbc-screen-bg); }
+        #finalSubmitBtn { display: none; } /* Hide submit initially */
+
+        /* --- Controls Layout (Bottom Section) --- */
+        .controls-row { display: flex; justify-content: space-between; align-items: center; }
+        .d-pad { width: 120px; height: 120px; position: relative; touch-action: none; background: var(--gbc-body-dark); border-radius: 50%; box-shadow: inset 0 -8px 15px rgba(0,0,0,0.2), 0 8px 0 rgba(0,0,0,0.1); }
+        .d-pad-center { width: 40%; height: 40%; background: var(--gbc-button-dark); position: absolute; top: 30%; left: 30%; border-radius: 50%; }
+        .d-pad-up, .d-pad-down, .d-pad-left, .d-pad-right { position: absolute; background: var(--gbc-button-dark); transition: background 0.2s; }
+        .d-pad-up { width: 40%; height: 20%; top: 10%; left: 30%; border-radius: 10px 10px 0 0; }
+        .d-pad-down { width: 40%; height: 20%; bottom: 10%; left: 30%; border-radius: 0 0 10px 10px; }
+        .d-pad-left { width: 20%; height: 40%; top: 30%; left: 10%; border-radius: 10px 0 0 10px; }
+        .d-pad-right { width: 20%; height: 40%; top: 30%; right: 10%; border-radius: 0 10px 10px 0; }
+        .action-buttons { display: flex; align-items: center; gap: 15px; background: var(--gbc-body-dark); padding: 15px; border-radius: 50px; box-shadow: inset 0 -8px 15px rgba(0,0,0,0.2), 0 8px 0 rgba(0,0,0,0.1); }
+        .btn-a, .btn-b { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Press Start 2P', cursive; font-size: 1rem; color: white; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.3), 0 0 0 4px var(--gbc-button-dark); position: relative; }
+        .btn-a { background: var(--gbc-button-red); }
+        .btn-b { background: var(--gbc-button-blue); }
+        .start-select { display: flex; justify-content: center; gap: 60px; margin-top: 15px; }
+        .pill-button { width: 50px; height: 20px; background: var(--gbc-button-dark); border-radius: 10px; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; color: white; display: flex; align-items: center; justify-content: center; text-transform: uppercase; transform: rotate(-25deg); box-shadow: inset 0 -3px 0 rgba(0,0,0,0.3); }
+
+        /* Utility classes */
+        .hidden { display: none !important; }
+        .blink { animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="gameboy-container">
+        <div class="gameboy-shell-top">
+            <div class="screen-container">
+                <div class="scanlines"></div>
+                <div class="screen-content">
+                    <!-- Logo and app intro -->
+                    <div class="logo">
+                        <div class="logo-icon">AI</div>
+                        <h1>LEADBOY</h1>
+                    </div>
+
+                    <!-- Success message - initially hidden -->
+                    <div id="successMessage" class="hidden">
+                        <h2>SEQUENCE CREATED!</h2>
+                        <p>Your custom lead follow-up sequence has been generated! We'll send it to your email shortly.</p>
+                        <p class="blink">PRESS START TO PLAY AGAIN</p>
+                    </div>
+
+                    <!-- Multi-step form -->
+                    <form id="sequenceForm">
+                        <h2>CREATE YOUR CUSTOM FOLLOW-UP SEQUENCE</h2>
+
+                        <!-- Step 1: Basic Info -->
+                        <div class="form-step active">
+                            <h2>1. ABOUT YOUR LEADS</h2>
+                            
+                            <div class="form-group">
+                                <label for="leadSource">Where do your leads come from?</label>
+                                <fieldset>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadSource" id="leadSourceZillow" value="Zillow">
+                                            <span>Zillow/Realtor.com</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadSource" id="leadSourceFacebook" value="Facebook">
+                                            <span>Facebook/Instagram Ads</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadSource" id="leadSourceGoogle" value="Google">
+                                            <span>Google Ads/PPC</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadSource" id="leadSourceReferral" value="Referral">
+                                            <span>Referrals</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadSource" id="leadSourceOther" value="Other">
+                                            <span>Other</span>
+                                        </label>
+                                    </div>
+                                    <input type="text" id="leadSourceOtherText" placeholder="Please specify" class="hidden">
+                                </fieldset>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="leadTemperature">How warm are your leads?</label>
+                                <fieldset>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadTemperature" id="leadTempHot" value="Hot">
+                                            <span>Hot - Ready to buy now</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadTemperature" id="leadTempWarm" value="Warm">
+                                            <span>Warm - Active but not urgent</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="leadTemperature" id="leadTempCold" value="Cold">
+                                            <span>Cold - Just browsing</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Communication Preferences -->
+                        <div class="form-step">
+                            <h2>2. COMMUNICATION STYLE</h2>
+                            
+                            <div class="form-group">
+                                <label for="communicationChannel">Preferred contact methods?</label>
+                                <fieldset>
+                                    <div class="checkbox-option">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="communicationChannel" id="commText" value="Text">
+                                            <span>Text/SMS</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="communicationChannel" id="commEmail" value="Email">
+                                            <span>Email</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="communicationChannel" id="commPhone" value="Phone">
+                                            <span>Phone Call</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="communicationStyle">What tone works best with your clients?</label>
+                                <fieldset>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="communicationStyle" id="styleFormal" value="Formal">
+                                            <span>Formal & Professional</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="communicationStyle" id="styleCasual" value="Casual">
+                                            <span>Casual & Friendly</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="communicationStyle" id="styleDirect" value="Direct">
+                                            <span>Direct & To-the-point</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Market Info -->
+                        <div class="form-step">
+                            <h2>3. YOUR LOCAL MARKET</h2>
+                            
+                            <div class="form-group">
+                                <label for="marketType">What type of market are you in?</label>
+                                <fieldset>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="marketType" id="marketSellers" value="Sellers">
+                                            <span>Seller's Market (Low Inventory)</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="marketType" id="marketBuyers" value="Buyers">
+                                            <span>Buyer's Market (High Inventory)</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="marketType" id="marketBalanced" value="Balanced">
+                                            <span>Balanced Market</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="priceRange">Average price range in your area?</label>
+                                <select name="priceRange" id="priceRange" required>
+                                    <option value="">Select price range</option>
+                                    <option value="Under 200k">Under $200,000</option>
+                                    <option value="200k-400k">$200,000 - $400,000</option>
+                                    <option value="400k-600k">$400,000 - $600,000</option>
+                                    <option value="600k-1m">$600,000 - $1,000,000</option>
+                                    <option value="Over 1m">Over $1,000,000</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Unique Selling Proposition -->
+                        <div class="form-step">
+                            <h2>4. YOUR UNIQUE VALUE</h2>
+                            
+                            <div class="form-group">
+                                <label for="agentStrength">What's your biggest strength as an agent?</label>
+                                <fieldset>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="agentStrength" id="strengthNegotiation" value="Negotiation">
+                                            <span>Negotiation Skills</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="agentStrength" id="strengthKnowledge" value="Market Knowledge">
+                                            <span>Local Market Knowledge</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="agentStrength" id="strengthResponsive" value="Responsiveness">
+                                            <span>Responsiveness/Availability</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="agentStrength" id="strengthNetworking" value="Network">
+                                            <span>Professional Network</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label class="radio-label">
+                                            <input type="radio" name="agentStrength" id="strengthOther" value="Other">
+                                            <span>Other</span>
+                                        </label>
+                                    </div>
+                                    <input type="text" id="strengthOtherText" placeholder="Please specify" class="hidden">
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Contact Info -->
+                        <div class="form-step">
+                            <h2>5. YOUR CONTACT INFO</h2>
+                            
+                            <div class="form-group">
+                                <label for="agentName">Your Name</label>
+                                <input type="text" id="agentName" name="agentName" placeholder="e.g. John Smith" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="agentEmail">Your Email</label>
+                                <input type="email" id="agentEmail" name="agentEmail" placeholder="e.g. john@example.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="agentPhone">Your Phone (optional)</label>
+                                <input type="text" id="agentPhone" name="agentPhone" placeholder="e.g. (555) 123-4567">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="agencyName">Brokerage/Agency Name</label>
+                                <input type="text" id="agencyName" name="agencyName" placeholder="e.g. ABC Realty" required>
+                            </div>
+                        </div>
+
+                        <!-- Navigation buttons -->
+                        <div class="form-navigation">
+                            <button type="button" id="prevBtn" class="nav-btn prev-btn">← BACK</button>
+                            <button type="button" id="nextBtn" class="nav-btn next-btn">NEXT →</button>
+                            <button type="submit" id="finalSubmitBtn" class="submit-btn">CREATE MY SEQUENCE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gameboy-shell-bottom">
+            <div class="gbc-branding">REALTY-BOY ADVANCE</div>
+            
+            <div class="controls-container">
+                <div class="controls-row">
+                    <div class="d-pad">
+                        <div class="d-pad-up"></div>
+                        <div class="d-pad-right"></div>
+                        <div class="d-pad-down"></div>
+                        <div class="d-pad-left"></div>
+                        <div class="d-pad-center"></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <div class="btn-b">B</div>
+                        <div class="btn-a">A</div>
+                    </div>
+                </div>
+                
+                <div class="start-select">
+                    <div class="pill-button select">SELECT</div>
+                    <div class="pill-button start">START</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle form navigation
+        function setupFormNavigation() {
+            const form = document.getElementById('sequenceForm');
+            if (!form) return;
+
+            const steps = Array.from(form.querySelectorAll('.form-step'));
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('finalSubmitBtn');
+            let currentStep = 0;
+
+            // Function to show the current step
+            function showCurrentStep() {
+                steps.forEach((step, index) => {
+                    step.classList.toggle('active', index === currentStep);
+                });
+
+                // Update button visibility
+                if (prevBtn) prevBtn.style.display = currentStep === 0 ? 'none' : 'block';
+                if (nextBtn) nextBtn.style.display = currentStep === steps.length - 1 ? 'none' : 'block';
+                if (submitBtn) submitBtn.style.display = currentStep === steps.length - 1 ? 'block' : 'none';
+            }
+
+            // Go to previous step
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (currentStep > 0) {
+                        currentStep--;
+                        showCurrentStep();
+                    }
+                });
+            }
+
+            // Go to next step
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Validate current step before proceeding
+                    if (validateCurrentStep(currentStep)) {
+                        if (currentStep < steps.length - 1) {
+                            currentStep++;
+                            showCurrentStep();
+                            // Scroll to top of form
+                            document.querySelector('.screen-content')?.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            }
+
+            // Handle form submission
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (validateCurrentStep(currentStep)) {
+                        const formData = new FormData(form);
+                        const formValues = {};
+                        
+                        formData.forEach((value, key) => {
+                            formValues[key] = value.toString();
+                        });
+                        
+                        // Log form data
+                        console.log('Form submitted:', formValues);
+                        
+                        // Show success message
+                        document.getElementById('successMessage')?.classList.remove('hidden');
+                        document.getElementById('sequenceForm')?.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Initialize first step
+            showCurrentStep();
+
+            // Handle "Other" option visibility for text inputs
+            const otherOptions = document.querySelectorAll('input[value="Other"]');
+            otherOptions.forEach(option => {
+                option.addEventListener('change', (e) => {
+                    const input = e.target;
+                    const otherText = document.getElementById(input.id + 'Text');
+                    if (otherText) {
+                        otherText.style.display = input.checked ? 'block' : 'none';
+                    }
+                });
+            });
+        }
+
+        // Validation function - customize based on your requirements
+        function validateCurrentStep(stepIndex) {
+            const currentStepEl = document.querySelectorAll('.form-step')[stepIndex];
+            if (!currentStepEl) return true;
+            
+            const requiredFields = currentStepEl.querySelectorAll('input[required], select[required], textarea[required]');
+            let valid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('invalid');
+                    valid = false;
+                } else {
+                    field.classList.remove('invalid');
+                }
+            });
+            
+            return valid;
+        }
+
+        // Setup form navigation when page loads
+        document.addEventListener('DOMContentLoaded', setupFormNavigation);
+    </script>
+</body>
+</html>

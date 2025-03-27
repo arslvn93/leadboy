@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🕹️ REALTY BOT-GBC 🚀 AI Lead Dominator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* --- Root Variables --- */
+        :root {
+            --gbc-body: #e6e6e6; --gbc-body-dark: #c4c4c4;
+            --gbc-screen-bg: #0f380f; --gbc-screen-text: #9bbc0f;
+            --gbc-screen-border: #306230; --gbc-button-red: #ff0000;
+            --gbc-button-blue: #0066cc; --gbc-button-dark: #333333;
+            --gbc-glow: 0 0 10px var(--gbc-screen-text);
+        }
+        /* --- Base & Reset --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'VT323', monospace; background: #222; color: var(--gbc-screen-text);
+            touch-action: manipulation; overscroll-behavior-y: contain; display: flex;
+            justify-content: center; align-items: center; min-height: 100vh; padding: 10px;
+        }
+        /* --- Gameboy Structure --- */
+        .gameboy-container { width: 100%; max-width: 500px; position: relative; display: flex; flex-direction: column; height: 95vh; max-height: 1000px; }
+        .gameboy-shell-top {
+            background: var(--gbc-body); border: 15px solid var(--gbc-body-dark); border-bottom: none;
+            border-radius: 30px 30px 0 0; width: 100%; position: relative; flex-grow: 1;
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .gameboy-shell-bottom {
+            background: var(--gbc-body); border: 15px solid var(--gbc-body-dark); border-top: none;
+            border-radius: 0 0 30px 30px; width: 100%; position: relative; height: 20vh;
+            min-height: 180px; flex-shrink: 0; overflow: auto;
+        }
+        /* --- Screen Area --- */
+        .screen-container {
+            flex-grow: 1; background: var(--gbc-screen-bg); border: 12px solid var(--gbc-screen-border);
+            border-radius: 10px; margin: 20px 20px 0 20px; padding: 15px; position: relative;
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .scanlines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient( rgba(155, 188, 15, 0.1) 50%, transparent 50% ); background-size: 100% 4px; pointer-events: none; z-index: 1; }
+        .screen-content { position: relative; z-index: 2; height: 100%; overflow-y: auto; padding-right: 5px; }
+        /* --- Controls Area --- */
+        .controls-container { padding: 15px 20px; }
+        /* --- Branding --- */
+        .gbc-branding { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Press Start 2P', cursive; font-size: 0.8rem; color: #cc0000; text-shadow: 0 2px 0 rgba(0,0,0,0.3); padding-top: 3px; }
+        /* --- Typography --- */
+        h1, h2, h3, h4 { font-family: 'Press Start 2P', cursive; margin-bottom: 1rem; color: var(--gbc-screen-text); text-shadow: var(--gbc-glow); word-wrap: break-word; }
+        h1 { font-size: 1.4rem; line-height: 1.3; }
+        h2 { font-size: 1.1rem; } /* Step headers */
+        h3 { font-size: 0.9rem; } /* Result header */
+        /* --- Logo --- */
+        .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+        .logo-icon { width: 40px; height: 40px; background: var(--gbc-screen-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--gbc-screen-text); font-weight: bold; border: 2px solid var(--gbc-screen-text); box-shadow: 0 0 0 2px var(--gbc-screen-bg); }
+
+        /* --- Step-by-step Form Styling --- */
+        #sequenceForm .form-step { display: none; margin-bottom: 1rem; animation: fadeIn 0.5s ease-in-out; }
+        #sequenceForm .form-step.active { display: block; }
+        #sequenceForm > h2 { display: none; } /* Hide holder H2 */
+
+        /* --- Labels & Legends --- */
+        label, legend { display: block; margin-bottom: 0.5rem; color: var(--gbc-screen-text); font-size: 1.1rem; font-family: 'Press Start 2P', cursive; }
+        legend { font-size: 0.9rem; margin-bottom: 0.8rem; padding: 0; width: 100%; line-height: 1.4; }
+
+        /* --- Custom Radio Button Styling --- */
+        .radio-label {
+            position: relative; display: block; padding: 12px 15px 12px 45px; margin-bottom: 10px;
+            border: 3px solid var(--gbc-screen-border); background-color: rgba(15, 56, 15, 0.2);
+            cursor: pointer; transition: background-color 0.2s, border-color 0.2s;
+            font-family: 'VT323', monospace; font-size: 1.2rem; color: var(--gbc-screen-text);
+        }
+        .radio-label input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+        .radio-label span { display: inline-block; vertical-align: middle; }
+        .radio-label::before {
+            content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            width: 18px; height: 18px; border: 2px solid var(--gbc-screen-text);
+            background-color: var(--gbc-screen-bg); border-radius: 50%;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        .radio-label input[type="radio"]:checked + span::before { background-color: var(--gbc-screen-text); box-shadow: var(--gbc-glow); }
+        @supports selector(:has(*)) { .radio-label:has(input[type="radio"]:checked) { border-color: var(--gbc-screen-text); background-color: rgba(155, 188, 15, 0.1); } }
+        .radio-label:hover { background-color: rgba(15, 56, 15, 0.4); }
+        .radio-label:active { transform: scale(0.99); }
+
+        /* --- Styling for Custom Checkbox/Radio Labels --- */
+        .checkbox-label,
+        .radio-label {
+            position: relative; display: block; padding: 12px 15px 12px 45px; margin-bottom: 10px;
+            border: 3px solid var(--gbc-screen-border); background-color: rgba(15, 56, 15, 0.2);
+            cursor: pointer; transition: background-color 0.2s, border-color 0.2s;
+            font-family: 'VT323', monospace; font-size: 1.2rem; color: var(--gbc-screen-text);
+        }
+        /* Hide actual inputs */
+        .checkbox-label input[type="checkbox"],
+        .radio-label input[type="radio"] {
+            position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none;
+        }
+        /* Draw the indicator square */
+        .checkbox-label::before,
+        .radio-label::before {
+            content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            width: 18px; height: 18px; border: 2px solid var(--gbc-screen-text);
+            background-color: var(--gbc-screen-bg);
+            transition: background-color 0.2s, box-shadow 0.2s;
+            /* Ensure it's square, remove any border-radius */
+            border-radius: 0;
+        }
+        /* Style CHECKED indicator square (background change) */
+        @supports selector(:has(*)) {
+            .checkbox-label:has(input:checked)::before,
+            .radio-label:has(input:checked)::before {
+                background-color: var(--gbc-screen-text); box-shadow: var(--gbc-glow);
+            }
+        }
+        /* Hover/Active/Checked states for the label box */
+        .checkbox-label:hover,
+        .radio-label:hover { background-color: rgba(15, 56, 15, 0.4); }
+        .checkbox-label:active,
+        .radio-label:active { transform: scale(0.99); }
+        @supports selector(:has(*)) {
+            .checkbox-label:has(input:checked),
+            .radio-label:has(input:checked) { /* Apply checked style to label */
+                border-color: var(--gbc-screen-text); background-color: rgba(155, 188, 15, 0.1);
+            }
+        }
+
+        /* Label text alignment */
+        .checkbox-label span,
+        .radio-label span { display: inline-block; vertical-align: middle; line-height: 1.2; }
+        /* --- 'Other' Option Group Styling --- */
+        .other-option-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+        .other-option-group input[type="text"] { flex-grow: 1; min-width: 150px; margin-top: 0; }
+        .other-option-group .checkbox-label { margin-bottom: 0; }
+        
+        /* Initially hide 'Other' text inputs */
+        .other-option-group input[type="text"][id$="OtherText"] {
+            display: none;
+        }
+        
+        /* --- General Form Element Styling --- */
+        .form-group { margin-bottom: 1rem; }
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        legend {
+            color: var(--gbc-screen-text);
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%; padding: 12px; background: rgba(15, 56, 15, 0.3);
+            border: 2px solid var(--gbc-screen-border); border-radius: 0; color: var(--gbc-screen-text);
+            font-family: 'VT323', monospace; font-size: 1.2rem; -webkit-appearance: none;
+        }
+        input[type="text"][id$="OtherText"] { margin-top: 5px; } /* Keep specific margin for non-grouped 'other' inputs if any */
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gbc-screen-text); background: rgba(15, 56, 15, 0.5); }
+        select { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239bbc0f'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; }
+
+        /* --- Navigation Buttons Styling --- */
+        .form-navigation { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 10px; }
+        .nav-btn, .submit-btn {
+            padding: 12px 15px; background: var(--gbc-screen-border); color: var(--gbc-screen-text); border: none;
+            font-family: 'Press Start 2P', cursive; font-size: 0.8rem; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 1px; border: 3px solid var(--gbc-screen-text); box-shadow: 0 4px 0 var(--gbc-screen-bg);
+            transition: all 0.1s; flex-grow: 1; text-align: center;
+        }
+        .submit-btn { width: 100%; } /* This is applied when it's the only button */
+        .nav-btn:active, .submit-btn:active { transform: translateY(4px); box-shadow: none; }
+        .nav-btn.prev-btn { background-color: var(--gbc-button-dark); }
+        .nav-btn:disabled, .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: 0 4px 0 var(--gbc-screen-bg); }
+        #finalSubmitBtn { display: none; } /* Hide submit initially */
+
+        /* --- Controls Layout (Bottom Section) --- */
+        .controls-row { display: flex; justify-content: space-between; align-items: center; }
+        .d-pad { width: 120px; height: 120px; position: relative; touch-action: none; background: var(--gbc-body-dark); border-radius: 50%; box-shadow: inset 0 -8px 15px rgba(0,0,0,0.2), 0 8px 0 rgba(0,0,0,0.1); }
+        .d-pad-center { width: 40%; height: 40%; background: var(--gbc-button-dark); position: absolute; top: 30%; left: 30%; border-radius: 50%; }
+        .d-pad-up, .d-pad-down, .d-pad-left, .d-pad-right { position: absolute; background: var(--gbc-button-dark); transition: background 0.2s; }
+        .d-pad-up { width: 40%; height: 20%; top: 10%; left: 30%; border-radius: 10px 10px 0 0; }
+        .d-pad-down { width: 40%; height: 20%; bottom: 10%; left: 30%; border-radius: 0 0 10px 10px; }
+        .d-pad-left { width: 20%; height: 40%; top: 30%; left: 10%; border-radius: 10px 0 0 10px; }
+        .d-pad-right { width: 20%; height: 40%; top: 30%; right: 10%; border-radius: 0 10px 10px 0; }
+        .action-buttons { display: flex; align-items: center; gap: 15px; background: var(--gbc-body-dark); padding: 15px; border-radius: 50px; box-shadow: inset 0 -8px 15px rgba(0,0,0,0.2), 0 8px 0 rgba(0,0,0,0.1); }
+        .btn-a, .btn-b { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Press Start 2P', cursive; font-size: 1rem; color: white; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.3), 0 0 0 4px var(--gbc-button-dark); position: relative; }
+        .btn-a { background: var(--gbc-button-red); }
+        .btn-b { background: var(--gbc-button-blue); }
+        .start-select { display: flex; justify-content: center; gap: 60px; margin-top: 15px; }
+        .btn-start, .btn-select { width: 80px; height: 25px; background: var(--gbc-button-dark); border-radius: 10px; font-family: 'Press Start 2P', cursive; font-size: 0.7rem; color: white; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.3), 0 3px 0 rgba(0,0,0,0.1); }
+        .speaker-grille { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
+        .speaker-hole { width: 8px; height: 30px; background: #333; border-radius: 4px; box-shadow: inset 0 -3px 5px rgba(0,0,0,0.5); }
+
+        /* --- Results Container Styling --- */
+        .result-container { display: none; margin-top: 1rem; border: 3px dashed var(--gbc-screen-text); padding: 10px; background: rgba(15, 56, 15, 0.1); }
+        .sequence-day { margin-bottom: 1rem; padding: 10px; border-left: 4px solid var(--gbc-screen-text); background: rgba(15, 56, 15, 0.2); }
+        .day-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--gbc-screen-text); font-family: 'Press Start 2P', cursive; font-size: 0.9rem; }
+        .day-content { line-height: 1.6; font-size: 1.1rem; }
+
+        /* --- Utility Styles --- */
+        .blink { animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .loading::after { content: "..."; animation: dots 1.5s steps(5, end) infinite; display: inline-block; width: 1.5em; text-align: left; }
+        @keyframes dots { 0%, 20% { content: "."; } 40% { content: ".."; } 60%, 100% { content: "..."; } }
+        .pixel-border { border: 4px solid var(--gbc-screen-text); border-image: linear-gradient( to bottom right, var(--gbc-screen-text) 0%, var(--gbc-screen-bg) 25%, var(--gbc-screen-text) 50%, var(--gbc-screen-bg) 75%, var(--gbc-screen-text) 100% ) 1; box-shadow: 0 0 0 4px var(--gbc-screen-bg), 0 0 0 8px var(--gbc-screen-text); margin: 1rem 0; padding: 10px; }
+        .screen-content::-webkit-scrollbar { width: 5px; }
+        .screen-content::-webkit-scrollbar-thumb { background: var(--gbc-screen-text); border-radius: 3px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Mobile Styles - REPLACED WITH USER'S VERSION --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 0; /* Remove body padding on mobile */
+                min-height: -webkit-fill-available; /* Fix height issues on mobile Safari */
+            }
+
+            .gameboy-container {
+                height: 100vh; /* Use full viewport height on mobile */
+                padding-bottom: 130px; /* Reduced padding to match new min-height of bottom shell */
+                max-height: none; /* Remove max-height constraint */
+                box-sizing: border-box; /* Include padding in height calculation */
+                border-radius: 0; /* Full screen, no radius */
+            }
+
+            .gameboy-shell-top {
+                /* No overrides needed here, desktop styles will apply */
+            }
+
+            .screen-container {
+                margin: 10px; /* Re-introduce margin for mobile to create gap */
+                border-radius: 10px 10px 10px 10px; /* Explicitly set border-radius for mobile to match desktop */
+                padding: 10px; /* Adjust padding */
+                /* Desktop border style applies */
+            }
+
+            .gameboy-shell-bottom {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%; /* Override potential max-width from container */
+                border-top: none; /* Restore original border-top: none from desktop */
+                /* Desktop border and border-radius apply */
+                z-index: 10; /* Ensure it's above other content */
+                height: 15vh; /* Target height */
+                min-height: 130px; /* Reduced minimum height */
+                padding-bottom: env(safe-area-inset-bottom); /* Add padding for iPhone notches */
+                box-sizing: border-box; /* Include padding/border in height */
+                /* Desktop background applies */
+                display: flex; /* Use flex to help center content vertically if needed */
+                flex-direction: column;
+                justify-content: center; /* Center controls vertically */
+            }
+
+            /* Adjust controls container padding on mobile */
+            .controls-container {
+                padding: 5px 10px; /* Reduced padding */
+            }
+
+            /* Scale down controls significantly for mobile */
+            .d-pad {
+                width: 70px;  /* Further reduced size */
+                height: 70px; /* Further reduced size */
+            }
+            .btn-a, .btn-b {
+                width: 40px;  /* Reduced size */
+                height: 40px; /* Reduced size */
+                font-size: 0.8rem; /* Slightly smaller text */
+            }
+            .action-buttons {
+                gap: 8px;     /* Reduced gap */
+                padding: 8px;   /* Reduced padding */
+            }
+            .start-select {
+                gap: 30px;    /* Reduced gap */
+                margin-top: 8px; /* Reduced margin */
+            }
+            .btn-start, .btn-select {
+                width: 60px;  /* Reduced size */
+                height: 18px; /* Reduced size */
+                font-size: 0.5rem; /* Smaller font */
+            }
+            .speaker-grille {
+                margin-top: 8px; /* Reduced margin */
+                gap: 5px;     /* Reduced gap */
+            }
+            .speaker-hole {
+                width: 5px;   /* Reduced size */
+                height: 10px; /* Further reduced height */
+            }
+/* Adjust branding on mobile */
+.gbc-branding {
+    padding-top: 0; /* Remove top padding */
+    font-size: 0.6rem; /* Make font smaller */
+}
+
+            /* Always hide logo on mobile */
+            .logo {
+                display: none !important;
+            }
+        }
+        /* --- End Mobile Styles --- */
+
+        /* --- Vibration Effect --- */
+        @media (max-width: 768px) {
+            .vibrate { animation: vibrate 0.3s linear; }
+            @keyframes vibrate { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
+        }
+
+        /* --- Glitch Effect Removed --- */
+
+        /* --- Pixel Message Effect Removed --- */
+
+        /* --- Scrolling Text Effect --- */
+        .scrolling-text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gbc-screen-bg); /* Match screen background */
+            overflow: hidden; /* Hide text outside the container */
+            z-index: 5;
+            padding: 0 10px; /* Add horizontal padding */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        .scrolling-text {
+            position: absolute;
+            top: 100%; /* Start below the screen */
+            left: 50%; /* Default horizontal center */
+            transform: translateX(-50%); /* Adjust for centering */
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem; /* Reduced again for mobile */
+            color: var(--gbc-screen-text);
+            text-align: center;
+            white-space: nowrap; /* Keep text on one line */
+            text-shadow: 1px 1px 0px var(--gbc-screen-border); /* Simpler shadow */
+            animation: scroll-up 5s linear forwards; /* 5 second scroll duration */
+            opacity: 1;
+            will-change: top, opacity; /* Optimize animation for top property */
+        }
+
+        @keyframes scroll-up {
+            0% {
+                top: 100%;
+                opacity: 1;
+            }
+            80% {
+                 opacity: 1; /* Keep visible for most of the scroll */
+            }
+            100% {
+                top: -10%; /* Move completely off screen */
+                opacity: 0;
+            }
+        }
+
+        /* --- Final Static Message --- */
+        .final-message-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%; /* Prevent text touching edges */
+            transform: translate(-50%, -50%);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.1rem; /* Larger than scrolling text */
+            color: var(--gbc-screen-text);
+            text-align: center;
+            line-height: 1.6;
+            text-shadow: 2px 2px 0px var(--gbc-screen-border); /* Pixel shadow */
+            opacity: 0; /* Start hidden (JS will set to 1) */
+            /* animation: pixel-fade-in 1s forwards; */ /* Removed animation */
+            white-space: normal; /* Allow wrapping */
+        }
+    </style>
+</head>
+<body>
+    <div class="gameboy-container">
+        <!-- Screen Area (Top) -->
+        <div class="gameboy-shell-top">
+            <div class="gbc-branding">SG LEADBOY</div>
+
+            <div class="screen-container">
+                <div class="scanlines"></div>
+                <div class="screen-content">
+                    <div class="logo">
+                        <div class="logo-icon">AI</div>
+                        <h1>NEW LEAD 15-DAY SEQUENCE</h1>
+                    </div>
+
+                    <!-- Global Title - JS hides after step 1 -->
+
+
+                    <!-- Pixel border - JS hides after step 1 -->
+                    <div class="pixel-border">
+                        <p>INSERT AGENT DATA TO GENERATE HYPER-PERSONALIZED LEAD NURTURE CAMPAIGN.</p>
+                        <p class="blink">ANSWER THE QUESTIONS BELOW</p>
+                        <div id="progress-indicator" style="margin-top: 5px; font-size: 0.9rem; text-align: right;"></div>
+                    </div>
+
+                    <form id="sequenceForm">
+                        <!-- Step 1: Basic Info -->
+                        <div class="form-step" data-step="1">
+                            <h2>Basic Information</h2>
+                            <fieldset class="form-group">
+                                <legend>Full Name:</legend>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </fieldset>
+                        </div>
+                        <div class="form-step" data-step="2">
+                            <h2>Basic Information</h2>
+                            <fieldset class="form-group">
+                                <legend>Email Address:</legend>
+                                <input type="email" id="email" name="email" required>
+                            </fieldset>
+                        </div>
+                        <div class="form-step" data-step="3">
+                            <h2>Basic Information</h2>
+                            <fieldset class="form-group">
+                                <legend>Primary Market Location:</legend>
+                                <input type="text" id="marketLocation" name="marketLocation" required>
+                            </fieldset>
+                        </div>
+                        <div class="form-step" data-step="4">
+                            <h2>Basic Information</h2>
+                            <fieldset class="form-group">
+                                <legend>Brokerage:</legend>
+                                <input type="text" id="brokerage" name="brokerage" required>
+                            </fieldset>
+                        </div>
+
+                        <!-- Step 2: Lead Attraction Strategy -->
+                        <div class="form-step" data-step="5">
+                            <h2>Lead Attraction Strategy</h2>
+                            <fieldset class="form-group">
+                                <legend>How do you typically attract new potential clients? (Select all that apply)</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionMethod" value="ads"> <span>Meta/Google Ads</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionMethod" value="website"> <span>Website lead capture/IDX registration</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionMethod" value="referrals"> <span>Referrals (past clients, sphere of influence)</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionMethod" value="directMail"> <span>Direct mail campaigns</span></label>
+                            </fieldset>
+                        </div>
+
+                        <!-- Conditional for Ads -->
+                        <div class="form-step" data-step="6">
+                            <h2>Lead Attraction Strategy</h2>
+                            <fieldset class="form-group" id="adsConditional">
+                                <legend>What specific offer or lead magnet do you use in your ads?</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="adOffer" value="valuation"> <span>Free home valuation</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="adOffer" value="alerts"> <span>Property/listing alerts</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="adOffer" value="guides"> <span>Buyer/seller guides</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="adOffer" value="report"> <span>Market report</span></label>
+                                <div class="other-option-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="adOfferOtherCheck">
+                                        <span>Other:</span>
+                                    </label>
+                                    <input type="text" id="adOfferOtherText" name="adOfferOtherText" placeholder="Please specify">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Conditional for Website -->
+                        <div class="form-step" data-step="7">
+                            <h2>Lead Attraction Strategy</h2>
+                            <fieldset class="form-group" id="websiteConditional">
+                                <legend>What type of information do visitors typically request on your website?</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="websiteRequest" value="propertyInfo"> <span>Property specific information</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="websiteRequest" value="mls"> <span>Home search/MLS access</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="websiteRequest" value="neighborhood"> <span>Neighborhood guides</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="websiteRequest" value="valuation"> <span>Home valuation</span></label>
+                                <div class="other-option-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="websiteRequestOtherCheck">
+                                        <span>Other:</span>
+                                    </label>
+                                    <input type="text" id="websiteRequestOtherText" name="websiteRequestOtherText" placeholder="Please specify">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="8">
+                            <h2>Lead Attraction Strategy</h2>
+                            <fieldset class="form-group">
+                                <legend>What valuable information do you currently provide to attract new clients?</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionContent" value="reports"> <span>Market reports/home valuations</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionContent" value="guides"> <span>Neighborhood/community guides</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionContent" value="education"> <span>Buyer/seller educational resources</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="attractionContent" value="analysis"> <span>Investment/financial analysis</span></label>
+                            </fieldset>
+                        </div>
+
+                        <!-- Step 3: Customize Your Sequence -->
+                        <div class="form-step" data-step="9">
+                            <h2>Customize Your Sequence</h2>
+                            <fieldset class="form-group">
+                                <legend>What type of properties are your new leads typically interested in? (Select all that apply)</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="propertyType" value="sfh"> <span>Single-family homes</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="propertyType" value="condo"> <span>Condos/Townhomes</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="propertyType" value="luxury"> <span>Luxury properties</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="propertyType" value="investment"> <span>Investment properties</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="10">
+                            <h2>Customize Your Sequence</h2>
+                            <fieldset class="form-group">
+                                <legend>What is your preferred communication style with new leads?</legend>
+                                <label class="radio-label"><input type="radio" name="communicationStyle" value="direct" required> <span>Direct and to-the-point</span></label>
+                                <label class="radio-label"><input type="radio" name="communicationStyle" value="warm"> <span>Warm and relationship-focused</span></label>
+                                <label class="radio-label"><input type="radio" name="communicationStyle" value="educational"> <span>Educational and informative</span></label>
+                                <label class="radio-label"><input type="radio" name="communicationStyle" value="data"> <span>Statistics and data-driven</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="11">
+                            <h2>Customize Your Sequence</h2>
+                            <div class="form-group">
+                                <legend>What are the top 2 value propositions you offer to new clients?</legend>
+                                <input type="text" id="valueProp1" name="valueProp1" placeholder="Value Proposition 1" required>
+                                <input type="text" id="valueProp2" name="valueProp2" placeholder="Value Proposition 2" required style="margin-top: 10px;">
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="12">
+                            <h2>Customize Your Sequence</h2>
+                            <fieldset class="form-group">
+                                <legend>What are the most common objections you receive from new leads?</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="objections" value="looking"> <span>"I'm just looking"</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="objections" value="anotherAgent"> <span>"I'm working with another agent"</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="objections" value="market"> <span>"I want to wait for the market to change"</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="objections" value="sellFirst"> <span>"I need to sell my current home first"</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="13">
+                            <h2>Customize Your Sequence</h2>
+                            <fieldset class="form-group">
+                                <legend>What local resources or information do new leads typically request?</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="localResources" value="schools"> <span>School/neighborhood information</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="localResources" value="stats"> <span>Market statistics/trends</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="localResources" value="financing"> <span>Financing/mortgage options</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="localResources" value="process"> <span>Home buying/selling process guides</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="14">
+                            <h2>Customize Your Sequence</h2>
+                            <fieldset class="form-group">
+                                <legend>What stage of the buying/selling process are most of your leads in when they first contact you?</legend>
+                                <label class="radio-label"><input type="radio" name="leadStage" value="exploring" required> <span>Just starting to explore</span></label>
+                                <label class="radio-label"><input type="radio" name="leadStage" value="looking"> <span>Actively looking but not ready to commit</span></label>
+                                <label class="radio-label"><input type="radio" name="leadStage" value="ready"> <span>Ready to buy/sell immediately</span></label>
+                                <label class="radio-label"><input type="radio" name="leadStage" value="varying"> <span>Varying stages (need multi-stage nurturing)</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="15">
+                            <h2>Customize Your Sequence</h2>
+                            <fieldset class="form-group">
+                                <legend>What is your biggest challenge when converting new leads?</legend>
+                                <label class="checkbox-label"><input type="checkbox" name="challenges" value="engagement"> <span>Low response/engagement rates</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="challenges" value="qualifying"> <span>Difficulty qualifying serious buyers</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="challenges" value="appointments"> <span>Converting online leads to appointments</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="challenges" value="topOfMind"> <span>Staying top-of-mind during long decision cycles</span></label>
+                            </fieldset>
+                        </div>
+
+                        <!-- Step 4: Lead Management Information -->
+                        <div class="form-step" data-step="16">
+                            <h2>Lead Management Information</h2>
+                            <fieldset class="form-group">
+                                <legend>What CRM or follow-up system do you currently use?</legend>
+                                <label class="radio-label"><input type="radio" name="crmSystem" value="none" required> <span>None/manual tracking</span></label>
+                                <label class="radio-label"><input type="radio" name="crmSystem" value="major"> <span>Major CRM (Follow Up Boss, Liondesk, etc.)</span></label>
+                                <label class="radio-label"><input type="radio" name="crmSystem" value="simple"> <span>Simple tools (spreadsheets, email)</span></label>
+                                <div class="other-option-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="crmOtherCheck">
+                                        <span>Other:</span>
+                                    </label>
+                                    <input type="text" id="crmOtherText" name="crmOtherText" placeholder="Please specify">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Step 5: Final Details -->
+                        <div class="form-step" data-step="17">
+                            <h2>Just a Few More Details</h2>
+                            <fieldset class="form-group">
+                                <legend>How many new leads do you typically generate per month?</legend>
+                                <label class="radio-label"><input type="radio" name="leadsPerMonth" value="0-5" required> <span>0-5</span></label>
+                                <label class="radio-label"><input type="radio" name="leadsPerMonth" value="6-15"> <span>6-15</span></label>
+                                <label class="radio-label"><input type="radio" name="leadsPerMonth" value="16-30"> <span>16-30</span></label>
+                                <label class="radio-label"><input type="radio" name="leadsPerMonth" value="31+"> <span>31+</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="18">
+                            <h2>Just a Few More Details</h2>
+                            <fieldset class="form-group">
+                                <legend>What is your current lead response time?</legend>
+                                <label class="radio-label"><input type="radio" name="responseTime" value="5min" required> <span>Within 5 minutes</span></label>
+                                <label class="radio-label"><input type="radio" name="responseTime" value="1hour"> <span>Within 1 hour</span></label>
+                                <label class="radio-label"><input type="radio" name="responseTime" value="sameDay"> <span>Same day</span></label>
+                                <label class="radio-label"><input type="radio" name="responseTime" value="48hours"> <span>Within 48 hours</span></label>
+                            </fieldset>
+                        </div>
+
+                        <div class="form-step" data-step="19">
+                            <h2>Just a Few More Details</h2>
+                            <fieldset class="form-group">
+                                <legend>How many transactions did you close in the past 12 months?</legend>
+                                <label class="radio-label"><input type="radio" name="transactions" value="0-5" required> <span>0-5</span></label>
+                                <label class="radio-label"><input type="radio" name="transactions" value="6-15"> <span>6-15</span></label>
+                                <label class="radio-label"><input type="radio" name="transactions" value="16-30"> <span>16-30</span></label>
+                                <label class="radio-label"><input type="radio" name="transactions" value="31+"> <span>31+</span></label>
+                            </fieldset>
+                        </div>
+
+                        <!-- Navigation Area -->
+                        <div class="form-navigation">
+                             <button type="button" id="prevBtn" class="nav-btn prev-btn">Previous</button>
+                             <button type="button" id="nextBtn" class="nav-btn next-btn">Next</button>
+                             <button type="submit" id="finalSubmitBtn" class="submit-btn">Create My Custom Sequence</button>
+                        </div>
+                    </form>
+
+                    <div id="result" class="result-container">
+                        <h3>YOUR 20-DAY NURTURE SEQUENCE:</h3>
+                        <div id="sequenceResults">
+                            <!-- Sequence will be inserted here -->
+                        </div>
+                    </div>
+                </div> <!-- End .screen-content -->
+            </div> <!-- End .screen-container -->
+        </div> <!-- End .gameboy-shell-top -->
+
+        <!-- Controls Area (Bottom) -->
+        <div class="gameboy-shell-bottom">
+             <!-- Controls HTML remains the same -->
+             <div class="controls-container">
+                <div class="controls-row">
+                    <div class="d-pad"><div class="d-pad-up" id="upBtn"></div><div class="d-pad-down" id="downBtn"></div><div class="d-pad-left" id="leftBtn"></div><div class="d-pad-right" id="rightBtn"></div><div class="d-pad-center"></div></div>
+                    <div class="action-buttons"><div class="btn-b" id="bBtn">B</div><div class="btn-a" id="aBtn">A</div></div>
+                </div>
+                <div class="start-select"><div class="btn-select" id="selectBtn">PREV</div><div class="btn-start" id="startBtn">NEXT</div></div>
+                <div class="speaker-grille"><div class="speaker-hole"></div><div class="speaker-hole"></div><div class="speaker-hole"></div><div class="speaker-hole"></div><div class="speaker-hole"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Startup Sound
+            playStartupSound();
+
+            // Elements
+            const form = document.getElementById('sequenceForm');
+            const steps = Array.from(form.querySelectorAll('.form-step'));
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('finalSubmitBtn');
+            const progressIndicator = document.getElementById('progress-indicator');
+            const screenContent = document.querySelector('.screen-content');
+            const screenContainer = document.querySelector('.screen-container'); // Get screen container for glitch effect
+            const pixelBorder = document.querySelector('.pixel-border');
+            const sequenceTitle = document.getElementById('sequenceTitle'); // Global Title
+            const resultDiv = document.getElementById('result');
+            const sequenceResults = document.getElementById('sequenceResults');
+
+            // --- 'Other' Option Logic ---
+            function setupOtherOptionToggle(checkboxName, textInputId) {
+                const checkbox = form.querySelector(`input[name="${checkboxName}"]`);
+                const textInput = document.getElementById(textInputId);
+                if (checkbox && textInput) {
+                    // Initial state based on potential pre-checked status (unlikely here, but good practice)
+                    textInput.style.display = checkbox.checked ? 'block' : 'none';
+
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            textInput.style.display = 'block';
+                            // Optional: Focus the text input when shown
+                            // setTimeout(() => textInput.focus(), 50);
+                        } else {
+                            textInput.style.display = 'none';
+                            textInput.value = ''; // Clear value when hidden
+                        }
+                    });
+                }
+            }
+
+            // Setup toggles for all 'Other' groups
+            setupOtherOptionToggle('adOfferOtherCheck', 'adOfferOtherText');
+            setupOtherOptionToggle('websiteRequestOtherCheck', 'websiteRequestOtherText');
+            setupOtherOptionToggle('crmOtherCheck', 'crmOtherText');
+            // Add more calls here if other similar fields exist
+
+            // State
+            let currentStepIndex = 0;
+            const totalSteps = steps.length;
+
+            // --- Core Step Logic ---
+            function showStep(index) {
+                // Hide/Show Step Divs and their internal H2 titles
+                steps.forEach((step, i) => {
+                    const isActive = (i === index);
+                    step.classList.toggle('active', isActive);
+                    const stepHeader = step.querySelector('h2');
+                    if (stepHeader) {
+                        stepHeader.style.display = (index === 0) ? 'block' : 'none'; // Show H2 only on step 1
+                    }
+                });
+
+                // Show/Hide Global elements based on first step
+                const isFirstStep = (index === 0);
+                const isLastStep = (index === totalSteps - 1);
+                if (pixelBorder) pixelBorder.style.display = isFirstStep ? 'block' : 'none';
+                if (sequenceTitle) sequenceTitle.style.display = isFirstStep ? 'block' : 'none';
+
+                // Update button states
+                if (prevBtn) {
+                    prevBtn.style.display = isLastStep ? 'none' : 'block'; // Hide on last step
+                    prevBtn.disabled = isFirstStep; // Disable on first step (when visible)
+                }
+                if(nextBtn) nextBtn.style.display = isLastStep ? 'none' : 'block';
+                if(submitBtn) submitBtn.style.display = isLastStep ? 'block' : 'none';
+
+                // Update progress indicator
+                if (progressIndicator) {
+                    progressIndicator.textContent = `STEP ${index + 1} OF ${totalSteps}`;
+                }
+
+                // Scroll screen to top
+                if (screenContent) screenContent.scrollTop = 0;
+
+                // Focus first non-radio/checkbox input in the current step
+                const currentStepElement = steps[index];
+                if (currentStepElement) {
+                     const firstInput = currentStepElement.querySelector('input:not([type=hidden]):not([type=radio]):not([type=checkbox]), select, textarea');
+                     if (firstInput) {
+                         setTimeout(() => { try { firstInput.focus({ preventScroll: true }); } catch(e){} }, 150);
+                     }
+                }
+            }
+
+            // --- Validation ---
+             function validateStep(index) {
+                const currentStep = steps[index];
+                if (!currentStep) return true;
+
+                const inputs = currentStep.querySelectorAll('input[required]:not([type=hidden]), select[required], textarea[required]');
+                let isValid = true;
+                let firstInvalidElement = null;
+
+                // Clear previous errors
+                currentStep.querySelectorAll('fieldset').forEach(fs => fs.style.border = 'none');
+                currentStep.querySelectorAll('input, select, textarea').forEach(inp => inp.style.borderColor = '');
+
+                inputs.forEach(input => {
+                    let fieldIsValid = true;
+                    if (input.type === 'radio') {
+                        const groupName = input.name;
+                        const group = currentStep.querySelectorAll(`input[name="${groupName}"]`);
+                        if (!Array.from(group).some(radio => radio.checked)) {
+                            fieldIsValid = false;
+                            const fieldset = input.closest('fieldset');
+                            if (fieldset) {
+                                fieldset.style.border = '2px dashed red';
+                                if (!firstInvalidElement) firstInvalidElement = fieldset;
+                            }
+                        }
+                    } else if (!input.checkValidity()) { // Text, email, etc.
+                        fieldIsValid = false;
+                        input.style.borderColor = 'red';
+                        if (!firstInvalidElement) firstInvalidElement = input;
+                        // Handle 'Other' text input validation if its checkbox is checked
+                        if(input.id.endsWith('OtherText')) {
+                             const checkbox = currentStep.querySelector(`input[name="${input.name.replace('OtherText', 'OtherCheck')}"]`);
+                             if(checkbox && !checkbox.checked) {
+                                 // If checkbox isn't checked, the text isn't strictly required by checkValidity
+                                 // Reset visual error if checkbox isn't checked but text is empty
+                                 if(input.value === '') {
+                                     fieldIsValid = true;
+                                     input.style.borderColor = '';
+                                     if(firstInvalidElement === input) firstInvalidElement = null; // Remove if it was the first
+                                 }
+                             }
+                        }
+
+                    }
+                    if (!fieldIsValid) isValid = false;
+                });
+
+                if (!isValid) {
+                     playButtonSound(246.94); // Error sound (B3)
+                     if (firstInvalidElement) {
+                         firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                     }
+                     setTimeout(() => { alert('PLEASE COMPLETE THE REQUIRED FIELD(S) FOR THIS STEP.'); }, 300);
+                }
+                return isValid;
+            }
+
+            // --- Navigation Button Listeners ---
+            nextBtn?.addEventListener('click', () => {
+                if (validateStep(currentStepIndex)) {
+                    if (currentStepIndex < totalSteps - 1) {
+                        currentStepIndex++;
+                        showStep(currentStepIndex);
+                        playButtonSound(587.33); // A sound (D5)
+                    }
+                }
+            });
+
+            prevBtn?.addEventListener('click', () => {
+                if (currentStepIndex > 0) {
+                    currentStepIndex--;
+                    showStep(currentStepIndex);
+                    playButtonSound(493.88); // B sound (B4)
+                }
+            });
+
+            // --- Form Submission ---
+            form?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!validateStep(currentStepIndex)) return;
+
+                // --- Start Glitch Effect ---
+                if (screenContainer) screenContainer.classList.add('glitch-effect');
+                // --- End Glitch Effect ---
+
+                if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
+
+                // Loading State
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'PROCESSING<span class="loading"></span>';
+                submitBtn.disabled = true;
+                if(prevBtn) prevBtn.disabled = true; // Disable prev button during submit
+                submitBtn.classList.add('vibrate');
+
+                // --- Gather Data in Desired Format (Questions as Keys) ---
+                const payloadData = {};
+                steps.forEach(step => {
+                    // --- Check for Value Prop step FIRST ---
+                    const valueProp1 = step.querySelector('#valueProp1');
+                    const valueProp2 = step.querySelector('#valueProp2');
+                    if (valueProp1 && valueProp2) {
+                        // Use placeholder as key for value props
+                        if (valueProp1.value) payloadData[valueProp1.placeholder || 'Value Proposition 1'] = valueProp1.value.trim();
+                        if (valueProp2.value) payloadData[valueProp2.placeholder || 'Value Proposition 2'] = valueProp2.value.trim();
+                        return; // Go to next step
+                    }
+                    // --- End Value Prop Check ---
+
+                    // --- Find Question Text (Legend or Label) ---
+                    const legend = step.querySelector('legend');
+                    const label = step.querySelector('label:not(.checkbox-label):not(.radio-label)'); // For single text inputs like name/email
+                    let questionText = '';
+
+                    if (legend) {
+                        questionText = legend.textContent.trim();
+                    } else if (label) {
+                        // Fallback for other label-based questions (e.g., Full Name, Email)
+                        questionText = label.textContent.trim();
+                    }
+                    // --- End Find Question Text ---
+
+
+                    if (!questionText) return; // Skip if no question found for other input types
+
+                    // Handle Radio Buttons
+                    const checkedRadio = step.querySelector('input[type="radio"]:checked');
+                    if (checkedRadio) {
+                        const radioLabel = checkedRadio.closest('.radio-label');
+                        const answerText = radioLabel?.querySelector('span')?.textContent?.trim();
+                        if (answerText) {
+                             // Handle 'Other' for radio if needed (assuming checkbox structure for now)
+                             payloadData[questionText] = answerText;
+                        }
+                    }
+
+                    // Handle Checkboxes
+                    const checkedCheckboxes = step.querySelectorAll('input[type="checkbox"]:checked');
+                    if (checkedCheckboxes.length > 0) {
+                        const answers = [];
+                        checkedCheckboxes.forEach(checkbox => {
+                            const parentLabel = checkbox.closest('.checkbox-label');
+                            const isOtherGroup = parentLabel?.closest('.other-option-group');
+
+                            if (isOtherGroup) {
+                                const textInput = isOtherGroup.querySelector('input[type="text"]');
+                                if (textInput && textInput.value) {
+                                    answers.push(textInput.value.trim()); // Add 'Other' text value
+                                }
+                            } else {
+                                const answerText = parentLabel?.querySelector('span')?.textContent?.trim();
+                                if (answerText) {
+                                    answers.push(answerText); // Add standard checkbox text
+                                }
+                            }
+                        });
+                        if (answers.length > 0) {
+                            // Join multiple answers with a comma and space
+                            payloadData[questionText] = answers.join(', ');
+                        }
+                    }
+
+                    // Handle Text Inputs (excluding 'Other' text inputs handled above and value props)
+                    const textInput = step.querySelector('input[type="text"]:not([id$="OtherText"]):not(#valueProp1):not(#valueProp2), input[type="email"], select, textarea');
+                    if (textInput && textInput.value) {
+                         payloadData[questionText] = textInput.value.trim();
+                    }
+                });
+                // --- End Gather Data ---
+
+
+                // --- Send Data to Endpoint via POST (JSON) ---
+                const endpointUrl = 'https://n8n.salesgenius.co/webhook/leadboy';
+                fetch(endpointUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Set content type for JSON
+                    },
+                    body: JSON.stringify(payloadData), // Send payloadData as JSON string
+                })
+                .then(response => {
+                    // Optional: Log success or basic response info, but don't wait
+                    console.log('POST request sent to endpoint, status:', response.status); // Updated log message
+                })
+                .catch((error) => {
+                    // Log more detailed errors, but don't block UI
+                    console.error('Fetch Error:', error);
+                    if (error instanceof TypeError) {
+                        console.error('This might be a CORS issue or network problem.');
+                    }
+                    // You can add more specific error checks if needed
+                });
+                // --- End Send Data ---
+
+                // Simulate Processing & Show Pixel Effect
+                setTimeout(() => {
+                    console.log('Form Data Submitted:', payloadData); // Log the correct data object
+
+                    // Hide form & related UI first
+                    form.style.display = 'none';
+                    if(progressIndicator) progressIndicator.style.display = 'none';
+                    if(pixelBorder) pixelBorder.style.display = 'none';
+                    if(sequenceTitle) sequenceTitle.style.display = 'none';
+
+                    // Pixel message creation removed
+                    // Nested setTimeout removed
+
+                    playGameboySound(); // Play sound when effect starts
+
+                    // --- Start Scrolling Text Effect ---
+                    const scrollContainer = document.createElement('div');
+                    scrollContainer.className = 'scrolling-text-container';
+                    screenContent.appendChild(scrollContainer);
+
+                    const messages = [
+                        "INITIALIZING SEQUENCE...",
+                        "ANALYZING AGENT DATA...",
+                        "GENERATING DAY 1-5...",
+                        "CALIBRATING TONE...",
+                        "GENERATING DAY 6-10...",
+                        "OPTIMIZING TOUCHPOINTS...",
+                        "GENERATING DAY 11-15...",
+                        "ADDING PERSONALIZATION...",
+                        "FINALIZING CAMPAIGN...",
+                        "SEQUENCE COMPLETE!",
+                        "CHECK YOUR EMAIL SOON!"
+                    ];
+                    let messageIndex = 0;
+                    let intervalId = null; // To potentially stop later if needed
+
+                    const createScrollingText = () => {
+                        const textElement = document.createElement('div');
+                        textElement.className = 'scrolling-text';
+                        // Cycle through messages
+                        textElement.textContent = messages[messageIndex % messages.length];
+                        messageIndex++;
+
+                        // Add slight random horizontal variation & slightly vary speed
+                        const randomOffset = (Math.random() - 0.5) * 5; // Reduced variation: +/- 2.5%
+                        const randomDuration = 4 + Math.random() * 2; // 4s to 6s duration
+                        textElement.style.left = `${50 + randomOffset}%`;
+                        textElement.style.animationDuration = `${randomDuration}s`;
+
+                        scrollContainer.appendChild(textElement);
+
+                        // Remove the element after its animation finishes + small buffer
+                        setTimeout(() => {
+                            textElement.remove();
+                        }, (randomDuration * 1000) + 100);
+                    };
+
+                    // Create the first message immediately, then start interval
+                    createScrollingText();
+                    intervalId = setInterval(createScrollingText, 900); // Add new text every 900ms (slightly slower)
+
+                    // --- Stop scrolling and show final message after 10 seconds ---
+                    setTimeout(() => {
+                        clearInterval(intervalId); // Stop creating new scrolling messages
+                        // Optional: Could add a fade-out to scrollContainer before removing
+                        if (scrollContainer) {
+                            scrollContainer.remove(); // Remove the scrolling container
+                        }
+
+                        // Create and display the final static message
+                        const finalMessage = document.createElement('div');
+                        finalMessage.className = 'final-message-text';
+                        finalMessage.textContent = "You'll receive an email in the next 24 hours with your complete package";
+                        screenContent.appendChild(finalMessage);
+                        // Force visibility for debugging (will remove animation from CSS next)
+                        finalMessage.style.opacity = 1;
+
+                    }, 10000); // 10 seconds
+
+                }, 500); // Short delay before starting effect (adjust if needed)
+            });
+
+            // --- Audio Functions (Keep Compacted) ---
+            function playStartupSound() { try { const AC = window.AudioContext || window.webkitAudioContext; if(!AC) return; const a = new AC(), o=a.createOscillator(), g=a.createGain(); o.type='square'; g.gain.value=0.2; o.connect(g); g.connect(a.destination); o.frequency.setValueAtTime(523.25,a.currentTime); o.start(); o.frequency.exponentialRampToValueAtTime(1046.50,a.currentTime+0.3); g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.5); o.stop(a.currentTime+0.6); } catch(e){ console.log("Startup Audio error:", e); } }
+            function playGameboySound() { try { const AC = window.AudioContext || window.webkitAudioContext; if(!AC) return; const a = new AC(), o=a.createOscillator(), g=a.createGain(); o.type='square'; g.gain.value=0.3; o.connect(g); g.connect(a.destination); o.frequency.setValueAtTime(523.25,a.currentTime); o.start(); o.frequency.exponentialRampToValueAtTime(659.25,a.currentTime+0.1); o.frequency.exponentialRampToValueAtTime(783.99,a.currentTime+0.2); g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.3); o.stop(a.currentTime+0.4); } catch(e){ console.log("GB Audio error:", e); } }
+            function playButtonSound(note) { try { const AC = window.AudioContext || window.webkitAudioContext; if(!AC) return; const a = new AC(), o=a.createOscillator(), g=a.createGain(); o.type='square'; g.gain.value=0.1; o.connect(g); g.connect(a.destination); o.frequency.setValueAtTime(note,a.currentTime); o.start(); g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.1); o.stop(a.currentTime+0.2); } catch(e){ console.log("Button Audio error:", e); } }
+
+            // --- Gameboy Button Effects & Actions ---
+            function setupButtonEffect(btn) { if(!btn) return; const sh = btn.style.boxShadow; const press = ()=>{ btn.style.transform='translateY(4px)'; btn.style.boxShadow='none'; }; const release = ()=>{ btn.style.transform=''; btn.style.boxShadow=sh; }; btn.addEventListener('mousedown', press); btn.addEventListener('mouseup', release); btn.addEventListener('mouseleave', release); btn.addEventListener('touchstart', e=>{ /* Removed e.preventDefault() */ press(); if(navigator.vibrate) navigator.vibrate(30); }); btn.addEventListener('touchend', e=>{ /* Removed e.preventDefault() */ release(); }); }
+            ['aBtn', 'bBtn', 'startBtn', 'selectBtn', 'upBtn', 'downBtn', 'leftBtn', 'rightBtn'].forEach(id => setupButtonEffect(document.getElementById(id)));
+
+            // --- A Button / START Button (Next/Submit) ---
+            const handleNextAction = () => {
+                playButtonSound(587.33); // A sound
+                if (currentStepIndex === totalSteps - 1) { // If it's the last step, try to submit
+                    if (validateStep(currentStepIndex)) {
+                        form.requestSubmit(); // Trigger form submission
+                    }
+                } else { // Otherwise, try to go to the next step
+                    if (validateStep(currentStepIndex)) {
+                        if (currentStepIndex < totalSteps - 1) {
+                            currentStepIndex++;
+                            showStep(currentStepIndex);
+                        }
+                    }
+                }
+            };
+            document.getElementById('aBtn')?.addEventListener('click', handleNextAction);
+            document.getElementById('startBtn')?.addEventListener('click', handleNextAction); // START button = Next / Submit
+
+            // --- B Button / SELECT Button (Previous) ---
+            const handlePrevAction = () => {
+                playButtonSound(493.88); // B sound
+                if (currentStepIndex > 0) {
+                    currentStepIndex--;
+                    showStep(currentStepIndex);
+                }
+            };
+            document.getElementById('bBtn')?.addEventListener('click', handlePrevAction);
+            document.getElementById('selectBtn')?.addEventListener('click', handlePrevAction); // SELECT button = Previous
+
+            // --- D-Pad Navigation & Scroll ---
+            document.getElementById('upBtn')?.addEventListener('click', () => { screenContent?.scrollBy(0, -50); playButtonSound(440.00); }); // D-Pad Up = Scroll Up
+            document.getElementById('downBtn')?.addEventListener('click', () => { screenContent?.scrollBy(0, 50); playButtonSound(349.23); }); // D-Pad Down = Scroll Down
+            document.getElementById('leftBtn')?.addEventListener('click', handlePrevAction); // D-Pad Left = Previous
+            document.getElementById('rightBtn')?.addEventListener('click', handleNextAction); // D-Pad Right = Next/Submit
+
+            // --- Auto-Advance for Radio-Only Steps ---
+            steps.forEach((step, index) => {
+                const fieldset = step.querySelector('fieldset.form-group');
+                // Check if the step contains exactly one fieldset and that fieldset contains only radio buttons (and maybe a legend)
+                const radioInputs = fieldset ? fieldset.querySelectorAll('input[type="radio"]') : [];
+                const otherInputs = step.querySelectorAll('input:not([type="radio"]):not([type="hidden"]), select, textarea'); // Check for other input types
+
+                // Condition: Step has a fieldset, that fieldset has radio buttons, and the step has NO other input types.
+                if (fieldset && radioInputs.length > 0 && otherInputs.length === 0) {
+                    radioInputs.forEach(radio => {
+                        radio.addEventListener('change', () => {
+                            // Only advance if the 'Next' button would normally be visible
+                            if (index < totalSteps - 1) {
+                                playButtonSound(587.33); // Play 'A' sound like next button
+                                // Add a short delay before advancing
+                                setTimeout(() => {
+                                    // We can directly call the logic or simulate click
+                                    // Simulating click ensures validation runs if we add it later
+                                    if (nextBtn) {
+                                        nextBtn.click(); // Simulate click on the next button
+                                    } else { // Fallback if nextBtn isn't found (shouldn't happen)
+                                        if (validateStep(index)) {
+                                            currentStepIndex++;
+                                            showStep(currentStepIndex);
+                                        }
+                                    }
+                                }, 300); // 300ms delay
+                            }
+                            // If it's the last step and a radio is changed, maybe trigger submit?
+                            // else if (index === totalSteps - 1 && submitBtn) {
+                            //     setTimeout(() => {
+                            //         submitBtn.click();
+                            //     }, 300);
+                            // }
+                        });
+                    });
+                }
+            });
+
+
+            // Initial Setup Call
+            showStep(currentStepIndex);
+
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
+</html>
