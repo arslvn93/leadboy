@@ -11,19 +11,34 @@
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
             rel="stylesheet"
         />
-        
+
         <!-- Facebook Pixel Code -->
         <script>
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1057475448873422');
-          fbq('track', 'PageView');
+            !(function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod
+                        ? n.callMethod.apply(n, arguments)
+                        : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = "2.0";
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            })(
+                window,
+                document,
+                "script",
+                "https://connect.facebook.net/en_US/fbevents.js",
+            );
+            fbq("init", "1057475448873422");
+            fbq("track", "PageView");
         </script>
         <!-- End Facebook Pixel Code -->
         <style>
@@ -882,11 +897,15 @@
         </style>
     </head>
     <body>
-    <!-- Facebook Pixel Code (noscript) -->
-    <noscript>
-      <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1057475448873422&ev=PageView&noscript=1"/>
-    </noscript>
+        <!-- Facebook Pixel Code (noscript) -->
+        <noscript>
+            <img
+                height="1"
+                width="1"
+                style="display: none"
+                src="https://www.facebook.com/tr?id=1057475448873422&ev=PageView&noscript=1"
+            />
+        </noscript>
         <div class="gameboy-container">
             <!-- Screen Area (Top) -->
             <div class="gameboy-shell-top">
@@ -1730,7 +1749,7 @@
                                     type="submit"
                                     id="finalSubmitBtn"
                                     class="submit-btn"
-                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_completion'});setTimeout(function() { window.location.href = '/thankyou.html'; }, 500);}"
+                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_completion'});}"
                                 >
                                     Create My Custom Sequence
                                 </button>
@@ -1738,7 +1757,7 @@
                         </form>
 
                         <div id="result" class="result-container">
-                            <h3>YOUR 20-DAY NURTURE SEQUENCE:</h3>
+                            <h3>YOUR 15-DAY NURTURE SEQUENCE:</h3>
                             <div id="sequenceResults">
                                 <!-- Sequence will be inserted here -->
                             </div>
@@ -2133,17 +2152,22 @@
                         });
                     // --- End Send Data ---
 
-                    // Redirect to thank you page after brief delay
+                    // Process data immediately but redirect after 5 seconds
+                    console.log("Form Data Submitted:", payloadData); // Log data immediately
+                    
+                    // Hide form & related UI first
+                    form.style.display = "none";
+                    if (progressIndicator)
+                        progressIndicator.style.display = "none";
+                    if (pixelBorder) pixelBorder.style.display = "none";
+                    if (sequenceTitle) sequenceTitle.style.display = "none";
+                    
+                    // Set a 5-second delay for the redirect
                     setTimeout(() => {
-                        console.log("Form Data Submitted:", payloadData); // Log the data for debugging
-                        window.location.href = '/thankyou.html';
-                        
-                        // Hide form & related UI first (in case there's any delay in redirect)
-                        form.style.display = "none";
-                        if (progressIndicator)
-                            progressIndicator.style.display = "none";
-                        if (pixelBorder) pixelBorder.style.display = "none";
-                        if (sequenceTitle) sequenceTitle.style.display = "none";
+                        window.location.href = "/thankyou.html";
+                    }, 5000);
+                    
+                    setTimeout(() => {
 
                         playGameboySound(); // Play sound when effect starts
 
