@@ -209,9 +209,9 @@ const SignUpSection = () => {
                       className="bg-[#FF00FF] text-white px-10 py-6 font-bold uppercase border-4 border-black shadow-[6px_6px_0_#000] hover:shadow-[3px_3px_0_#000] hover:translate-y-[3px] hover:translate-x-[3px] transition-all tracking-wide mt-4 w-full md:w-auto relative group"
                       onClick={() => {
                         window.location.href = '/form.html';
-                        // Track lead button click if fbq exists
+                        // Only track PageView, not Lead
                         if (typeof window.fbq !== 'undefined') {
-                          window.fbq('track', 'Lead', {content_name: 'signup_button_click'});
+                          window.fbq('track', 'PageView');
                         }
                       }}
                     >

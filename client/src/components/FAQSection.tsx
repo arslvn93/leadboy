@@ -122,7 +122,15 @@ const FAQSection = () => {
         
         {/* Bonus secret with CTA */}
         <div className="secret-bonus mt-12 text-center">
-          <a href="/form.html" className="inline-block">
+          <a 
+            href="/form.html" 
+            className="inline-block"
+            onClick={(e) => {
+              if (typeof window.fbq !== 'undefined') {
+                window.fbq('track', 'PageView');
+              }
+            }}
+          >
             <div className="inline-block bg-[#222] border-2 border-[#FFCC00] rounded p-4 shadow-glow-yellow hover:shadow-glow-bright-yellow transition-all transform hover:scale-105">
               <p className="font-bold text-[#FFCC00] text-sm">SECRET BONUS UNLOCKED!</p>
               <p className="text-white text-lg mt-2">First-time agents get a custom sequence 100% FREE!</p>

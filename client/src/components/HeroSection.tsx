@@ -73,9 +73,9 @@ const HeroSection = () => {
                 className={`cta-button bg-retro-gradient-pink text-white ${isMobile ? 'px-4 py-3 text-sm' : 'px-4 py-3 md:px-6 md:py-5 text-sm md:text-base'} font-bold uppercase rounded-full shadow-neon-pink transition-all duration-300 transform hover:scale-105 whitespace-normal text-center w-full`}
                 onClick={() => {
                   window.location.href = '/form.html';
-                  // Track main CTA button click if fbq exists
+                  // Only track PageView, not Lead
                   if (typeof window.fbq !== 'undefined') {
-                    window.fbq('track', 'Lead', {content_name: 'hero_cta_click'});
+                    window.fbq('track', 'PageView');
                   }
                 }}
               >

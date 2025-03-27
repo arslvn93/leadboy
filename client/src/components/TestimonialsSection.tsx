@@ -163,6 +163,11 @@ const TestimonialsSection = () => {
             <a 
               href="/form.html" 
               className="inline-block"
+              onClick={(e) => {
+                if (typeof window.fbq !== 'undefined') {
+                  window.fbq('track', 'PageView');
+                }
+              }}
             >
               <span className="text-[#00ffff] font-bold text-base md:text-lg blinking-cursor hover:text-[#5affbc] transition-colors">USE LEADBOY TO CONVERT NEW LEADS TODAY_</span>
             </a>

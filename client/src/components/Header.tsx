@@ -79,9 +79,9 @@ const Header = () => {
             className="cta-button bg-retro-gradient-blue text-white font-bold uppercase rounded px-1.5 md:px-3 py-0.5 md:py-2 shadow-neon-blue text-[9px] md:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-neon-purple"
             onClick={() => {
               window.location.href = '/form.html';
-              // Track header CTA button click if fbq exists
+              // Only track PageView, not Lead
               if (typeof window.fbq !== 'undefined') {
-                window.fbq('track', 'Lead', {content_name: 'header_cta_click'});
+                window.fbq('track', 'PageView');
               }
             }}
           >
