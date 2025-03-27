@@ -487,7 +487,7 @@
 
     <script>
         // Function to handle form navigation
-        function setupFormNavigation() {
+        document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('sequenceForm');
             if (!form) return;
 
@@ -511,7 +511,7 @@
 
             // Go to previous step
             if (prevBtn) {
-                prevBtn.addEventListener('click', (e) => {
+                prevBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     if (currentStep > 0) {
                         currentStep--;
@@ -522,7 +522,7 @@
 
             // Go to next step
             if (nextBtn) {
-                nextBtn.addEventListener('click', (e) => {
+                nextBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     // Validate current step before proceeding
                     if (validateCurrentStep(currentStep)) {
@@ -530,13 +530,10 @@
                             currentStep++;
                             showCurrentStep();
                             // Scroll to top of form
-                            const screenContent = document.querySelector('.screen-content');
-                            if (screenContent) {
-                                screenContent.scrollTo({
-                                    top: 0,
-                                    behavior: 'smooth'
-                                });
-                            }
+                            document.querySelector('.screen-content')?.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
                         }
                     }
                 });
@@ -544,13 +541,13 @@
 
             // Handle form submission
             if (form) {
-                form.addEventListener('submit', (e) => {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     if (validateCurrentStep(currentStep)) {
                         const formData = new FormData(form);
                         const formValues = {};
                         
-                        formData.forEach((value, key) => {
+                        formData.forEach(function(value, key) {
                             formValues[key] = value.toString();
                         });
                         
@@ -558,10 +555,8 @@
                         console.log('Form submitted:', formValues);
                         
                         // Show success message
-                        const successMsg = document.getElementById('successMessage');
-                        const formEl = document.getElementById('sequenceForm');
-                        if (successMsg) successMsg.classList.remove('hidden');
-                        if (formEl) formEl.classList.add('hidden');
+                        document.getElementById('successMessage').classList.remove('hidden');
+                        document.getElementById('sequenceForm').classList.add('hidden');
                     }
                 });
             }
@@ -571,8 +566,8 @@
 
             // Handle "Other" option visibility for text inputs
             const otherOptions = document.querySelectorAll('input[value="Other"]');
-            otherOptions.forEach(option => {
-                option.addEventListener('change', (e) => {
+            otherOptions.forEach(function(option) {
+                option.addEventListener('change', function(e) {
                     const input = e.target;
                     const otherText = document.getElementById(input.id + 'Text');
                     if (otherText) {
@@ -580,7 +575,7 @@
                     }
                 });
             });
-        }
+        });
 
         // Validation function - customize based on your requirements
         function validateCurrentStep(stepIndex) {
@@ -590,7 +585,7 @@
             const requiredFields = currentStepEl.querySelectorAll('input[required], select[required], textarea[required]');
             let valid = true;
             
-            requiredFields.forEach(field => {
+            requiredFields.forEach(function(field) {
                 if (!field.value.trim()) {
                     field.classList.add('invalid');
                     valid = false;
@@ -601,9 +596,6 @@
             
             return valid;
         }
-
-        // Setup form navigation when page loads
-        document.addEventListener('DOMContentLoaded', setupFormNavigation);
     </script>
 </body>
 </html>
