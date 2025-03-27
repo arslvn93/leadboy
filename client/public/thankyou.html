@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Thank You - LeadBoy Sequence Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1057475448873422');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Facebook Pixel Code -->
+    
+    <style>
+      :root {
+        --dark-blue: #051736;
+        --neon-pink: #FF00FF;
+        --neon-blue: #00FFFF;
+        --neon-green: #39FF14;
+        --bright-text: #FFFFFF;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: var(--dark-blue);
+        color: var(--bright-text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+      }
+      
+      .container {
+        max-width: 800px;
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+        z-index: 10;
+      }
+      
+      .title {
+        font-family: 'Press Start 2P', cursive;
+        color: var(--neon-pink);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        letter-spacing: 0.05em;
+      }
+      
+      .message {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: var(--bright-text);
+      }
+      
+      .highlight {
+        color: var(--neon-blue);
+        font-weight: bold;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+      }
+      
+      .loading-animation {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 2rem 0;
+      }
+      
+      .loading-animation div {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--neon-green);
+        animation: loading-animation 1.2s linear infinite;
+      }
+      
+      .loading-animation div:nth-child(1) {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+      }
+      
+      .loading-animation div:nth-child(2) {
+        top: 8px;
+        left: 32px;
+        animation-delay: -0.4s;
+      }
+      
+      .loading-animation div:nth-child(3) {
+        top: 8px;
+        left: 56px;
+        animation-delay: -0.8s;
+      }
+      
+      @keyframes loading-animation {
+        0%, 100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.5);
+        }
+      }
+      
+      .grid-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          linear-gradient(rgba(5, 23, 54, 0.9) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(5, 23, 54, 0.9) 1px, transparent 1px);
+        background-size: 20px 20px;
+        z-index: 1;
+      }
+      
+      .neon-rays {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      
+      .neon-ray {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+        animation: rotate 20s linear infinite;
+        transform-origin: center;
+      }
+      
+      .neon-ray:nth-child(2) {
+        background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        animation-duration: 15s;
+        animation-direction: reverse;
+      }
+      
+      .neon-ray:nth-child(3) {
+        background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+        animation-duration: 25s;
+      }
+      
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      @media (max-width: 640px) {
+        .title {
+          font-size: 1.5rem;
+        }
+        .message {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Facebook Pixel Code (noscript) -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1057475448873422&ev=PageView&noscript=1"/>
+    </noscript>
+    
+    <div class="grid-background"></div>
+    
+    <div class="neon-rays">
+      <div class="neon-ray" style="width: 100%; top: 30%;"></div>
+      <div class="neon-ray" style="width: 100%; top: 50%;"></div>
+      <div class="neon-ray" style="width: 100%; top: 70%;"></div>
+    </div>
+    
+    <div class="container">
+      <h1 class="title">SEQUENCE PROCESSING...</h1>
+      
+      <div class="loading-animation">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      
+      <p class="message">
+        LeadBoy is generating your <span class="highlight">personalized 15-Day Lead Nurture Sequence</span> now.
+      </p>
+      
+      <p class="message">
+        Check your email in the next few minutes to get your complete sequence with 
+        <span class="highlight">emails, texts, and call scripts</span> designed to boost your response rates.
+      </p>
+    </div>
+  </body>
+</html>

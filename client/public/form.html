@@ -1730,7 +1730,7 @@
                                     type="submit"
                                     id="finalSubmitBtn"
                                     class="submit-btn"
-                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_completion'});}"
+                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_completion'});setTimeout(function() { window.location.href = '/thankyou.html'; }, 500);}"
                                 >
                                     Create My Custom Sequence
                                 </button>
@@ -2133,19 +2133,17 @@
                         });
                     // --- End Send Data ---
 
-                    // Simulate Processing & Show Pixel Effect
+                    // Redirect to thank you page after brief delay
                     setTimeout(() => {
-                        console.log("Form Data Submitted:", payloadData); // Log the correct data object
-
-                        // Hide form & related UI first
+                        console.log("Form Data Submitted:", payloadData); // Log the data for debugging
+                        window.location.href = '/thankyou.html';
+                        
+                        // Hide form & related UI first (in case there's any delay in redirect)
                         form.style.display = "none";
                         if (progressIndicator)
                             progressIndicator.style.display = "none";
                         if (pixelBorder) pixelBorder.style.display = "none";
                         if (sequenceTitle) sequenceTitle.style.display = "none";
-
-                        // Pixel message creation removed
-                        // Nested setTimeout removed
 
                         playGameboySound(); // Play sound when effect starts
 
