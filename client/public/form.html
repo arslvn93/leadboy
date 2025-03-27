@@ -1133,9 +1133,7 @@
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset class="form-group">
                                     <legend>
-                                        What valuable information do you
-                                        currently provide to attract new
-                                        clients?
+                                        What valuable information do you currently provide to attract new clients?
                                     </legend>
                                     <label class="checkbox-label"
                                         ><input
@@ -2113,7 +2111,8 @@
                     // --- End Gather Data ---
 
                     // --- Send Data via Netlify Proxy ---
-                    const endpointUrl = "/api/leadboy"; // Use the relative path defined in netlify.toml
+                    const endpointUrl =
+                        "https://n8n.salesgenius.co/webhook/leadboy"; // Use the relative path defined in netlify.toml
                     fetch(endpointUrl, {
                         method: "POST", // Keep POST, Netlify forwards it
                         headers: {
