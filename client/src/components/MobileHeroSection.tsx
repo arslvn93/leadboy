@@ -14,9 +14,9 @@ const MobileHeroSection = () => {
       </div>
 
       <div className="container mx-auto flex flex-col items-center justify-between relative z-10 pt-0">
-        {/* Eyebrow copy badge - pill style for mobile */}
+        {/* Eyebrow copy badge - outline style for mobile to reduce visual prominence */}
         <div className="flex justify-center w-full mb-3 mt-3 free-ai-tool pill-headline eyebrow-container">
-          <div className="px-5 py-1.5 bg-retro-bright rounded-full shadow-neon-blue font-bold uppercase text-[11px] text-retro-dark text-center cyan-pill">
+          <div className="px-5 py-1.5 bg-transparent border border-retro-bright rounded-full font-bold uppercase text-[11px] text-retro-bright text-center">
             FREE AI TOOL FOR MODERN AGENTS
           </div>
         </div>
