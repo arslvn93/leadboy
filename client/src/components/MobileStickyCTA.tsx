@@ -28,7 +28,7 @@ const MobileStickyCTA = () => {
   
   return (
     <div 
-      className={`fixed bottom-0 left-0 right-0 p-3 bg-retro-dark-blue bg-opacity-70 backdrop-blur-md border-t border-retro-neon-pink shadow-[0_-4px_20px_rgba(255,51,204,0.3)] z-50 transition-all duration-500 transform ${
+      className={`fixed bottom-0 left-0 right-0 p-3 bg-retro-dark-blue bg-opacity-80 backdrop-blur-md border-t border-retro-neon-pink shadow-[0_-4px_20px_rgba(255,51,204,0.3)] z-50 transition-all duration-500 transform ${
         scrolled ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
