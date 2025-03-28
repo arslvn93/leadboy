@@ -2,8 +2,16 @@ import { Facebook, Twitter, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-retro-dark-blue py-6 px-4 text-white border-t border-retro-neon-blue pb-24 md:pb-6">
-      <div className="container mx-auto">
+    <footer className="bg-retro-dark-blue py-6 px-4 text-white border-t border-retro-neon-blue pb-24 md:pb-6 relative">
+      {/* Background grid pattern */}
+      <div className="absolute inset-0 bg-retro-grid bg-[size:20px_20px] opacity-20"></div>
+      
+      {/* Scan line effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="w-full h-1 bg-retro-bright opacity-10 animate-scan-line"></div>
+      </div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* SalesGenius Logo */}
           <div className="mb-4 md:mb-0">
@@ -48,10 +56,9 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Copyright and Cool Banner */}
+        {/* Copyright */}
         <div className="text-center mt-6">
           <p className="text-xs text-retro-gray">© {new Date().getFullYear()} SalesGenius. All rights reserved.</p>
-          <p className="text-xs text-retro-neon-blue mt-4 font-pixel animate-pulse-slow">GAME OVER? PRESS START TO CONTINUE</p>
         </div>
       </div>
     </footer>
