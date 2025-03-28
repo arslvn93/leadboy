@@ -80,9 +80,18 @@ const GameBoyConsole = ({
             {/* Green backlight glow - conditionally animated on mobile */}
             <div className={`absolute inset-0 bg-[#5affbc] opacity-10 ${(!isMobile || showGlow) ? 'animate-pulse-slow' : ''}`}></div>
             
-            {/* "PRESS A TO START" overlay that appears after 5 seconds */}
+            {/* "PRESS A TO START" overlay that appears after 5 seconds - also clickable */}
             {showPressStart && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0a2616] bg-opacity-95 transition-all duration-300">
+              <div 
+                className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0a2616] bg-opacity-95 transition-all duration-300 cursor-pointer"
+                onClick={() => {
+                  window.location.href = "/form.html";
+                  // Only track PageView, not Lead
+                  if (typeof window.fbq !== "undefined") {
+                    window.fbq("track", "PageView");
+                  }
+                }}
+              >
                 <div className="text-center w-full">
                   <div className="text-[#FFCC00] font-bold text-2xl md:text-3xl animate-pulse text-shadow-neon-blue">
                     PRESS
@@ -155,8 +164,20 @@ const GameBoyConsole = ({
           
           {/* AB buttons - with conditional glow on mobile */}
           <div className="buttons flex gap-4">
-            <div className={`a-btn w-10 h-10 rounded-full bg-[#8644B5] flex items-center justify-center text-white font-bold 
-                           border-2 border-white border-opacity-20 ${(!isMobile || showGlow) ? 'shadow-[0_0_15px_rgba(134,68,181,0.7)]' : ''} transition-all duration-500`}>A</div>
+            <button 
+              onClick={() => {
+                window.location.href = "/form.html";
+                // Only track PageView, not Lead
+                if (typeof window.fbq !== "undefined") {
+                  window.fbq("track", "PageView");
+                }
+              }}
+              className={`a-btn w-10 h-10 rounded-full bg-[#8644B5] flex items-center justify-center text-white font-bold 
+                           border-2 border-white border-opacity-20 ${(!isMobile || showGlow) ? 'shadow-[0_0_15px_rgba(134,68,181,0.7)]' : ''} 
+                           transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#8644B5] active:scale-95 cursor-pointer`}
+            >
+              A
+            </button>
             <div className={`b-btn w-10 h-10 rounded-full bg-[#ff3366] flex items-center justify-center text-white font-bold
                            border-2 border-white border-opacity-20 ${(!isMobile || showGlow) ? 'shadow-[0_0_15px_rgba(255,51,102,0.7)]' : ''} transition-all duration-500`}>B</div>
           </div>
