@@ -14,21 +14,39 @@ const GameBoyConsole = ({
 }: GameBoyConsoleProps) => {
   const isMobile = useIsMobile();
   const [showGlow, setShowGlow] = useState(isMobile ? false : true);
+  const [showPressStart, setShowPressStart] = useState(false);
   
   useEffect(() => {
-    // Reset state on mobile, but keep it true on desktop
+    // Reset states on mobile, but keep glow true on desktop
     if (isMobile) {
       setShowGlow(false);
+      setShowPressStart(false);
       
       // On mobile, delay the glow effect by 3 seconds
-      const timer = setTimeout(() => {
+      const glowTimer = setTimeout(() => {
         setShowGlow(true);
       }, 3000);
       
-      return () => clearTimeout(timer);
+      // Show "PRESS A TO START" after 5 seconds
+      const pressStartTimer = setTimeout(() => {
+        setShowPressStart(true);
+      }, 5000);
+      
+      return () => {
+        clearTimeout(glowTimer);
+        clearTimeout(pressStartTimer);
+      };
     } else {
-      // On desktop, immediately show glow
+      // On desktop, immediately show glow and delay PRESS A TO START
       setShowGlow(true);
+      setShowPressStart(false);
+      
+      // Show "PRESS A TO START" after 5 seconds on desktop too
+      const pressStartTimer = setTimeout(() => {
+        setShowPressStart(true);
+      }, 5000);
+      
+      return () => clearTimeout(pressStartTimer);
     }
   }, [isMobile]);
   
@@ -61,6 +79,23 @@ const GameBoyConsole = ({
                style={{aspectRatio: '1/0.75'}}>
             {/* Green backlight glow - conditionally animated on mobile */}
             <div className={`absolute inset-0 bg-[#5affbc] opacity-10 ${(!isMobile || showGlow) ? 'animate-pulse-slow' : ''}`}></div>
+            
+            {/* "PRESS A TO START" overlay that appears after 5 seconds */}
+            {showPressStart && (
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0a2616] bg-opacity-95 transition-all duration-300">
+                <div className="text-center w-full">
+                  <div className="text-[#FFCC00] font-bold text-2xl md:text-3xl animate-pulse text-shadow-neon-blue">
+                    PRESS
+                  </div>
+                  <div className="text-[#FF33CC] font-bold text-5xl md:text-6xl mt-1 mb-1 animate-pulse-strong text-shadow-neon-pink">
+                    A
+                  </div>
+                  <div className="text-[#5affbc] font-bold text-2xl md:text-3xl animate-pulse text-shadow-neon-green">
+                    TO START
+                  </div>
+                </div>
+              </div>
+            )}
             
             {/* Screen content */}
             <div className="relative z-10 h-full flex flex-col">
