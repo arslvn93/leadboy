@@ -16,23 +16,23 @@ const MobileHeroSection = () => {
         <div className="w-full h-[2px] bg-retro-neon-blue opacity-5 animate-scan-line"></div>
       </div>
 
-      <div className="container mx-auto flex flex-col items-center justify-between relative z-10 pt-0">
+      <div className="container mx-auto flex flex-col items-center justify-between relative z-10 pt-2">
         {/* SalesGenius Logo */}
-        <div className="flex justify-center w-full mb-5">
-          <a 
-            href="https://salesgenius.co/" 
+        <div className="flex justify-center w-full">
+          <a
+            href="https://salesgenius.co/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block"
           >
-            <img 
-              src="/salesgenius.png" 
-              alt="SalesGenius" 
-              className="h-7 object-contain"
+            <img
+              src="/salesgenius.png"
+              alt="SalesGenius"
+              className="h-10 object-contain"
             />
           </a>
         </div>
-        
+
         {/* Eyebrow copy badge - outline style for mobile to reduce visual prominence */}
         <div className="flex justify-center w-full mb-3 free-ai-tool pill-headline eyebrow-container">
           <div className="px-5 py-1.5 bg-transparent border border-retro-bright rounded-full font-bold uppercase text-[12px] text-retro-bright text-center">
@@ -42,8 +42,11 @@ const MobileHeroSection = () => {
 
         {/* Clean heading with adjusted size - more compact and cohesive */}
         <h1 className="mb-1 relative hero-headline w-full">
-          <div className="flex flex-col text-[1.6rem] font-bold text-white leading-tight tracking-wide text-center">
-            <div className="text-retro-neon-green mb-0" style={{ textShadow: 'none' }}>
+          <div className="flex flex-col text-[1.8rem] font-bold text-white leading-tight tracking-wide text-center">
+            <div
+              className="text-retro-neon-green mb-1"
+              style={{ textShadow: "none" }}
+            >
               STILL CHASING LEADS LIKE IT'S 1995?
             </div>
             <div className="text-white">
