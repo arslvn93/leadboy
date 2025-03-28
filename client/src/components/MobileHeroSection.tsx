@@ -120,8 +120,8 @@ const MobileHeroSection = () => {
 
         {/* Right Column - Modern GameBoy Console - improved positioning for mobile */}
         <div className="w-full relative mt-0 pt-0">
-          {/* GameBoy Component with scroll-triggered glow effect */}
-          <div className="transform -translate-y-14 gameboy-container-mobile">
+          {/* GameBoy Component with delayed glow effect */}
+          <div className="transform -translate-y-14">
             <GameBoyConsole leads={12} sequences={15} conversions={8} />
           </div>
 
