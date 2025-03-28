@@ -48,8 +48,8 @@ const GameBoyConsole = ({
       {/* Console body - more rectangular like the image */}
       <div className="game-console-body gameboy-image relative bg-[#222] rounded-[28px] border-2 border-[#333] p-5 shadow-xl" 
            style={{aspectRatio: isMobile ? '0.7/1' : '0.65/1'}}>
-        {/* Cyan neon border glow */}
-        <div className="absolute inset-0 rounded-[28px] border border-[#00ffff] opacity-40 shadow-[0_0_15px_rgba(0,255,255,0.5)]"></div>
+        {/* Cyan neon border glow - conditional on mobile */}
+        <div className={`absolute inset-0 rounded-[28px] border border-[#00ffff] ${(!isMobile || hasScrolled) ? 'opacity-40 shadow-[0_0_15px_rgba(0,255,255,0.5)]' : 'opacity-0'} transition-opacity duration-500`}></div>
         
         {/* Screen area */}
         <div className="screen-area bg-[#1a1a1a] rounded-3xl p-4 mb-7">
@@ -118,12 +118,12 @@ const GameBoyConsole = ({
             </div>
           </div>
           
-          {/* AB buttons - with stronger glow */}
+          {/* AB buttons - with conditional glow on mobile */}
           <div className="buttons flex gap-4">
-            <div className="a-btn w-10 h-10 rounded-full bg-[#8644B5] flex items-center justify-center text-white font-bold 
-                           border-2 border-white border-opacity-20 shadow-[0_0_15px_rgba(134,68,181,0.7)]">A</div>
-            <div className="b-btn w-10 h-10 rounded-full bg-[#ff3366] flex items-center justify-center text-white font-bold
-                           border-2 border-white border-opacity-20 shadow-[0_0_15px_rgba(255,51,102,0.7)]">B</div>
+            <div className={`a-btn w-10 h-10 rounded-full bg-[#8644B5] flex items-center justify-center text-white font-bold 
+                           border-2 border-white border-opacity-20 ${(!isMobile || hasScrolled) ? 'shadow-[0_0_15px_rgba(134,68,181,0.7)]' : ''} transition-all duration-500`}>A</div>
+            <div className={`b-btn w-10 h-10 rounded-full bg-[#ff3366] flex items-center justify-center text-white font-bold
+                           border-2 border-white border-opacity-20 ${(!isMobile || hasScrolled) ? 'shadow-[0_0_15px_rgba(255,51,102,0.7)]' : ''} transition-all duration-500`}>B</div>
           </div>
         </div>
         
@@ -140,9 +140,9 @@ const GameBoyConsole = ({
           <div className="w-8 h-0.5 bg-[#555] rounded-full"></div>
         </div>
         
-        {/* Corner neon light accents */}
-        <div className="absolute -bottom-3 -right-3 w-24 h-1.5 bg-[#ff3366] rounded-full blur-md transform rotate-45 opacity-50"></div>
-        <div className="absolute -top-3 -left-3 w-24 h-1.5 bg-[#00ffff] rounded-full blur-md transform -rotate-45 opacity-50"></div>
+        {/* Corner neon light accents - conditional on mobile */}
+        <div className={`absolute -bottom-3 -right-3 w-24 h-1.5 bg-[#ff3366] rounded-full blur-md transform rotate-45 ${(!isMobile || hasScrolled) ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`}></div>
+        <div className={`absolute -top-3 -left-3 w-24 h-1.5 bg-[#00ffff] rounded-full blur-md transform -rotate-45 ${(!isMobile || hasScrolled) ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`}></div>
       </div>
     </div>
   );
