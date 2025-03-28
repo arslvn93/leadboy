@@ -125,9 +125,7 @@ const MobileHeroSection = () => {
             <GameBoyConsole leads={12} sequences={15} conversions={8} />
           </div>
 
-          {/* Diagonal neon light beams - reduced on mobile */}
-          <div className="absolute -bottom-8 -right-8 w-20 h-2 bg-retro-neon-pink rounded-full blur-md transform rotate-45 opacity-50 z-10"></div>
-          <div className="absolute -top-8 -left-8 w-20 h-2 bg-retro-neon-blue rounded-full blur-md transform -rotate-45 opacity-50 z-10"></div>
+          {/* No diagonal light beams on mobile initially - they would distract from CTA */}
         </div>
       </div>
     </section>

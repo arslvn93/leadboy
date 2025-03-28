@@ -13,21 +13,23 @@ const GameBoyConsole = ({
   conversions = 8,
 }: GameBoyConsoleProps) => {
   const isMobile = useIsMobile();
-  const [showGlow, setShowGlow] = useState(false);
+  const [showGlow, setShowGlow] = useState(isMobile ? false : true);
   
   useEffect(() => {
-    // On desktop, immediately show glow
-    if (!isMobile) {
+    // Reset state on mobile, but keep it true on desktop
+    if (isMobile) {
+      setShowGlow(false);
+      
+      // On mobile, delay the glow effect by 3 seconds
+      const timer = setTimeout(() => {
+        setShowGlow(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    } else {
+      // On desktop, immediately show glow
       setShowGlow(true);
-      return;
     }
-    
-    // On mobile, delay the glow effect by 3 seconds
-    const timer = setTimeout(() => {
-      setShowGlow(true);
-    }, 3000);
-    
-    return () => clearTimeout(timer);
   }, [isMobile]);
   
   return (
