@@ -1,4 +1,5 @@
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useEffect, useRef, useState } from 'react';
 
 interface GameBoyConsoleProps {
   leads?: number;
@@ -12,17 +13,37 @@ const GameBoyConsole = ({
   conversions = 8,
 }: GameBoyConsoleProps) => {
   const isMobile = useIsMobile();
+  const [hasScrolled, setHasScrolled] = useState(false);
+  
+  useEffect(() => {
+    // Only apply scroll effects on mobile
+    if (isMobile) {
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setHasScrolled(true);
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    } else {
+      // On desktop, always show the glow
+      setHasScrolled(true);
+    }
+  }, [isMobile]);
   
   return (
     <div className={`game-console-container relative mx-auto ${isMobile ? 'animate-gentle-bounce mb-0 pb-0' : 'mb-4'}`} style={{maxWidth: isMobile ? '280px' : '400px'}}>
-      {/* Spotlight effect and light rays */}
-      <div className="gameboy-spotlight animate-pulse-strong"></div>
-      <div className="light-ray ray1 animate-pulse"></div>
-      <div className="light-ray ray2 animate-pulse-slow"></div>
-      <div className="light-ray ray3 animate-pulse"></div>
+      {/* Spotlight effect and light rays - only visible based on scroll state on mobile */}
+      <div className={`gameboy-spotlight ${hasScrolled ? 'animate-pulse-strong' : 'opacity-0'}`}></div>
+      <div className={`light-ray ray1 ${hasScrolled ? 'animate-pulse' : 'opacity-0'}`}></div>
+      <div className={`light-ray ray2 ${hasScrolled ? 'animate-pulse-slow' : 'opacity-0'}`}></div>
+      <div className={`light-ray ray3 ${hasScrolled ? 'animate-pulse' : 'opacity-0'}`}></div>
       
-      {/* Outer glow - stronger on mobile for better visibility */}
-      <div className={`absolute inset-0 rounded-[10%] bg-[#00ffff] ${isMobile ? 'opacity-40' : 'opacity-30'} blur-xl animate-pulse-slow`}></div>
+      {/* Outer glow - only shows after scrolling on mobile */}
+      <div className={`absolute inset-0 rounded-[10%] bg-[#00ffff] ${(!isMobile || hasScrolled) ? 
+        (isMobile ? 'opacity-40' : 'opacity-30') + ' animate-pulse-slow' : 
+        'opacity-0'} blur-xl transition-opacity duration-500`}></div>
       
       {/* Console body - more rectangular like the image */}
       <div className="game-console-body gameboy-image relative bg-[#222] rounded-[28px] border-2 border-[#333] p-5 shadow-xl" 
@@ -32,42 +53,42 @@ const GameBoyConsole = ({
         
         {/* Screen area */}
         <div className="screen-area bg-[#1a1a1a] rounded-3xl p-4 mb-7">
-          {/* Power LED */}
-          <div className="w-2.5 h-2.5 absolute top-5 left-5 rounded-full bg-[#FF33CC] shadow-[0_0_12px_#FF33CC] animate-pulse-strong"></div>
+          {/* Power LED - conditionally animated on mobile */}
+          <div className={`w-2.5 h-2.5 absolute top-5 left-5 rounded-full bg-[#FF33CC] shadow-[0_0_12px_#FF33CC] ${(!isMobile || hasScrolled) ? 'animate-pulse-strong' : ''}`}></div>
           
           {/* Screen - more rounded corners with enhanced brightness */}
           <div className="screen bg-[#0a2616] rounded-2xl p-4 relative overflow-hidden font-mono text-sm shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
                style={{aspectRatio: '1/0.75'}}>
-            {/* Green backlight glow */}
-            <div className="absolute inset-0 bg-[#5affbc] opacity-10 animate-pulse-slow"></div>
+            {/* Green backlight glow - conditionally animated on mobile */}
+            <div className={`absolute inset-0 bg-[#5affbc] opacity-10 ${(!isMobile || hasScrolled) ? 'animate-pulse-slow' : ''}`}></div>
             
             {/* Screen content */}
             <div className="relative z-10 h-full flex flex-col">
               <div className="flex justify-between items-center border-b border-[#1a472f] pb-2 mb-3">
                 <span className="text-[#5affbc] font-bold text-sm md:text-base tracking-wide text-shadow-neon-green">LEADBOY AI v1.0</span>
-                <span className="text-[#FFCC00] animate-blink text-sm md:text-base text-shadow-neon-blue">ONLINE</span>
+                <span className={`text-[#FFCC00] text-sm md:text-base text-shadow-neon-blue ${(!isMobile || hasScrolled) ? 'animate-blink' : ''}`}>ONLINE</span>
               </div>
               
               <div className="flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between mb-2 md:mb-3">
                     <span className="text-[#5affbc] tracking-wide">NEW LEADS:</span>
-                    <span className="text-[#FFCC00] animate-pulse">{leads}</span>
+                    <span className={`text-[#FFCC00] ${(!isMobile || hasScrolled) ? 'animate-pulse' : ''}`}>{leads}</span>
                   </div>
                   
                   <div className="flex justify-between mb-2 md:mb-3">
                     <span className="text-[#5affbc] tracking-wide">SEQUENCES:</span>
-                    <span className="text-[#FFCC00] animate-pulse">{sequences}</span>
+                    <span className={`text-[#FFCC00] ${(!isMobile || hasScrolled) ? 'animate-pulse' : ''}`}>{sequences}</span>
                   </div>
                   
                   <div className="flex justify-between mb-2 md:mb-3">
                     <span className="text-[#5affbc] tracking-wide">CONVERSIONS:</span>
-                    <span className="text-[#FFCC00] animate-pulse">{conversions}</span>
+                    <span className={`text-[#FFCC00] ${(!isMobile || hasScrolled) ? 'animate-pulse' : ''}`}>{conversions}</span>
                   </div>
                 </div>
                 
                 <div className="mt-2 md:mt-3 flex items-center">
-                  <span className="text-[#5affbc] mr-2 animate-blink">▶</span>
+                  <span className={`text-[#5affbc] mr-2 ${(!isMobile || hasScrolled) ? 'animate-blink' : ''}`}>▶</span>
                   <span className="text-[#5affbc] tracking-wide font-bold text-shadow-neon-green">AI Assistant ready...</span>
                 </div>
               </div>
