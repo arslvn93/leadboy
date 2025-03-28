@@ -27,7 +27,7 @@ const MobileHeroSection = () => {
         {/* Clean heading with adjusted size - more compact and cohesive */}
         <h1 className="mb-1 relative hero-headline w-full">
           <div className="flex flex-col text-[1.6rem] font-bold text-white leading-tight tracking-wide text-center">
-            <div className="text-white mb-0">
+            <div className="text-retro-neon-green mb-0">
               STILL CHASING LEADS LIKE IT'S 1995?
             </div>
             <div className="text-white">
