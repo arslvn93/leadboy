@@ -1183,6 +1183,13 @@ h1, h2, h3, .pixel-font {
     opacity: 0.8;
   }
   
+  /* Remove the line in mobile view */
+  @media (max-width: 767px) {
+    .hero-headline::after {
+      display: none;
+    }
+  }
+  
   /* Subheadline adjustments */
   .hero-subheadline {
     padding: 12px;
