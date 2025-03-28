@@ -15,15 +15,24 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* SalesGenius Logo */}
           <div className="mb-4 md:mb-0">
-            <div className="salesgenius-text text-xl md:text-2xl font-black tracking-wider text-retro-gray">
-              SALESGENIUS
-            </div>
+            <a 
+              href="https://salesgenius.co/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <div className="salesgenius-text text-xl md:text-2xl font-black tracking-wider text-retro-gray hover:text-retro-neon-blue transition-colors duration-300">
+                SALESGENIUS
+              </div>
+            </a>
           </div>
           
           {/* Privacy Policy */}
           <div className="mb-4 md:mb-0">
             <a 
-              href="#" 
+              href="https://salesgenius.co/privacypolicy-3365" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-retro-gray hover:text-retro-neon-blue transition-colors duration-300 text-sm"
             >
               Privacy Policy
