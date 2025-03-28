@@ -6,7 +6,7 @@ const MobileHeroSection = () => {
   return (
     <section
       id="hero-mobile"
-      className="pt-6 pb-4 px-4 relative overflow-hidden bg-retro-dark-purple -mt-4"
+      className="pt-5 pb-4 px-4 relative overflow-hidden bg-retro-dark-purple -mt-4"
     >
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:40px_40px] opacity-30"></div>
@@ -18,7 +18,7 @@ const MobileHeroSection = () => {
 
       <div className="container mx-auto flex flex-col items-center justify-between relative z-10 pt-0">
         {/* SalesGenius Logo */}
-        <div className="flex justify-center w-full mb-4">
+        <div className="flex justify-center w-full mb-5">
           <a 
             href="https://salesgenius.co/" 
             target="_blank"
