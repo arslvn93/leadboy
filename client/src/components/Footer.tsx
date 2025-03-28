@@ -19,11 +19,13 @@ const Footer = () => {
               href="https://salesgenius.co/" 
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block"
+              className="inline-block transition-opacity duration-300 hover:opacity-80"
             >
-              <div className="salesgenius-text text-xl md:text-2xl font-black tracking-wider text-retro-gray hover:text-retro-neon-blue transition-colors duration-300">
-                SALESGENIUS
-              </div>
+              <img 
+                src="/salesgenius.png" 
+                alt="SalesGenius" 
+                className="h-7 md:h-8 object-contain"
+              />
             </a>
           </div>
           
