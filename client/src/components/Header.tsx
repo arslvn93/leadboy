@@ -25,11 +25,13 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Only show header on mobile when scrolled down at least 100px
-  const headerVisible = !isMobile || scrollPosition > 100 || mobileMenuOpen;
+  // Hide header completely on mobile
+  if (isMobile) {
+    return null;
+  }
 
   return (
-    <header className={`bg-retro-dark border-b border-retro-bright px-3 md:px-4 py-1 md:py-3 sticky top-0 z-50 shadow-neon-purple transition-all duration-300 ${headerVisible ? 'opacity-100 visible' : 'opacity-0 pointer-events-none'}`}>
+    <header className="bg-retro-dark border-b border-retro-bright px-4 py-3 sticky top-0 z-50 shadow-neon-purple transition-all duration-300">
       {/* Grid background for header */}
       <div className="absolute inset-0 bg-retro-grid bg-[size:20px_20px] opacity-20"></div>
       

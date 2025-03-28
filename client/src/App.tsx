@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/HomePage";
 import FormPage from "@/pages/FormPage";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router />
+      <MobileStickyCTA />
       <Toaster />
     </QueryClientProvider>
   );
