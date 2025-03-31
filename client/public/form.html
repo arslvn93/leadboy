@@ -1913,14 +1913,97 @@
                     "websiteRequestOtherText",
                 );
                 setupOtherOptionToggle("crmOtherCheck", "crmOtherText");
-                // Add more calls here if other similar fields exist
+                setupOtherOptionToggle("adOfferOtherCheck", "adOfferOtherText");
+                setupOtherOptionToggle("websiteRequestOtherCheck", "websiteRequestOtherText");
 
                 // State
                 let currentStepIndex = 0;
-                const totalSteps = steps.length; // This will now correctly count the new total number of steps
+                let conditionalStepsMap = {}; // Maps step indices to whether they should be shown
+                
+                // Find all conditional steps and set up their visibility based on checkboxes
+                const conditionalSteps = steps.filter(step => step.classList.contains('conditional-step'));
+                conditionalSteps.forEach(step => {
+                    const condition = step.getAttribute('data-condition');
+                    const stepIndex = parseInt(step.getAttribute('data-step')) - 1; // Convert to 0-based index
+                    conditionalStepsMap[stepIndex] = false; // Default to not showing
+                    
+                    // Set up listeners for the checkboxes that control these steps
+                    if (condition) {
+                        const checkbox = document.getElementById(condition);
+                        if (checkbox) {
+                            checkbox.addEventListener('change', function() {
+                                conditionalStepsMap[stepIndex] = this.checked;
+                                // If we're currently on a step that would be affected by this change, update display
+                                if (currentStepIndex >= stepIndex) {
+                                    showStep(currentStepIndex);
+                                }
+                            });
+                        }
+                    }
+                });
+                
+                // Calculate total visible steps (excluding hidden conditional steps)
+                const calculateTotalVisibleSteps = () => {
+                    let count = 0;
+                    steps.forEach((step, index) => {
+                        if (!step.classList.contains('conditional-step') || conditionalStepsMap[index]) {
+                            count++;
+                        }
+                    });
+                    return count;
+                };
+                
+                // Check if this is the last visible step
+                const isLastVisibleStep = (index, totalVisibleSteps) => {
+                    let visibleStepsBeforeIndex = 0;
+                    for (let i = 0; i <= index; i++) {
+                        if (!steps[i].classList.contains('conditional-step') || conditionalStepsMap[i]) {
+                            visibleStepsBeforeIndex++;
+                        }
+                    }
+                    return visibleStepsBeforeIndex === totalVisibleSteps;
+                };
+                
+                // Get the actual index of the next visible step
+                const getNextVisibleStepIndex = (currentIndex) => {
+                    let nextIndex = currentIndex + 1;
+                    while (nextIndex < steps.length) {
+                        const step = steps[nextIndex];
+                        if (step.classList.contains('conditional-step') && !conditionalStepsMap[nextIndex]) {
+                            nextIndex++; // Skip this conditional step
+                        } else {
+                            return nextIndex; // Found next visible step
+                        }
+                    }
+                    return nextIndex; // No more steps or reached the end
+                };
+                
+                // Get the actual index of the previous visible step
+                const getPrevVisibleStepIndex = (currentIndex) => {
+                    let prevIndex = currentIndex - 1;
+                    while (prevIndex >= 0) {
+                        const step = steps[prevIndex];
+                        if (step.classList.contains('conditional-step') && !conditionalStepsMap[prevIndex]) {
+                            prevIndex--; // Skip this conditional step
+                        } else {
+                            return prevIndex; // Found previous visible step
+                        }
+                    }
+                    return prevIndex; // No more steps or reached the beginning
+                };
 
                 // --- Core Step Logic ---
                 function showStep(index) {
+                    // If the current step is conditional and should be skipped, find the next valid step
+                    if (steps[index].classList.contains('conditional-step') && !conditionalStepsMap[index]) {
+                        // Determine if we're moving forward or backward
+                        if (index > currentStepIndex) {
+                            index = getNextVisibleStepIndex(index);
+                        } else if (index < currentStepIndex) {
+                            index = getPrevVisibleStepIndex(index);
+                        }
+                    }
+                    
                     // Hide/Show Step Divs and their internal H2 titles
                     steps.forEach((step, i) => {
                         const isActive = i === index;
@@ -1931,10 +2014,14 @@
                                 index === 0 ? "block" : "none"; // Show H2 only on step 1
                         }
                     });
+                    
+                    // Update current step index
+                    currentStepIndex = index;
 
                     // Show/Hide Global elements based on first step
                     const isFirstStep = index === 0;
-                    const isLastStep = index === totalSteps - 1;
+                    const totalVisibleSteps = calculateTotalVisibleSteps();
+                    const isLastStep = isLastVisibleStep(index, totalVisibleSteps);
                     if (pixelBorder)
                         pixelBorder.style.display = isFirstStep
                             ? "block"
@@ -1956,7 +2043,7 @@
 
                     // Update progress indicator
                     if (progressIndicator) {
-                        progressIndicator.textContent = `STEP ${index + 1} OF ${totalSteps}`; // Dynamically updates based on totalSteps
+                        progressIndicator.textContent = `STEP ${index + 1} OF ${totalVisibleSteps}`; // Show visible steps count
                     }
 
                     // Scroll screen to top
@@ -2063,9 +2150,9 @@
                 // --- Navigation Button Listeners ---
                 nextBtn?.addEventListener("click", () => {
                     if (validateStep(currentStepIndex)) {
-                        if (currentStepIndex < totalSteps - 1) {
-                            currentStepIndex++;
-                            showStep(currentStepIndex);
+                        const nextIndex = getNextVisibleStepIndex(currentStepIndex);
+                        if (nextIndex < steps.length) {
+                            showStep(nextIndex);
                             playButtonSound(587.33); // A sound (D5)
                         }
                     }
@@ -2073,9 +2160,11 @@
 
                 prevBtn?.addEventListener("click", () => {
                     if (currentStepIndex > 0) {
-                        currentStepIndex--;
-                        showStep(currentStepIndex);
-                        playButtonSound(493.88); // B sound (B4)
+                        const prevIndex = getPrevVisibleStepIndex(currentStepIndex);
+                        if (prevIndex >= 0) {
+                            showStep(prevIndex);
+                            playButtonSound(493.88); // B sound (B4)
+                        }
                     }
                 });
 
@@ -2486,17 +2575,20 @@
                 // --- A Button / START Button (Next/Submit) ---
                 const handleNextAction = () => {
                     playButtonSound(587.33); // A sound
-                    if (currentStepIndex === totalSteps - 1) {
-                        // If it's the last step, try to submit
+                    const totalVisibleSteps = calculateTotalVisibleSteps();
+                    const isLastVisible = isLastVisibleStep(currentStepIndex, totalVisibleSteps);
+                    
+                    if (isLastVisible) {
+                        // If it's the last visible step, try to submit
                         if (validateStep(currentStepIndex)) {
                             form.requestSubmit(); // Trigger form submission
                         }
                     } else {
-                        // Otherwise, try to go to the next step
+                        // Otherwise, try to go to the next visible step
                         if (validateStep(currentStepIndex)) {
-                            if (currentStepIndex < totalSteps - 1) {
-                                currentStepIndex++;
-                                showStep(currentStepIndex);
+                            const nextIndex = getNextVisibleStepIndex(currentStepIndex);
+                            if (nextIndex < steps.length) {
+                                showStep(nextIndex);
                             }
                         }
                     }
@@ -2512,8 +2604,10 @@
                 const handlePrevAction = () => {
                     playButtonSound(493.88); // B sound
                     if (currentStepIndex > 0) {
-                        currentStepIndex--;
-                        showStep(currentStepIndex);
+                        const prevIndex = getPrevVisibleStepIndex(currentStepIndex);
+                        if (prevIndex >= 0) {
+                            showStep(prevIndex);
+                        }
                     }
                 };
                 document
@@ -2562,20 +2656,24 @@
                     ) {
                         radioInputs.forEach((radio) => {
                             radio.addEventListener("change", () => {
-                                // Only advance if the 'Next' button would normally be visible
-                                if (index < totalSteps - 1) {
+                                // Only advance if not on the last visible step
+                                const totalVisibleSteps = calculateTotalVisibleSteps();
+                                const isLastVisible = isLastVisibleStep(index, totalVisibleSteps);
+                                
+                                if (!isLastVisible) {
                                     playButtonSound(587.33); // Play 'A' sound like next button
                                     // Add a short delay before advancing
                                     setTimeout(() => {
-                                        // We can directly call the logic or simulate click
-                                        // Simulating click ensures validation runs if we add it later
+                                        // Simulating click ensures validation runs
                                         if (nextBtn) {
                                             nextBtn.click(); // Simulate click on the next button
                                         } else {
                                             // Fallback if nextBtn isn't found (shouldn't happen)
                                             if (validateStep(index)) {
-                                                currentStepIndex++;
-                                                showStep(currentStepIndex);
+                                                const nextIndex = getNextVisibleStepIndex(index);
+                                                if (nextIndex < steps.length) {
+                                                    showStep(nextIndex);
+                                                }
                                             }
                                         }
                                     }, 300); // 300ms delay
