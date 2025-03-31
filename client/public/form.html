@@ -2292,11 +2292,43 @@
                                 activateButton.style.boxShadow = "0 0 15px #05f2c7";
                             });
                             
-                            // Add click handler to redirect to thank you page
-                            activateButton.addEventListener("click", () => {
-                                playButtonSound(523.25); // Play sound on click
+                            // Function to handle activation
+                            const handleActivation = () => {
+                                playButtonSound(523.25); // Play sound on activation
                                 window.location.href = "/thankyou.html";
-                            });
+                            };
+                            
+                            // Add click handler to redirect to thank you page
+                            activateButton.addEventListener("click", handleActivation);
+                            
+                            // Connect GameBoy A button, START button, and RIGHT button to also trigger activation
+                            const aBtn = document.getElementById("aBtn");
+                            const startBtn = document.getElementById("startBtn");
+                            const rightBtn = document.getElementById("rightBtn");
+                            
+                            if (aBtn) {
+                                // Remove any existing event listeners first
+                                const newABtn = aBtn.cloneNode(true);
+                                aBtn.parentNode.replaceChild(newABtn, aBtn);
+                                newABtn.addEventListener("click", handleActivation);
+                            }
+                            
+                            if (startBtn) {
+                                // Remove any existing event listeners first
+                                const newStartBtn = startBtn.cloneNode(true);
+                                startBtn.parentNode.replaceChild(newStartBtn, startBtn);
+                                newStartBtn.addEventListener("click", handleActivation);
+                            }
+                            
+                            if (rightBtn) {
+                                // Remove any existing event listeners first
+                                const newRightBtn = rightBtn.cloneNode(true);
+                                rightBtn.parentNode.replaceChild(newRightBtn, rightBtn);
+                                newRightBtn.addEventListener("click", handleActivation);
+                            }
+                            
+                            // Add a hint about using the buttons
+                            finalMessage.innerHTML += "<br><br><span style='font-size: 0.7rem;'>Press A, START, or RIGHT D-pad button to activate</span>";
                             
                             screenContent.appendChild(activateButton);
                         }, 10000); // 10 seconds
