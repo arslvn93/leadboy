@@ -47,7 +47,7 @@ const MobileStickyCTA = () => {
         }}
       >
         <Rocket className="w-4 h-4 mr-2 text-retro-neon-blue" />
-        <span className="text-shadow-neon-pink">START FREE</span>
+        <span className="text-shadow-neon-pink">PLAY LEADBOY NOW</span>
       </Button>
     </div>
   );

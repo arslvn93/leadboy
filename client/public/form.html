@@ -656,6 +656,21 @@
                 width: 1.5em;
                 text-align: left;
             }
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 15px #05f2c7;
+                }
+                50% {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 20px #05f2c7;
+                }
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 15px #05f2c7;
+                }
+            }
+            
             @keyframes dots {
                 0%,
                 20% {
@@ -2166,7 +2181,7 @@
                         });
                     // --- End Send Data ---
 
-                    // Process data immediately but redirect after 5 seconds
+                    // Process data immediately but don't redirect automatically
                     console.log("Form Data Submitted:", payloadData); // Log data immediately
                     
                     // Hide form & related UI first
@@ -2176,10 +2191,7 @@
                     if (pixelBorder) pixelBorder.style.display = "none";
                     if (sequenceTitle) sequenceTitle.style.display = "none";
                     
-                    // Set a 5-second delay for the redirect
-                    setTimeout(() => {
-                        window.location.href = "/thankyou.html";
-                    }, 5000);
+                    // No automatic redirect - user will click the button instead
                     
                     setTimeout(() => {
 
@@ -2246,11 +2258,47 @@
                             // Create and display the final static message
                             const finalMessage = document.createElement("div");
                             finalMessage.className = "final-message-text";
-                            finalMessage.textContent =
-                                "You'll receive an email in the next 24 hours with your complete package";
+                            finalMessage.innerHTML =
+                                "You've Unlocked a SPECIAL offer from SalesGenius!<br>Click Activate to claim it now";
                             screenContent.appendChild(finalMessage);
-                            // Force visibility for debugging (will remove animation from CSS next)
+                            // Force visibility
                             finalMessage.style.opacity = 1;
+                            
+                            // Create and add the Activate button
+                            const activateButton = document.createElement("button");
+                            activateButton.className = "activate-button";
+                            activateButton.textContent = "ACTIVATE";
+                            activateButton.style.display = "block";
+                            activateButton.style.margin = "20px auto";
+                            activateButton.style.padding = "10px 30px";
+                            activateButton.style.backgroundColor = "#05f2c7";
+                            activateButton.style.color = "#051736";
+                            activateButton.style.border = "none";
+                            activateButton.style.borderRadius = "8px";
+                            activateButton.style.fontFamily = "'Press Start 2P', cursive";
+                            activateButton.style.fontSize = "16px";
+                            activateButton.style.cursor = "pointer";
+                            activateButton.style.boxShadow = "0 0 15px #05f2c7";
+                            activateButton.style.animation = "pulse 2s infinite";
+                            
+                            // Add hover effect
+                            activateButton.addEventListener("mouseover", () => {
+                                activateButton.style.backgroundColor = "#0df7cc";
+                                activateButton.style.boxShadow = "0 0 20px #05f2c7";
+                            });
+                            
+                            activateButton.addEventListener("mouseout", () => {
+                                activateButton.style.backgroundColor = "#05f2c7";
+                                activateButton.style.boxShadow = "0 0 15px #05f2c7";
+                            });
+                            
+                            // Add click handler to redirect to thank you page
+                            activateButton.addEventListener("click", () => {
+                                playButtonSound(523.25); // Play sound on click
+                                window.location.href = "/thankyou.html";
+                            });
+                            
+                            screenContent.appendChild(activateButton);
                         }, 10000); // 10 seconds
                     }, 500); // Short delay before starting effect (adjust if needed)
                 });

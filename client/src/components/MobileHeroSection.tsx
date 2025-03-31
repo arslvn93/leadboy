@@ -96,7 +96,7 @@ const MobileHeroSection = () => {
             >
               <Star className="mr-1 h-3 w-3 animate-pulse flex-shrink-0 text-retro-neon-blue" />
               <span className="text-shadow-neon-pink text-xs">
-                CREATE FREE SCRIPTS
+                CLICK HERE TO PLAY LEADBOY
               </span>
             </Button>
             {/* Add subtle glow effect */}
