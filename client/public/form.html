@@ -1046,6 +1046,7 @@
                                             type="checkbox"
                                             name="attractionMethod"
                                             value="ads"
+                                            id="adsCheckbox"
                                         />
                                         <span>Meta/Google Ads</span></label
                                     >
@@ -1054,6 +1055,7 @@
                                             type="checkbox"
                                             name="attractionMethod"
                                             value="website"
+                                            id="websiteCheckbox"
                                         />
                                         <span
                                             >Website lead capture/IDX
@@ -1085,7 +1087,7 @@
                             </div>
 
                             <!-- Conditional for Ads -->
-                            <div class="form-step" data-step="7">
+                            <div class="form-step conditional-step" data-step="7" data-condition="adsCheckbox">
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset
                                     class="form-group"
@@ -1148,7 +1150,7 @@
                             </div>
 
                             <!-- Conditional for Website -->
-                            <div class="form-step" data-step="8">
+                            <div class="form-step conditional-step" data-step="8" data-condition="websiteCheckbox">
                                 <h2>Lead Attraction Strategy</h2>
                                 <fieldset
                                     class="form-group"
@@ -1754,6 +1756,33 @@
                                             value="31+"
                                         />
                                         <span>31+</span></label
+                                    >
+                                </fieldset>
+                            </div>
+
+                            <div class="form-step" data-step="20">
+                                <h2>Final Question</h2>
+                                <fieldset class="form-group">
+                                    <legend>
+                                        In the next 12 months, would it help your 
+                                        business to improve lead flow and lead conversion?
+                                    </legend>
+                                    <label class="radio-label"
+                                        ><input
+                                            type="radio"
+                                            name="improveLeads"
+                                            value="yes"
+                                            required
+                                        />
+                                        <span>Yes</span></label
+                                    >
+                                    <label class="radio-label"
+                                        ><input
+                                            type="radio"
+                                            name="improveLeads"
+                                            value="no"
+                                        />
+                                        <span>No</span></label
                                     >
                                 </fieldset>
                             </div>
