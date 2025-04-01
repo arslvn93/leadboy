@@ -41,23 +41,70 @@
             // Initialize pixel
             fbq("init", "1057475448873422");
             
-            // Standard page view event
-            fbq("track", "PageView");
+            // Function to extract UTM parameters from URL
+            function getUTMParams() {
+                let params = {};
+                const urlParams = new URLSearchParams(window.location.search);
+                ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(param => {
+                    if (urlParams.has(param)) {
+                        params[param] = urlParams.get(param);
+                    }
+                });
+                return params;
+            }
+            
+            // Save UTM params to localStorage so they persist across pages
+            function saveUTMParams() {
+                const utmParams = getUTMParams();
+                if (Object.keys(utmParams).length > 0) {
+                    localStorage.setItem('leadboy_utm_params', JSON.stringify(utmParams));
+                    console.log("UTM parameters saved:", utmParams);
+                }
+            }
+            
+            // Get UTM params either from URL or from localStorage
+            function getAllUTMParams() {
+                // First try to get from URL
+                let params = getUTMParams();
+                
+                // If no UTM params in URL, try localStorage
+                if (Object.keys(params).length === 0) {
+                    const savedParams = localStorage.getItem('leadboy_utm_params');
+                    if (savedParams) {
+                        try {
+                            params = JSON.parse(savedParams);
+                            console.log("Using saved UTM parameters:", params);
+                        } catch (e) {
+                            console.error("Error parsing saved UTM params:", e);
+                        }
+                    }
+                } else {
+                    // If we found params in URL, save them
+                    saveUTMParams();
+                }
+                
+                return params;
+            }
+            
+            // Standard page view event with UTM parameters
+            fbq("track", "PageView", getAllUTMParams());
             
             // Track when form page is loaded - helps with funnel analysis
             fbq("trackCustom", "FormPageView", {
-                form_type: "lead_generation"
+                form_type: "lead_generation",
+                ...getAllUTMParams()
             });
             
             // Function to track form submissions - called in the form submit handler
             function trackFormSubmission(formData) {
-                // Initiate lead tracking event
+                // Initiate lead tracking event with UTM parameters
                 if (typeof fbq !== 'undefined') {
                     fbq('track', 'Lead', { 
                         content_name: 'form_started',
-                        content_category: 'lead_generation'
+                        content_category: 'lead_generation',
+                        ...getAllUTMParams()
                     });
-                    console.log("Form submission tracking fired");
+                    console.log("Form submission tracking fired with UTM params");
                 }
             }
         </script>

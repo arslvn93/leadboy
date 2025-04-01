@@ -33,8 +33,47 @@
       // Initialize pixel
       fbq("init", "1057475448873422");
       
-      // Standard page view event
-      fbq("track", "PageView");
+      // Function to extract UTM parameters from URL
+      function getUTMParams() {
+          let params = {};
+          const urlParams = new URLSearchParams(window.location.search);
+          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(param => {
+              if (urlParams.has(param)) {
+                  params[param] = urlParams.get(param);
+              }
+          });
+          return params;
+      }
+      
+      // Get UTM params either from URL or from localStorage
+      function getAllUTMParams() {
+          // First try to get from URL
+          let params = getUTMParams();
+          
+          // If no UTM params in URL, try localStorage
+          if (Object.keys(params).length === 0) {
+              const savedParams = localStorage.getItem('leadboy_utm_params');
+              if (savedParams) {
+                  try {
+                      params = JSON.parse(savedParams);
+                      console.log("Using saved UTM parameters:", params);
+                  } catch (e) {
+                      console.error("Error parsing saved UTM params:", e);
+                  }
+              }
+          } else {
+              // If we found params in URL, update localStorage
+              localStorage.setItem('leadboy_utm_params', JSON.stringify(params));
+          }
+          
+          return params;
+      }
+      
+      // Get all UTM parameters to include in events
+      const utmParams = getAllUTMParams();
+      
+      // Standard page view event with UTM parameters
+      fbq("track", "PageView", utmParams);
       
       // CRITICAL: This is the primary Lead event that Meta will use for ad attribution
       // Putting it directly in the head ensures it fires as soon as possible
@@ -42,13 +81,15 @@
         content_name: "form_completed",
         content_category: "lead_generation",
         value: 1.00,
-        currency: "USD"
+        currency: "USD",
+        ...utmParams
       });
       
       // Additional standard Meta event for higher success rate
       fbq("track", "CompleteRegistration", {
         content_name: "leadboy_registration",
-        status: "successful"
+        status: "successful",
+        ...utmParams
       });
       
       // Debugging - log to console that pixel fired
@@ -61,6 +102,17 @@
         setTimeout(function() {
           console.log("Pixel verification delay complete");
         }, 1000);
+        
+        // Fire a secondary lead event after a short delay
+        // This ensures we have a backup if the first one doesn't fire
+        setTimeout(function() {
+          fbq('track', 'Lead', {
+            content_name: 'thank_you_page_retention',
+            content_category: 'lead_retention',
+            ...utmParams
+          });
+          console.log("Facebook lead retention pixel fired after 3 seconds");
+        }, 3000);
       });
     </script>
     <noscript>
@@ -920,7 +972,7 @@
 
         <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
            class="cta-btn"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >GRAB POWER-UP!</a
         >
       </div>
@@ -1096,7 +1148,7 @@
             <p>One-time payment (66% OFF)</p>
             <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
                class="cta-btn"
-               onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
+               onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
               >CLAIM THIS DEAL NOW</a
             >
           </div>
@@ -1145,7 +1197,7 @@
 
           <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
              class="cta-btn"
-             onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
+             onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
             >POWER UP NOW!</a
           >
         </div>
@@ -1226,7 +1278,7 @@
 
         <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
            class="cta-btn"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >POWER UP NOW!</a
         >
       </div>
@@ -1253,7 +1305,8 @@
               content_name: 'thank_you_page_retention',
               content_category: 'lead_retention',
               value: 2.00,
-              currency: 'USD'
+              currency: 'USD',
+              ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
             });
             console.log("Facebook lead retention pixel fired after 3 seconds");
           }
@@ -1278,7 +1331,8 @@
                 content_name: 'sales_booster', 
                 value: 97.00, 
                 currency: 'USD',
-                num_items: 1
+                num_items: 1,
+                ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
               });
               
               // Add a ViewContent event to help with retargeting
@@ -1286,7 +1340,8 @@
                 content_ids: ['crm_booster_pack'],
                 content_type: 'product',
                 value: 97.00,
-                currency: 'USD'
+                currency: 'USD',
+                ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
               });
               
               console.log(`Conversion tracking fired for button #${index + 1}`);
