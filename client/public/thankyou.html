@@ -6,22 +6,70 @@
     <title>Special One-Time Offer | LeadBoy CRM Booster</title>
     <!-- Facebook Pixel Code -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1057475448873422');
-      fbq('track', 'PageView');
-      // Record a Lead conversion event when the thank you page loads
-      fbq('track', 'Lead', {content_name: 'form_completed'});
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      
+      // Initialize pixel
+      fbq("init", "1057475448873422");
+      
+      // Standard page view event
+      fbq("track", "PageView");
+      
+      // CRITICAL: This is the primary Lead event that Meta will use for ad attribution
+      // Putting it directly in the head ensures it fires as soon as possible
+      fbq("track", "Lead", { 
+        content_name: "form_completed",
+        content_category: "lead_generation",
+        value: 1.00,
+        currency: "USD"
+      });
+      
+      // Additional standard Meta event for higher success rate
+      fbq("track", "CompleteRegistration", {
+        content_name: "leadboy_registration",
+        status: "successful"
+      });
+      
+      // Debugging - log to console that pixel fired
+      console.log("Facebook lead pixel fired on thank you page load");
+      
+      // Add event listener to make sure page stays open long enough for pixel to fire
+      window.addEventListener('load', function() {
+        // This ensures the page stays open for at least 1 second
+        // which gives the pixel time to fire completely
+        setTimeout(function() {
+          console.log("Pixel verification delay complete");
+        }, 1000);
+      });
     </script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1057475448873422&ev=PageView&noscript=1"/>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1057475448873422&ev=Lead&noscript=1"
+      />
     </noscript>
     <!-- End Facebook Pixel Code -->
     <style>
@@ -66,6 +114,50 @@
         font-family: "Press Start 2P", cursive;
         line-height: 1.4;
         letter-spacing: 1px;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .pulsating-text {
+        animation: pulse 1.5s infinite ease-in-out;
+        display: inline-block; /* Needed for transform */
+      }
+
+      .down-arrow {
+        font-size: 2rem;
+        color: var(--mario-yellow);
+        text-shadow: 2px 2px 0 #000;
+        margin-top: 10px;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-15px);
+        }
+        60% {
+          transform: translateY(-7px);
+        }
       }
 
       header {
@@ -747,20 +839,71 @@
     </style>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <h1 class="mario-font">WAIT! DON'T LEAVE YOUR SCRIPTS UNUSED!</h1>
-        <div class="special-badge">WE'LL INSTALL IT FOR YOU!</div>
-        <p>
-          Let our tech team install your LeadBoy scripts into your CRM so they
-          work automatically!
+    <header
+      style="
+        background-color: var(--mario-green);
+        border-bottom: 10px solid var(--pipe-green);
+      "
+    >
+      <div class="container" style="padding: 10px 20px">
+        <h1
+          class="mario-font"
+          style="
+            font-size: 1.8rem;
+            text-shadow: 3px 3px 0 #000;
+            margin-bottom: 15px;
+          "
+        >
+          LEVEL COMPLETE!
+        </h1>
+        <p class="mario-font" style="font-size: 0.9rem; margin-bottom: 25px">
+          Your custom lead sequences have been successfully generated!
         </p>
+        <div
+          class="pixel-border"
+          style="
+            background-color: var(--mario-blue);
+            padding: 15px;
+            margin-bottom: 25px;
+            border-color: #fff;
+            box-shadow: 5px 5px 0 #000;
+          "
+        >
+          <p
+            class="mario-font"
+            style="
+              color: var(--mario-yellow);
+              font-size: 1.1rem;
+              text-shadow: 2px 2px 0 #000;
+              margin-bottom: 10px;
+            "
+          >
+            ⭐ ACHIEVEMENT UNLOCKED: LEAD MASTER ⭐
+          </p>
+          <p class="mario-font" style="font-size: 0.9rem">
+            Your personalized 15-day follow-up sequence is now powering up and
+            will be sent to your email inbox faster than a speedrun! (ETA: 5
+            minutes)
+          </p>
+        </div>
+        <p
+          class="mario-font"
+          style="
+            color: var(--mario-yellow);
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 0 #000;
+            margin-top: 20px;
+          "
+        >
+          <span class="pulsating-text">YOU'VE UNLOCKED A SPECIAL OFFER</span>
+        </p>
+        <div class="down-arrow">▼</div>
       </div>
     </header>
 
     <section class="hero">
       <div class="container">
-        <h1 class="mario-font">🍄 POWER-UP YOUR LEAD FOLLOW-UP! 🍄</h1>
+        <h1 class="mario-font">🍄 POWER-UP 🍄</h1>
         <h2 class="mario-font">
           We'll Install Your LeadBoy Scripts Into Your CRM So They Automatically
           Contact Every Lead For You!
@@ -775,7 +918,9 @@
           </div>
         </div>
 
-        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" class="cta-btn"
+        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
+           class="cta-btn"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
           >GRAB POWER-UP!</a
         >
       </div>
@@ -941,7 +1086,7 @@
         <div class="price-comparison">
           <div class="price-column regular-price">
             <h3 class="mario-font">REGULAR PRICE</h3>
-            <div class="price">$297</div>
+            <div class="price">$287</div>
             <p>What others pay</p>
           </div>
 
@@ -949,7 +1094,9 @@
             <h3 class="mario-font">YOUR SPECIAL PRICE</h3>
             <div class="price">$97</div>
             <p>One-time payment (66% OFF)</p>
-            <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" class="cta-btn"
+            <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
+               class="cta-btn"
+               onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
               >CLAIM THIS DEAL NOW</a
             >
           </div>
@@ -957,7 +1104,7 @@
 
         <p>
           <strong>WARNING:</strong> This power-up expires when you leave this
-          page. Regular price is $297, but right now it's just $97!
+          page. Regular price is $287, but right now it's just $97!
         </p>
       </div>
     </section>
@@ -996,7 +1143,9 @@
           <h3 class="mario-font">Your Investment: Just $97 (Today Only)</h3>
           <p>That's less than the commission on just 1% of one deal!</p>
 
-          <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" class="cta-btn"
+          <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
+             class="cta-btn"
+             onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
             >POWER UP NOW!</a
           >
         </div>
@@ -1075,7 +1224,9 @@
           </div>
         </div>
 
-        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" class="cta-btn"
+        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
+           class="cta-btn"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1}); return true;"
           >POWER UP NOW!</a
         >
       </div>
@@ -1092,6 +1243,58 @@
     </footer>
 
     <script>
+      // Track visibility to ensure we fire an additional Lead retention event after user has been on page for 3 seconds
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set a timer to check if user is still on the page after 3 seconds
+        setTimeout(function() {
+          // This additional Lead retention event helps with Meta attribution when they revisit the ads
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', {
+              content_name: 'thank_you_page_retention',
+              content_category: 'lead_retention',
+              value: 2.00,
+              currency: 'USD'
+            });
+            console.log("Facebook lead retention pixel fired after 3 seconds");
+          }
+        }, 3000);
+      });
+      
+      // Set up conversion tracking for all CTA buttons in a centralized way
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get all CTA buttons with checkout links
+        const allCTAButtons = document.querySelectorAll('a.cta-btn[href*="stripe.com"]');
+        
+        // Log how many buttons we found for debugging
+        console.log(`Found ${allCTAButtons.length} CTA buttons to track`);
+        
+        // Add enhanced tracking to all buttons
+        allCTAButtons.forEach((button, index) => {
+          button.addEventListener('click', function(e) {
+            // Don't interfere with the onclick handlers we already added
+            if (typeof fbq !== 'undefined') {
+              // Track both InitiateCheckout and custom Purchase event
+              fbq('track', 'InitiateCheckout', {
+                content_name: 'sales_booster', 
+                value: 97.00, 
+                currency: 'USD',
+                num_items: 1
+              });
+              
+              // Add a ViewContent event to help with retargeting
+              fbq('track', 'ViewContent', {
+                content_ids: ['crm_booster_pack'],
+                content_type: 'product',
+                value: 97.00,
+                currency: 'USD'
+              });
+              
+              console.log(`Conversion tracking fired for button #${index + 1}`);
+            }
+          });
+        });
+      });
+
       // Countdown timer - 10 minutes from page load
       let minutes = 10;
       let seconds = 0;

@@ -37,8 +37,29 @@
                 "script",
                 "https://connect.facebook.net/en_US/fbevents.js",
             );
+            
+            // Initialize pixel
             fbq("init", "1057475448873422");
+            
+            // Standard page view event
             fbq("track", "PageView");
+            
+            // Track when form page is loaded - helps with funnel analysis
+            fbq("trackCustom", "FormPageView", {
+                form_type: "lead_generation"
+            });
+            
+            // Function to track form submissions - called in the form submit handler
+            function trackFormSubmission(formData) {
+                // Initiate lead tracking event
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', { 
+                        content_name: 'form_started',
+                        content_category: 'lead_generation'
+                    });
+                    console.log("Form submission tracking fired");
+                }
+            }
         </script>
         <!-- End Facebook Pixel Code -->
         <style>
@@ -2334,173 +2355,34 @@
                         });
                     // --- End Send Data ---
 
-                    // Process data immediately but don't redirect automatically
+                    // Process data immediately then redirect to thank you page
                     console.log("Form Data Submitted:", payloadData); // Log data immediately
                     
-                    // Hide form & related UI first
+                    // Call our custom form tracking function with the collected data
+                    if (typeof trackFormSubmission === 'function') {
+                        trackFormSubmission(payloadData);
+                    }
+                    
+                    // Show brief loading message while redirecting
                     form.style.display = "none";
-                    if (progressIndicator)
-                        progressIndicator.style.display = "none";
+                    if (progressIndicator) progressIndicator.style.display = "none";
                     if (pixelBorder) pixelBorder.style.display = "none";
                     if (sequenceTitle) sequenceTitle.style.display = "none";
                     
-                    // No automatic redirect - user will click the button instead
+                    // Create minimal loading indicator
+                    const loadingMessage = document.createElement("div");
+                    loadingMessage.className = "final-message-text";
+                    loadingMessage.innerHTML = "Form submitted! Redirecting...";
+                    screenContent.appendChild(loadingMessage);
                     
+                    // Play a quick sound effect for feedback
+                    playGameboySound();
+                    
+                    // Immediate redirect to thank you page (with brief delay for sound/visual feedback)
                     setTimeout(() => {
-
-                        playGameboySound(); // Play sound when effect starts
-
-                        // --- Start Scrolling Text Effect ---
-                        const scrollContainer = document.createElement("div");
-                        scrollContainer.className = "scrolling-text-container";
-                        screenContent.appendChild(scrollContainer);
-
-                        const messages = [
-                            "INITIALIZING SEQUENCE...",
-                            "ANALYZING AGENT DATA...",
-                            "GENERATING DAY 1-5...",
-                            "CALIBRATING TONE...",
-                            "GENERATING DAY 6-10...",
-                            "OPTIMIZING TOUCHPOINTS...",
-                            "GENERATING DAY 11-15...",
-                            "ADDING PERSONALIZATION...",
-                            "FINALIZING CAMPAIGN...",
-                            "SEQUENCE COMPLETE!",
-                            "CHECK YOUR EMAIL SOON!",
-                        ];
-                        let messageIndex = 0;
-                        let intervalId = null; // To potentially stop later if needed
-
-                        const createScrollingText = () => {
-                            const textElement = document.createElement("div");
-                            textElement.className = "scrolling-text";
-                            // Cycle through messages
-                            textElement.textContent =
-                                messages[messageIndex % messages.length];
-                            messageIndex++;
-
-                            // Add slight random horizontal variation & slightly vary speed
-                            const randomOffset = (Math.random() - 0.5) * 5; // Reduced variation: +/- 2.5%
-                            const randomDuration = 4 + Math.random() * 2; // 4s to 6s duration
-                            textElement.style.left = `${50 + randomOffset}%`;
-                            textElement.style.animationDuration = `${randomDuration}s`;
-
-                            scrollContainer.appendChild(textElement);
-
-                            // Remove the element after its animation finishes + small buffer
-                            setTimeout(
-                                () => {
-                                    textElement.remove();
-                                },
-                                randomDuration * 1000 + 100,
-                            );
-                        };
-
-                        // Create the first message immediately, then start interval
-                        createScrollingText();
-                        intervalId = setInterval(createScrollingText, 900); // Add new text every 900ms (slightly slower)
-
-                        // --- Stop scrolling and show final message after 10 seconds ---
-                        setTimeout(() => {
-                            clearInterval(intervalId); // Stop creating new scrolling messages
-                            // Optional: Could add a fade-out to scrollContainer before removing
-                            if (scrollContainer) {
-                                scrollContainer.remove(); // Remove the scrolling container
-                            }
-
-                            // Create and display the final static message
-                            const finalMessage = document.createElement("div");
-                            finalMessage.className = "final-message-text";
-                            finalMessage.innerHTML =
-                                "You've Unlocked a SPECIAL offer from SalesGenius!<br>Click Activate to claim it now";
-                            screenContent.appendChild(finalMessage);
-                            // Force visibility
-                            finalMessage.style.opacity = 1;
-                            
-                            // Create and add the Activate button
-                            const activateButton = document.createElement("button");
-                            activateButton.className = "activate-button";
-                            activateButton.textContent = "ACTIVATE";
-                            activateButton.style.display = "block";
-                            activateButton.style.margin = "20px auto";
-                            activateButton.style.padding = "10px 30px";
-                            activateButton.style.backgroundColor = "#05f2c7";
-                            activateButton.style.color = "#051736";
-                            activateButton.style.border = "none";
-                            activateButton.style.borderRadius = "8px";
-                            activateButton.style.fontFamily = "'Press Start 2P', cursive";
-                            activateButton.style.fontSize = "16px";
-                            activateButton.style.cursor = "pointer";
-                            activateButton.style.boxShadow = "0 0 15px #05f2c7";
-                            activateButton.style.animation = "pulse 2s infinite";
-                            
-                            // Add hover effect
-                            activateButton.addEventListener("mouseover", () => {
-                                activateButton.style.backgroundColor = "#0df7cc";
-                                activateButton.style.boxShadow = "0 0 20px #05f2c7";
-                            });
-                            
-                            activateButton.addEventListener("mouseout", () => {
-                                activateButton.style.backgroundColor = "#05f2c7";
-                                activateButton.style.boxShadow = "0 0 15px #05f2c7";
-                            });
-                            
-                            // Function to handle activation
-                            const handleActivation = () => {
-                                playButtonSound(523.25); // Play sound on activation
-                                
-                                // Ensure the Facebook Lead pixel fires completely before redirecting
-                                if (typeof fbq !== 'undefined') {
-                                    fbq('track', 'Lead', {
-                                        content_name: 'form_activation',
-                                        content_category: 'lead_generation'
-                                    });
-                                    
-                                    // Small delay to ensure pixel fires before redirect
-                                    setTimeout(() => {
-                                        window.location.href = "/thankyou.html";
-                                    }, 500);
-                                } else {
-                                    // Fallback if fbq is not available
-                                    window.location.href = "/thankyou.html";
-                                }
-                            };
-                            
-                            // Add click handler to redirect to thank you page
-                            activateButton.addEventListener("click", handleActivation);
-                            
-                            // Connect GameBoy A button, START button, and RIGHT button to also trigger activation
-                            const aBtn = document.getElementById("aBtn");
-                            const startBtn = document.getElementById("startBtn");
-                            const rightBtn = document.getElementById("rightBtn");
-                            
-                            if (aBtn) {
-                                // Remove any existing event listeners first
-                                const newABtn = aBtn.cloneNode(true);
-                                aBtn.parentNode.replaceChild(newABtn, aBtn);
-                                newABtn.addEventListener("click", handleActivation);
-                            }
-                            
-                            if (startBtn) {
-                                // Remove any existing event listeners first
-                                const newStartBtn = startBtn.cloneNode(true);
-                                startBtn.parentNode.replaceChild(newStartBtn, startBtn);
-                                newStartBtn.addEventListener("click", handleActivation);
-                            }
-                            
-                            if (rightBtn) {
-                                // Remove any existing event listeners first
-                                const newRightBtn = rightBtn.cloneNode(true);
-                                rightBtn.parentNode.replaceChild(newRightBtn, rightBtn);
-                                newRightBtn.addEventListener("click", handleActivation);
-                            }
-                            
-                            // Add a hint about using the buttons
-                            finalMessage.innerHTML += "<br><br><span style='font-size: 0.7rem;'>Press A, START, or RIGHT D-pad button to activate</span>";
-                            
-                            screenContent.appendChild(activateButton);
-                        }, 10000); // 10 seconds
-                    }, 500); // Short delay before starting effect (adjust if needed)
+                        // Redirect to thank you page where lead events will be tracked properly
+                        window.location.href = "/thankyou.html";
+                    }, 750); // Short delay so user can see confirmation
                 });
 
                 // --- Audio Functions (Keep Compacted) ---
