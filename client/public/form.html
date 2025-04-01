@@ -2259,16 +2259,8 @@
                     // Fire Facebook pixel event FIRST to ensure it's captured
                     // Track form submission with standard events but NOT as a Lead event (only thankyou.html fires Lead)
                     if (typeof fbq !== 'undefined') {
-                        // Use InitiateCheckout instead of Lead to avoid duplicate attribution
-                        fbq('track', 'InitiateCheckout', {
-                            content_name: 'form_submission',
-                            content_category: 'lead_generation',
-                            value: 1.00,
-                            currency: 'USD',
-                            ...getAllUTMParams()
-                        });
-                        
-                        // Track form submission with a standard CustomFormSubmit event for custom tracking
+                        // Track form submission with standard events but not Lead event
+                        // (only thankyou.html should fire the Lead event)
                         fbq('trackCustom', 'FormSubmissionStarted', {
                             content_name: 'leadboy_form_submission',
                             form_type: 'lead_capture',
