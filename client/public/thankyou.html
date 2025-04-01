@@ -75,13 +75,14 @@
       // Standard page view event with UTM parameters
       fbq("track", "PageView", utmParams);
       
-      // CRITICAL: This is the primary Lead event that Meta will use for ad attribution
+      // CRITICAL: This is the ONLY Lead event that Meta will use for ad attribution
       // Putting it directly in the head ensures it fires as soon as possible
       fbq("track", "Lead", { 
         content_name: "form_completed",
         content_category: "lead_generation",
         value: 1.00,
         currency: "USD",
+        is_definitive_conversion: true, // Flag this as the definitive conversion event
         ...utmParams
       });
       
@@ -103,10 +104,10 @@
           console.log("Pixel verification delay complete");
         }, 1000);
         
-        // Fire a secondary lead event after a short delay
-        // This ensures we have a backup if the first one doesn't fire
+        // Fire a retention event (but NOT as a Lead) after a short delay
+        // This helps measure page engagement without duplicate Lead events
         setTimeout(function() {
-          fbq('track', 'Lead', {
+          fbq('trackCustom', 'LeadRetention', {
             content_name: 'thank_you_page_retention',
             content_category: 'lead_retention',
             ...utmParams
@@ -120,7 +121,7 @@
         height="1"
         width="1"
         style="display: none"
-        src="https://www.facebook.com/tr?id=1057475448873422&ev=Lead&noscript=1"
+        src="https://www.facebook.com/tr?id=1057475448873422&ev=PageView&noscript=1"
       />
     </noscript>
     <!-- End Facebook Pixel Code -->

@@ -97,9 +97,9 @@
             
             // Function to track form submissions - called in the form submit handler
             function trackFormSubmission(formData) {
-                // Initiate lead tracking event with UTM parameters
+                // Track form start without using the Lead event
                 if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead', { 
+                    fbq('trackCustom', 'FormSubmissionStarted', { 
                         content_name: 'form_started',
                         content_category: 'lead_generation',
                         ...getAllUTMParams()
@@ -2257,21 +2257,24 @@
                     if (!validateStep(currentStepIndex)) return;
                     
                     // Fire Facebook pixel lead event FIRST to ensure it's captured
-                    // This is the most important event for Meta ad attribution
+                    // Track form submission but NOT as a Lead event (only thankyou.html should fire Lead)
                     if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            content_name: 'form_submission_start',
+                        // Use InitiateCheckout instead of Lead to avoid duplicate attribution
+                        fbq('track', 'InitiateCheckout', {
+                            content_name: 'form_submission',
                             content_category: 'lead_generation',
                             value: 1.00,
-                            currency: 'USD'
+                            currency: 'USD',
+                            ...getAllUTMParams()
                         });
                         
                         // Send a standard Meta CompleteRegistration event as well
                         fbq('track', 'CompleteRegistration', {
-                            content_name: 'leadboy_registration'
+                            content_name: 'leadboy_registration',
+                            ...getAllUTMParams()
                         });
                         
-                        console.log('Facebook Lead pixel fired');
+                        console.log('Facebook form completion pixel fired');
                     } else {
                         console.log('Facebook pixel not available');
                     }
