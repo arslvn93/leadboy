@@ -1823,7 +1823,7 @@
                                     type="submit"
                                     id="finalSubmitBtn"
                                     class="submit-btn"
-                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_completion'});}"
+                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_submission', content_category: 'lead_generation'});}"
                                 >
                                     Create My Custom Sequence
                                 </button>
@@ -2429,7 +2429,22 @@
                             // Function to handle activation
                             const handleActivation = () => {
                                 playButtonSound(523.25); // Play sound on activation
-                                window.location.href = "/thankyou.html";
+                                
+                                // Ensure the Facebook Lead pixel fires completely before redirecting
+                                if (typeof fbq !== 'undefined') {
+                                    fbq('track', 'Lead', {
+                                        content_name: 'form_activation',
+                                        content_category: 'lead_generation'
+                                    });
+                                    
+                                    // Small delay to ensure pixel fires before redirect
+                                    setTimeout(() => {
+                                        window.location.href = "/thankyou.html";
+                                    }, 500);
+                                } else {
+                                    // Fallback if fbq is not available
+                                    window.location.href = "/thankyou.html";
+                                }
                             };
                             
                             // Add click handler to redirect to thank you page
