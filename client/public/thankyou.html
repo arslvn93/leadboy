@@ -104,16 +104,8 @@
           console.log("Pixel verification delay complete");
         }, 1000);
         
-        // Fire a retention event (but NOT as a Lead) after a short delay
-        // This helps measure page engagement without duplicate Lead events
-        setTimeout(function() {
-          fbq('trackCustom', 'LeadRetention', {
-            content_name: 'thank_you_page_retention',
-            content_category: 'lead_retention',
-            ...utmParams
-          });
-          console.log("Facebook lead retention pixel fired after 3 seconds");
-        }, 3000);
+        // We've moved the retention tracking to a cleaner implementation
+        // at the bottom of the page using the standard "Contact" event
       });
     </script>
     <noscript>
@@ -1296,20 +1288,20 @@
     </footer>
 
     <script>
-      // Track visibility to ensure we fire an additional Lead retention event after user has been on page for 3 seconds
+      // Track visibility to ensure we fire an additional Contact retention event after user has been on page for 3 seconds
       document.addEventListener('DOMContentLoaded', function() {
         // Set a timer to check if user is still on the page after 3 seconds
         setTimeout(function() {
-          // This additional Lead retention event helps with Meta attribution when they revisit the ads
+          // This additional retention event helps with Meta attribution without duplicating Leads
           if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead', {
+            fbq('track', 'Contact', {
               content_name: 'thank_you_page_retention',
               content_category: 'lead_retention',
               value: 2.00,
               currency: 'USD',
               ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
             });
-            console.log("Facebook lead retention pixel fired after 3 seconds");
+            console.log("Facebook contact retention pixel fired after 3 seconds");
           }
         }, 3000);
       });
