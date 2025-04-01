@@ -1823,7 +1823,6 @@
                                     type="submit"
                                     id="finalSubmitBtn"
                                     class="submit-btn"
-                                    onclick="if(typeof fbq !== 'undefined'){fbq('track', 'Lead', {content_name: 'form_submission', content_category: 'lead_generation'});}"
                                 >
                                     Create My Custom Sequence
                                 </button>
@@ -2188,6 +2187,26 @@
                 form?.addEventListener("submit", function (e) {
                     e.preventDefault();
                     if (!validateStep(currentStepIndex)) return;
+                    
+                    // Fire Facebook pixel lead event FIRST to ensure it's captured
+                    // This is the most important event for Meta ad attribution
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_name: 'form_submission_start',
+                            content_category: 'lead_generation',
+                            value: 1.00,
+                            currency: 'USD'
+                        });
+                        
+                        // Send a standard Meta CompleteRegistration event as well
+                        fbq('track', 'CompleteRegistration', {
+                            content_name: 'leadboy_registration'
+                        });
+                        
+                        console.log('Facebook Lead pixel fired');
+                    } else {
+                        console.log('Facebook pixel not available');
+                    }
 
                     // --- Start Glitch Effect ---
                     if (screenContainer)
