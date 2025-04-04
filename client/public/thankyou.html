@@ -882,24 +882,6 @@
         }
       }
     </style>
-    
-    <!-- TikTok Pixel Code -->
-    <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-      ttq.load('CVO543JC77U9ISIJHLP0');
-      ttq.page();
-      
-      // CompleteRegistration event - user has completed the form process
-      ttq.track('CompleteRegistration', {
-        success: true,
-        content_name: 'leadboy_signup'
-      });
-    </script>
-    <!-- End TikTok Pixel Code -->
   </head>
   <body>
     <header
@@ -983,7 +965,7 @@
 
         <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
            class="cta-btn"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); if(typeof ttq !== 'undefined') { ttq.track('InitiateCheckout', { content_name: 'crm_booster', value: 97.00, currency: 'USD' }); }; return true;"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >GRAB POWER-UP!</a
         >
       </div>
@@ -1157,11 +1139,10 @@
             <h3 class="mario-font">YOUR SPECIAL PRICE</h3>
             <div class="price">$97</div>
             <p>One-time payment (66% OFF)</p>
-a
             <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
                class="cta-btn"
-               onclick="fbq(\"track\", \"InitiateCheckout\", {content_name: \"sales_booster\", value: 97.00, currency: \"USD\", num_items: 1, ...(typeof getAllUTMParams === \"function\" ? getAllUTMParams() : {})}); if(typeof ttq !== \"undefined\") { ttq.track(\"InitiateCheckout\", { content_name: \"crm_booster\", value: 97.00, currency: \"USD\" }); }; return true;"
-              >CLAIM THIS DEAL NOW</a>
+               onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
+              >CLAIM THIS DEAL NOW</a
             >
           </div>
         </div>
@@ -1210,10 +1191,10 @@ a
           <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
              class="cta-btn"
              onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
-          <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-             class="cta-btn"
-             onclick="fbq(\"track\", \"InitiateCheckout\", {content_name: \"sales_booster\", value: 97.00, currency: \"USD\", num_items: 1, ...(typeof getAllUTMParams === \"function\" ? getAllUTMParams() : {})}); if(typeof ttq !== \"undefined\") { ttq.track(\"InitiateCheckout\", { content_name: \"crm_booster\", value: 97.00, currency: \"USD\" }); }; return true;"
-            >POWER UP NOW!</a>
+            >POWER UP NOW!</a
+          >
+        </div>
+      </div>
     </section>
 
     <div class="pipe-separator"></div>
@@ -1292,10 +1273,10 @@ a
            class="cta-btn"
            onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >POWER UP NOW!</a
-        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-           class="cta-btn"
-           onclick="fbq(\"track\", \"InitiateCheckout\", {content_name: \"sales_booster\", value: 97.00, currency: \"USD\", num_items: 1, ...(typeof getAllUTMParams === \"function\" ? getAllUTMParams() : {})}); if(typeof ttq !== \"undefined\") { ttq.track(\"InitiateCheckout\", { content_name: \"crm_booster\", value: 97.00, currency: \"USD\" }); }; return true;"
-          >POWER UP NOW!</a>
+        >
+      </div>
+    </section>
+
     <footer>
       <div class="container">
         <p class="mario-font">© 2025 LEADBOY CRM BOOSTER PACK</p>
@@ -1356,17 +1337,7 @@ a
                 ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
               });
               
-              console.log(`Facebook conversion tracking fired for button #${index + 1}`);
-            }
-            
-            // Add TikTok tracking to all buttons
-            if (typeof ttq !== 'undefined') {
-              ttq.track('InitiateCheckout', {
-                content_name: 'crm_booster',
-                value: 97.00,
-                currency: 'USD'
-              });
-              console.log(`TikTok conversion tracking fired for button #${index + 1}`);
+              console.log(`Conversion tracking fired for button #${index + 1}`);
             }
           });
         });
