@@ -1356,17 +1356,7 @@ a
                 ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
               });
               
-              console.log(`Facebook conversion tracking fired for button #${index + 1}`);
-            }
-            
-            // Add TikTok tracking to all buttons
-            if (typeof ttq !== 'undefined') {
-              ttq.track('InitiateCheckout', {
-                content_name: 'crm_booster',
-                value: 97.00,
-                currency: 'USD'
-              });
-              console.log(`TikTok conversion tracking fired for button #${index + 1}`);
+              console.log(`Conversion tracking fired for button #${index + 1}`);
             }
           });
         });

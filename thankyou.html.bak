@@ -1158,10 +1158,6 @@
             <div class="price">$97</div>
             <p>One-time payment (66% OFF)</p>
 a
-            <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-               class="cta-btn"
-               onclick="fbq(\"track\", \"InitiateCheckout\", {content_name: \"sales_booster\", value: 97.00, currency: \"USD\", num_items: 1, ...(typeof getAllUTMParams === \"function\" ? getAllUTMParams() : {})}); if(typeof ttq !== \"undefined\") { ttq.track(\"InitiateCheckout\", { content_name: \"crm_booster\", value: 97.00, currency: \"USD\" }); }; return true;"
-              >CLAIM THIS DEAL NOW</a>
             >
           </div>
         </div>
@@ -1210,10 +1206,10 @@ a
           <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
              class="cta-btn"
              onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
-          <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-             class="cta-btn"
-             onclick="fbq(\"track\", \"InitiateCheckout\", {content_name: \"sales_booster\", value: 97.00, currency: \"USD\", num_items: 1, ...(typeof getAllUTMParams === \"function\" ? getAllUTMParams() : {})}); if(typeof ttq !== \"undefined\") { ttq.track(\"InitiateCheckout\", { content_name: \"crm_booster\", value: 97.00, currency: \"USD\" }); }; return true;"
-            >POWER UP NOW!</a>
+            >POWER UP NOW!</a
+          >
+        </div>
+      </div>
     </section>
 
     <div class="pipe-separator"></div>
@@ -1292,10 +1288,10 @@ a
            class="cta-btn"
            onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >POWER UP NOW!</a
-        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-           class="cta-btn"
-           onclick="fbq(\"track\", \"InitiateCheckout\", {content_name: \"sales_booster\", value: 97.00, currency: \"USD\", num_items: 1, ...(typeof getAllUTMParams === \"function\" ? getAllUTMParams() : {})}); if(typeof ttq !== \"undefined\") { ttq.track(\"InitiateCheckout\", { content_name: \"crm_booster\", value: 97.00, currency: \"USD\" }); }; return true;"
-          >POWER UP NOW!</a>
+        >
+      </div>
+    </section>
+
     <footer>
       <div class="container">
         <p class="mario-font">© 2025 LEADBOY CRM BOOSTER PACK</p>
@@ -1356,17 +1352,7 @@ a
                 ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
               });
               
-              console.log(`Facebook conversion tracking fired for button #${index + 1}`);
-            }
-            
-            // Add TikTok tracking to all buttons
-            if (typeof ttq !== 'undefined') {
-              ttq.track('InitiateCheckout', {
-                content_name: 'crm_booster',
-                value: 97.00,
-                currency: 'USD'
-              });
-              console.log(`TikTok conversion tracking fired for button #${index + 1}`);
+              console.log(`Conversion tracking fired for button #${index + 1}`);
             }
           });
         });
