@@ -1,6 +1,6 @@
 [build]
   publish = "dist/public"
-  command = "npm ci && npm run build"
+  command = "npm install vite && npm ci && npm run build"
 
 # Redirect all requests to index.html for single page app handling
 [[redirects]]
