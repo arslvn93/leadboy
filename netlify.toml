@@ -1,0 +1,55 @@
+[build]
+  publish = "client/dist"
+  command = "npm run build"
+
+# Redirect all requests to index.html for single page app handling
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
+# Handle API proxy to backend services
+[[redirects]]
+  from = "/api/*"
+  to = "https://n8n.salesgenius.co/webhook/:splat"
+  status = 200
+  force = true
+  headers = {Access-Control-Allow-Origin = "*"}
+
+# Proxy for specific hookways
+[[redirects]]
+  from = "/webhook/leadboy"
+  to = "https://n8n.salesgenius.co/webhook/leadboy"
+  status = 200
+  force = true
+  headers = {Access-Control-Allow-Origin = "*"}
+
+# Enable bundling and optimization
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+# Environment variable configuration
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "production"
+
+# Header security settings
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
