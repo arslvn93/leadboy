@@ -1,13 +1,13 @@
 [build]
   publish = "dist/public"
-  command = "npm install && npm install -g vite typescript esbuild && npm run build"
+  command = "npm ci && npm run build"
 
 # Redirect all requests to index.html for single page app handling
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  
+
 # Handle API proxy to backend services
 [[redirects]]
   from = "/api/*"
