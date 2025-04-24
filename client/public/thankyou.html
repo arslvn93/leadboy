@@ -4,6 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Special One-Time Offer | LeadBoy CRM Booster</title>
+    <!-- TikTok Pixel Code Start -->
+    <script>
+      !(function (w, d, t) {
+        w.TiktokAnalyticsObject = t;
+        var ttq = (w[t] = w[t] || []);
+        (ttq.methods = [
+          "page",
+          "track",
+          "identify",
+          "instances",
+          "debug",
+          "on",
+          "off",
+          "once",
+          "ready",
+          "alias",
+          "group",
+          "enableCookie",
+          "disableCookie",
+          "holdConsent",
+          "revokeConsent",
+          "grantConsent",
+        ]),
+          (ttq.setAndDefer = function (t, e) {
+            t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            };
+          });
+        for (var i = 0; i < ttq.methods.length; i++)
+          ttq.setAndDefer(ttq, ttq.methods[i]);
+        (ttq.instance = function (t) {
+          for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)
+            ttq.setAndDefer(e, ttq.methods[n]);
+          return e;
+        }),
+          (ttq.load = function (e, n) {
+            var r = "https://analytics.tiktok.com/i18n/pixel/events.js",
+              o = n && n.partner;
+            (ttq._i = ttq._i || {}),
+              (ttq._i[e] = []),
+              (ttq._i[e]._u = r),
+              (ttq._t = ttq._t || {}),
+              (ttq._t[e] = +new Date()),
+              (ttq._o = ttq._o || {}),
+              (ttq._o[e] = n || {});
+            n = document.createElement("script");
+            (n.type = "text/javascript"),
+              (n.async = !0),
+              (n.src = r + "?sdkid=" + e + "&lib=" + t);
+            e = document.getElementsByTagName("script")[0];
+            e.parentNode.insertBefore(n, e);
+          });
+        ttq.load("CVO543JC77U9ISIJHLP0");
+        ttq.page();
+      })(window, document, "ttq");
+    </script>
+    <!-- TikTok Pixel Code End -->
     <!-- Facebook Pixel Code -->
     <script>
       !(function (f, b, e, v, n, t, s) {
@@ -29,81 +86,87 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
-      
+
       // Initialize pixel
       fbq("init", "1057475448873422");
-      
+
       // Function to extract UTM parameters from URL
       function getUTMParams() {
-          let params = {};
-          const urlParams = new URLSearchParams(window.location.search);
-          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(param => {
-              if (urlParams.has(param)) {
-                  params[param] = urlParams.get(param);
-              }
-          });
-          return params;
+        let params = {};
+        const urlParams = new URLSearchParams(window.location.search);
+        [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_term",
+          "utm_content",
+        ].forEach((param) => {
+          if (urlParams.has(param)) {
+            params[param] = urlParams.get(param);
+          }
+        });
+        return params;
       }
-      
+
       // Get UTM params either from URL or from localStorage
       function getAllUTMParams() {
-          // First try to get from URL
-          let params = getUTMParams();
-          
-          // If no UTM params in URL, try localStorage
-          if (Object.keys(params).length === 0) {
-              const savedParams = localStorage.getItem('leadboy_utm_params');
-              if (savedParams) {
-                  try {
-                      params = JSON.parse(savedParams);
-                      console.log("Using saved UTM parameters:", params);
-                  } catch (e) {
-                      console.error("Error parsing saved UTM params:", e);
-                  }
-              }
-          } else {
-              // If we found params in URL, update localStorage
-              localStorage.setItem('leadboy_utm_params', JSON.stringify(params));
+        // First try to get from URL
+        let params = getUTMParams();
+
+        // If no UTM params in URL, try localStorage
+        if (Object.keys(params).length === 0) {
+          const savedParams = localStorage.getItem("leadboy_utm_params");
+          if (savedParams) {
+            try {
+              params = JSON.parse(savedParams);
+              console.log("Using saved UTM parameters:", params);
+            } catch (e) {
+              console.error("Error parsing saved UTM params:", e);
+            }
           }
-          
-          return params;
+        } else {
+          // If we found params in URL, update localStorage
+          localStorage.setItem("leadboy_utm_params", JSON.stringify(params));
+        }
+
+        return params;
       }
-      
+
       // Get all UTM parameters to include in events
       const utmParams = getAllUTMParams();
-      
+
       // Standard page view event with UTM parameters
       fbq("track", "PageView", utmParams);
-      
+
       // CRITICAL: This is the ONLY Lead event that Meta will use for ad attribution
       // Putting it directly in the head ensures it fires as soon as possible
-      fbq("track", "Lead", { 
+      fbq("track", "Lead", {
         content_name: "form_completed",
         content_category: "lead_generation",
-        value: 1.00,
+        value: 1.0,
         currency: "USD",
         is_definitive_conversion: true, // Flag this as the definitive conversion event
-        ...utmParams
+        ...utmParams,
       });
-      
+
       // Additional standard Meta event for higher success rate
       fbq("track", "CompleteRegistration", {
         content_name: "leadboy_registration",
         status: "successful",
-        ...utmParams
+        ...utmParams,
       });
-      
+
       // Debugging - log to console that pixel fired
       console.log("Facebook lead pixel fired on thank you page load");
-      
+
       // Add event listener to make sure page stays open long enough for pixel to fire
-      window.addEventListener('load', function() {
+      window.addEventListener("load", function () {
         // This ensures the page stays open for at least 1 second
         // which gives the pixel time to fire completely
-        setTimeout(function() {
+        setTimeout(function () {
           console.log("Pixel verification delay complete");
         }, 1000);
-        
+
         // We've moved the retention tracking to a cleaner implementation
         // at the bottom of the page using the standard "Contact" event
       });
@@ -963,9 +1026,10 @@
           </div>
         </div>
 
-        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-           class="cta-btn"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
+        <a
+          href="https://buy.stripe.com/eVa00K3au9sl7Bu14J"
+          class="cta-btn"
+          onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >GRAB POWER-UP!</a
         >
       </div>
@@ -1139,9 +1203,10 @@
             <h3 class="mario-font">YOUR SPECIAL PRICE</h3>
             <div class="price">$97</div>
             <p>One-time payment (66% OFF)</p>
-            <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-               class="cta-btn"
-               onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
+            <a
+              href="https://buy.stripe.com/eVa00K3au9sl7Bu14J"
+              class="cta-btn"
+              onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
               >CLAIM THIS DEAL NOW</a
             >
           </div>
@@ -1188,9 +1253,10 @@
           <h3 class="mario-font">Your Investment: Just $97 (Today Only)</h3>
           <p>That's less than the commission on just 1% of one deal!</p>
 
-          <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-             class="cta-btn"
-             onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
+          <a
+            href="https://buy.stripe.com/eVa00K3au9sl7Bu14J"
+            class="cta-btn"
+            onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
             >POWER UP NOW!</a
           >
         </div>
@@ -1208,8 +1274,8 @@
         <div class="faq-item">
           <div class="faq-question">WHICH CRMS DO YOU SUPPORT?</div>
           <div class="faq-answer">
-            We currently support Follow Up Boss, Lofty, and KV Core. If you use a
-            different CRM, contact us to check compatibility.
+            We currently support Follow Up Boss, Lofty, and KV Core. If you use
+            a different CRM, contact us to check compatibility.
           </div>
         </div>
 
@@ -1269,9 +1335,10 @@
           </div>
         </div>
 
-        <a href="https://buy.stripe.com/eVa00K3au9sl7Bu14J" 
-           class="cta-btn"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
+        <a
+          href="https://buy.stripe.com/eVa00K3au9sl7Bu14J"
+          class="cta-btn"
+          onclick="fbq('track', 'InitiateCheckout', {content_name: 'sales_booster', value: 97.00, currency: 'USD', num_items: 1, ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})}); return true;"
           >POWER UP NOW!</a
         >
       </div>
@@ -1289,54 +1356,64 @@
 
     <script>
       // Track visibility to ensure we fire an additional Contact retention event after user has been on page for 3 seconds
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Set a timer to check if user is still on the page after 3 seconds
-        setTimeout(function() {
+        setTimeout(function () {
           // This additional retention event helps with Meta attribution without duplicating Leads
-          if (typeof fbq !== 'undefined') {
-            fbq('track', 'Contact', {
-              content_name: 'thank_you_page_retention',
-              content_category: 'lead_retention',
-              value: 2.00,
-              currency: 'USD',
-              ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
+          if (typeof fbq !== "undefined") {
+            fbq("track", "Contact", {
+              content_name: "thank_you_page_retention",
+              content_category: "lead_retention",
+              value: 2.0,
+              currency: "USD",
+              ...(typeof getAllUTMParams === "function"
+                ? getAllUTMParams()
+                : {}),
             });
-            console.log("Facebook contact retention pixel fired after 3 seconds");
+            console.log(
+              "Facebook contact retention pixel fired after 3 seconds",
+            );
           }
         }, 3000);
       });
-      
+
       // Set up conversion tracking for all CTA buttons in a centralized way
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Get all CTA buttons with checkout links
-        const allCTAButtons = document.querySelectorAll('a.cta-btn[href*="stripe.com"]');
-        
+        const allCTAButtons = document.querySelectorAll(
+          'a.cta-btn[href*="stripe.com"]',
+        );
+
         // Log how many buttons we found for debugging
         console.log(`Found ${allCTAButtons.length} CTA buttons to track`);
-        
+
         // Add enhanced tracking to all buttons
         allCTAButtons.forEach((button, index) => {
-          button.addEventListener('click', function(e) {
+          button.addEventListener("click", function (e) {
             // Don't interfere with the onclick handlers we already added
-            if (typeof fbq !== 'undefined') {
+            if (typeof fbq !== "undefined") {
               // Track both InitiateCheckout and custom Purchase event
-              fbq('track', 'InitiateCheckout', {
-                content_name: 'sales_booster', 
-                value: 97.00, 
-                currency: 'USD',
+              fbq("track", "InitiateCheckout", {
+                content_name: "sales_booster",
+                value: 97.0,
+                currency: "USD",
                 num_items: 1,
-                ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
+                ...(typeof getAllUTMParams === "function"
+                  ? getAllUTMParams()
+                  : {}),
               });
-              
+
               // Add a ViewContent event to help with retargeting
-              fbq('track', 'ViewContent', {
-                content_ids: ['crm_booster_pack'],
-                content_type: 'product',
-                value: 97.00,
-                currency: 'USD',
-                ...(typeof getAllUTMParams === 'function' ? getAllUTMParams() : {})
+              fbq("track", "ViewContent", {
+                content_ids: ["crm_booster_pack"],
+                content_type: "product",
+                value: 97.0,
+                currency: "USD",
+                ...(typeof getAllUTMParams === "function"
+                  ? getAllUTMParams()
+                  : {}),
               });
-              
+
               console.log(`Conversion tracking fired for button #${index + 1}`);
             }
           });

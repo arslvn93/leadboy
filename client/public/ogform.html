@@ -2208,72 +2208,8 @@
                     return prevIndex; // No more steps or reached the beginning
                 };
 
-                // --- Partial Webhook Logic ---
-                const partialWebhookUrl = "https://n8n.salesgenius.co/webhook/leadboy";
-
-                function gatherPartialData() {
-                    const partialData = {};
-                    const fieldsToCapture = [
-                        { id: "fullName", stepIndex: 0 },
-                        { id: "email", stepIndex: 1 },
-                        { id: "phone", stepIndex: 2 },
-                        { id: "marketLocation", stepIndex: 3 },
-                        { id: "brokerage", stepIndex: 4 },
-                    ];
-
-                    fieldsToCapture.forEach(fieldInfo => {
-                        const inputElement = document.getElementById(fieldInfo.id);
-                        const stepElement = steps[fieldInfo.stepIndex];
-                        const legendElement = stepElement?.querySelector("legend");
-
-                        if (inputElement && inputElement.value && legendElement) {
-                            const questionText = legendElement.textContent.trim();
-                            if (questionText) {
-                                partialData[questionText] = inputElement.value.trim();
-                            }
-                        }
-                    });
-                    // console.log("Gathered partial data:", partialData); // DEBUG LOG REMOVED
-                    return partialData;
-                }
-
-                function sendPartialData() {
-                    const dataToSend = gatherPartialData();
-
-                    // Basic check: ensure at least email or phone is present before sending
-                    if (dataToSend["Email Address:"] || dataToSend["Phone Number:"]) {
-                         // console.log("Calling fetch to send partial data:", dataToSend); // DEBUG LOG REMOVED
-                         fetch(partialWebhookUrl, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(dataToSend),
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                // Log errors silently in the background if needed for server-side debugging,
-                                // but don't show them to the user in the console.
-                                console.error("Partial data webhook returned an error (silenced):", response.status, response.statusText);
-                            }
-                        })
-                        .catch(error => {
-                            // Log errors silently in the background if needed for server-side debugging,
-                            // but don't show them to the user in the console.
-                            console.error("Error sending partial data to webhook (silenced):", error);
-                        });
-                    } // else {
-                      // console.log("Skipping partial data send: Not enough information gathered yet."); // Log removed
-                    //}
-                }
-                // --- End Partial Webhook Logic ---
-
-
                 // --- Core Step Logic ---
                 function showStep(index) {
-                    // if (index === 4) {
-                    //     console.log("showStep called for index 4 (Step 5)"); // DEBUG LOG REMOVED
-                    // }
                     // If the current step is conditional and should be skipped, find the next valid step
                     if (
                         steps[index].classList.contains("conditional-step") &&
@@ -2435,13 +2371,7 @@
 
                 // --- Navigation Button Listeners ---
                 nextBtn?.addEventListener("click", () => {
-                    // console.log("nextBtn click listener triggered."); // DEBUG LOG REMOVED
                     if (validateStep(currentStepIndex)) {
-                        // --- ADDED: Send partial data after validating step 5 for nextBtn ---
-                        if (currentStepIndex === 4) { // Step 5 is index 4
-                            sendPartialData();
-                        }
-                        // --- END ADDED ---
                         const nextIndex =
                             getNextVisibleStepIndex(currentStepIndex);
                         if (nextIndex < steps.length) {
@@ -2767,7 +2697,6 @@
 
                 // --- A Button / START Button (Next/Submit) ---
                 const handleNextAction = () => {
-                    // console.log(`handleNextAction called. currentStepIndex: ${currentStepIndex}`); // DEBUG LOG REMOVED
                     playButtonSound(587.33); // A sound
                     const totalVisibleSteps = calculateTotalVisibleSteps();
                     const isLastVisible = isLastVisibleStep(
@@ -2782,14 +2711,7 @@
                         }
                     } else {
                         // Otherwise, try to go to the next visible step
-                        // console.log("Validation passed for step index:", currentStepIndex); // DEBUG LOG REMOVED
                         if (validateStep(currentStepIndex)) {
-                            // --- Send partial data after validating step 5 (for Gameboy controls) ---
-                            if (currentStepIndex === 4) { // Step 5 is index 4
-                                // console.log("Condition met (index === 4), calling sendPartialData..."); // DEBUG LOG REMOVED
-                                sendPartialData();
-                            }
-                            // --- END ---
                             const nextIndex =
                                 getNextVisibleStepIndex(currentStepIndex);
                             if (nextIndex < steps.length) {
